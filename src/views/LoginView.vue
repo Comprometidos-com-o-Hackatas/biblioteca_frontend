@@ -29,9 +29,15 @@
     </main>
 </template>
 <style scoped>
+
+.main-login {
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+}
 .section-login {
-    background-image: url('../assets/media/authbackground.png');
-    width: 1150px;
+    background-image: url('../assets/media/baseTemplate.png');
+    width: 100%;
     height: 100dvh;
     background-repeat: no-repeat;
     background-size: cover;
@@ -51,9 +57,34 @@ h1 {
 .container-login {
     position: relative;
     left: 30px;
-    height: 450px;
+    height: 350px;
     width: 500px;
     background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-input-boxes {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-box {
+    width: 100%;
+
+    & input {
+        width: 100%;
+        height: 35px;
+        font-size: 16px;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        bor
+    }
 }
 
 </style>
