@@ -19,9 +19,13 @@
             <button>Next</button>
             <p>or try</p>
             <div class="ways-logins-box">
-            <span class="mdi mdi-google"></span>
+            <span class="mdi mdi-google mdi-h" ></span>
             <span class="mdi mdi-facebook"></span>
             <span class="mdi mdi-apple"></span>
+            </div>
+            <div class="way-sign-box">
+            <p>Dont have an account?</p>
+            <RouterLink to="/">Sign Up</RouterLink>
             </div>
             </div>
             </div>
@@ -43,6 +47,7 @@
     background-size: cover;
     display: flex;
     flex-direction: column;
+    background-position: left;
 }
 
 h1 {
@@ -63,7 +68,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: burlywood;
+
 }
 
 .login-input-boxes {
@@ -72,7 +77,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
 }
 
 .input-box {
@@ -101,7 +106,6 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: aquamarine;
     gap: 10px;
 
     & button {
@@ -110,10 +114,14 @@ h1 {
         font-size: 14px;
         border-radius: 10px;
         border: none;
-        background-color: #8A3119;
+        background-color: #945737;
         color: white;
         font-family: var(--font-poppins);
         margin-top: 15px;
+        cursor: pointer;
+        &:hover {
+        background-color: #79472d;
+        }
     }
 }
 
@@ -121,5 +129,26 @@ h1 {
     font-size: 15px;
     font-family: var(--font-poppins);
     color: #8A3119;
+}
+
+.ways-logins-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;    
+    gap: 30px;
+}
+
+.mdi {
+   font-size: 35px;
+   color: black;
+
+   &:hover {
+    color: #8A3119;
+   }
+}
+
+.way-sign-box {
+   display: flex;
+   gap: 10px;
 }
 </style>
