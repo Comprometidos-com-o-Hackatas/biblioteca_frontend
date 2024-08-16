@@ -1,13 +1,12 @@
+<script setup>
+
+import Header from './components/Header.vue'
+</script>
 <template>
 <!--Apague isso se for mexer na app-->
-    
+    <Header />
 <RouterView />
 </template>
 
 
-
-<script setup>
-import BookDetail from './components/BookDetail.vue';
-import Header from './components/Header.vue'
-</script>
 
