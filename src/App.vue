@@ -1,9 +1,15 @@
 <template>
-    <div>
+<!--Apague isso se for mexer na app-->
+        <div>
         <BookDetail/>
-    </div>
+      </div>
+<RouterView />
 </template>
+
+
+
 <script setup>
 import BookDetail from './components/BookDetail.vue';
 
 </script>
+
