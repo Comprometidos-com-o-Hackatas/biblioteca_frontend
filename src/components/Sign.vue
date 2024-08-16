@@ -5,7 +5,7 @@ const emits = defineEmits([
 ])
 </script>
 <template>
-<main class="main-login">
+
     <AuthBase :title="'Sign Up'" :first_box="'Username or Email'" :second_box="'Password'" :hasThird="true" :third_box="'Age'" :directiveMessage="'Already have an account?'" :directiveButton="'Login'" :directivePosition="'right'" :position="'204px'" @sign="emits('sign')"/>
-</main>
+
 </template>
