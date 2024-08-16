@@ -1,9 +1,8 @@
 <script setup>
-import {ref} from 'vue'
-
 const emits = defineEmits([
     'sign'
 ])
+
 
 const props = defineProps({
     title: {
