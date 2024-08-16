@@ -1,4 +1,9 @@
 <template>
-<!--Apague isso se for mexer na app-->
-<h1>OLA</h1>
+    <div>
+        <BookDetail/>
+    </div>
 </template>
+<script setup>
+import BookDetail from './components/BookDetail.vue';
+
+</script>
