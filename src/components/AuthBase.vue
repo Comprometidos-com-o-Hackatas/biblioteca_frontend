@@ -27,19 +27,11 @@ const props = defineProps({
     },
     directiveButton: {
         type: String
-    },
-    position: {
-        type: String
-    },
-    directivePosition: {
-        type: String
-    }
- 
-    
+    },  
 })
 </script>
 <template>
-        <div class="container-login-out" :style="props.directivePosition + ': ' + props.position">
+        <div class="container-login-out">
             <h1>{{props.title}}</h1>
 
             <div class="container-login">
