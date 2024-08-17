@@ -1,0 +1,209 @@
+* {
+    z-index: 20;
+}
+.main-login {
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    position: relative;
+    background-image: url(./media/colecao-abundante-de-livros-antigos-em-prateleiras-de-madeira-geradas-por-ia-1.jpg);
+    z-index: 0;
+}
+.section-login {
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    transition: ease-in-out;
+    width: 100%;
+    height: 100dvh;
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    background-image: url('../assets/media/baseTemplate.png');
+    transition: 0.3s;
+    position: absolute; 
+    overflow: hidden;
+    z-index: 1;
+    animation-name: changeComp;   
+}
+
+.section-login::before {
+    background-repeat: no-repeat;
+    background-position: left;
+    animation-name: changeComp;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+   
+}
+
+.section-login.active {
+    background-image: none;
+    overflow: hidden; 
+}
+
+.section-login.active .section-login {
+    display: none;
+}
+
+.section-login.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/media/baseTemplate.png');
+    background-size: 100%;
+    transform: scaleX(-1); 
+    z-index: 1;
+    animation-name: changeComp;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+}
+
+
+@keyframes changeComp {
+    0% {
+        background-size: 500%;
+    }
+  
+}
+
+h1 {
+    color: #8A3119;
+    font-size: 90px;
+    font-family: var(--font-poppins);
+    font-weight: 200;
+    position: relative;
+}
+
+.container-login {
+    position: relative;
+    height: auto;
+    width: 500px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-login-out {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    position: absolute;
+}
+
+.login-input-boxes {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.input-box {
+    width: 100%;
+    & input {
+        width: 100%;
+        height: 35px;
+        font-size: 16px;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid #8A3119;
+    }
+}
+
+.input-box p {
+    font-size: 13px;
+    color: #8A3119;
+    font-family: var(--font-poppins);
+    font-weight: 300;
+}
+
+.login-buttons {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    & button {
+        width: 91px;
+        height: 32px;
+        font-size: 14px;
+        border-radius: 10px;
+        border: none;
+        background-color: #945737;
+        color: white;
+        font-family: var(--font-poppins);
+        margin-top: 30px;
+        cursor: pointer;
+        &:hover {
+        background-color: #79472d;
+        }
+    }
+}
+
+.login-buttons p {
+    font-size: 15px;
+    font-family: var(--font-poppins);
+    color: #8A3119;
+}
+
+.ways-logins-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;    
+    gap: 30px;
+}
+
+.mdi {
+   font-size: 35px;
+   color: black;
+
+   &:hover {
+    color: #8A3119;
+   }
+}
+
+.way-sign-box {
+   display: flex;
+   gap: 10px;
+}
+
+.sign-text {
+    text-decoration: none;
+   }
+
+   @media (max-width: 1440px) {
+    .container-login {
+        width: 300px;
+    }
+    
+   }
+
+@media (max-width: 1205px) {
+
+    .section-login {
+        background-size:1500px;
+        background-repeat: no-repeat;
+    }
+
+    .section-login.active::before {
+        background-size:1500px;
+        background-repeat: no-repeat;
+    }
+
+}
+
+@media (max-width: 700px) {
+    .container-login-out {
+        align-items: center;
+        width: 100%;
+    }
+
+}
