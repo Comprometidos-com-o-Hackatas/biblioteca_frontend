@@ -1,12 +1,35 @@
 @import './base.css';
-
 #app {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;
 }
-
+.book-detail-container{
+  height: 140vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.page-detail-container{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 100px;
+  z-index: 1;
+}
+.rate-container{
+  position: absolute;
+  z-index: 2;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-left: 25px;
+}
 a,
 .green {
   text-decoration: none;
@@ -31,5 +54,37 @@ a,
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
+  }
+}
+@media (max-width: 1350px) {
+  .page-detail-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 1350px){
+  .book-detail-container{
+      height: 250vh;
+  } 
+  .rate-container{
+    margin-left: 200px;
+    width: 130vw;
+  }
+}
+@media (max-width: 1000px){
+  .rate-container{
+    margin-left: 200px;
+  }
+}
+@media (max-width: 800px){
+  .rate-container{
+    width: 200vw;
+  }
+}
+@media (max-width: 500px){
+  .rate-container{
+    width: 250vw;
   }
 }
