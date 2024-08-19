@@ -59,9 +59,9 @@ const props = defineProps({
             <button>Next</button>
             <p>or try</p>
             <div class="ways-logins-box">
-            <span class="mdi mdi-google mdi-h" ></span>
-            <span class="mdi mdi-facebook"></span>
-            <span class="mdi mdi-apple"></span>
+            <span class="mdi mdi-google mdi-h mdilogin" ></span>
+            <span class="mdi mdi-facebook mdilogin"></span>
+            <span class="mdi mdi-apple mdilogin"></span>
             </div>
             <div class="way-sign-box">
             <p>{{props.directiveMessage}}</p>

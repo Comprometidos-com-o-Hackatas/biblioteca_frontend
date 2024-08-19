@@ -1,3 +1,7 @@
+<script setup>
+
+import Header from './components/Header.vue'
+</script>
 <template>
 
     <div>
@@ -5,16 +9,11 @@
     </div>
 
 <!--Apague isso se for mexer na app-->
-        <div>
-        <BookDetail/>
-      </div>
+    <Header />
 <RouterView />
 
-</template>
-
-
-
-<script setup>
+</template><script setup>
 
 </script>
+
 
