@@ -1,0 +1,33 @@
+<template>
+    <div class="box-critic-container">
+        <div class="user-box">
+            <div>
+                <img :src="photo">
+            </div>
+            <div id="rate">
+                <StarsComp :is_rating="true"/>
+                <p>{{ rate }}</p>
+            </div>
+        </div>
+        <div class="box-content">
+            <p>{{ description }}</p>
+        </div>
+    </div>
+</template>
+<script setup> 
+    import StarsComp from './StarsComp.vue';
+    defineProps({
+        photo:{
+            type: URL,
+            required: true
+        },
+        description:{
+            type: String,
+            required: true
+        },
+        rate:{
+            type: Number,
+            required: true
+        }
+    })
+</script>
