@@ -1,0 +1,55 @@
+.taxed-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+    height: 100vh;
+}
+.box-container{
+    width: 90%;
+    height: 650px;
+    overflow-y: auto;
+    border-radius: 20px;
+}
+.box-container::-webkit-scrollbar{
+    width: 15px;
+    height: 20px;
+}
+.box-container::-webkit-scrollbar-track{
+   border-radius: 10px;
+   margin: 20px;
+}
+.box-container::-webkit-scrollbar-thumb {
+    background: #888; /* Cor do polegar */
+    border-radius: 10px; /* Arredondamento do polegar */
+    border: 2px solid #f1f1f1; /* Espaço entre o polegar e a trilha */
+}
+.box-container::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Cor do polegar ao passar o mouse */
+}
+.box-pair{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(214, 214, 214);
+    color: gray;
+    padding: 40px;
+}
+.box-odd{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: gray;
+    color: white;
+    padding: 40px;
+}
+.booked-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 17.5px;
+}

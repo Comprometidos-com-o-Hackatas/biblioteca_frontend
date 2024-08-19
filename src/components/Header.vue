@@ -5,7 +5,7 @@ const data = ref([
     {icon: 'mdi-home', link: '/login', isActive: false},
     {icon: 'mdi-magnify', link: '/', isActive: false},
     {icon: 'mdi-bookmark-outline', link: '#', isActive: false},
-    {icon: 'mdi-book-alert', link: '#', isActive: false},
+    {icon: 'mdi-book-alert', link: '/booked', isActive: false},
     {icon: 'mdi-human-female-female-child', link: '#', isActive: false},
     {icon: 'mdi-cog', link: '#', isActive: false},
 ])
