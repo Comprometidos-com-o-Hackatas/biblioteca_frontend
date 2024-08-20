@@ -1,0 +1,47 @@
+.main-home {
+    width: 100vw;
+    background-color: rgb(75, 75, 75);
+    padding: 0px;
+}
+
+.corners {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    
+}
+.container-cards {
+    display: flex;
+    width: 90%;
+    height: 40vh;
+    &:nth-child(1) {
+        margin-top: 20px;
+    }
+    justify-content: center;
+}
+
+.title-container {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    font-size: 20px;
+}
+
+.stand-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 99999;
+    background-color: #945737;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    
+}
+
+.stand-container::before {
+    transform-style: preserve-3d;
+    transform: rotateY(45deg) rotateY(-45deg); /* Inclinação para dar o efeito 3D */
+    transform-origin: left;
+}
