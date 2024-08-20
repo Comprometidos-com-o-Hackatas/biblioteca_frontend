@@ -1,0 +1,40 @@
+<script setup>
+    defineProps({
+        title: String,
+        status: String,
+        fine: Number,
+        booked_in: String,
+        expire_in: String,
+        days: Number
+    })
+</script>
+<template>
+        <div class="popup-card">
+            <div class="back">
+                <button @click="$emit('back')">X</button>
+                <p>{{ title }}</p>
+            </div>
+            <div class="data-container">
+            <div class="box-data">
+                <div class="title-data">
+                    <p>Status:</p>
+                    <p>Fine:</p>
+                    <p>Booked in:</p>
+                    <p>Expired in:</p>
+                    <p>Days late</p>
+                </div>
+                <div class="data-items">
+                    <p>{{ status }}</p>
+                    <p>{{ fine }}</p>
+                    <p>{{ booked_in }}</p>
+                    <p>{{ expire_in }}</p>
+                    <p>{{ days }}</p>
+                </div>
+            </div>
+                <div class="fines-page">
+                    <button><i class="mdi mdi-information-variant"></i></button>
+                    <p>Fines ?</p>
+                </div>
+            </div>
+        </div>
+</template>
