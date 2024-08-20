@@ -1,4 +1,5 @@
 <template>
+<!-- rato dps apaga isso -->
     <div :class="buttonclass">
        <button :id="idbutton">{{ title }}</button> 
     </div>
