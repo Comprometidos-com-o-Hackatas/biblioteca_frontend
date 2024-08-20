@@ -2,13 +2,6 @@
 import {computed, ref} from 'vue'
 
 const data = ref([
-
-    {icon: 'mdi-home', link: '/login', isActive: false},
-    {icon: 'mdi-magnify', link: '/', isActive: false},
-    {icon: 'mdi-bookmark-outline', link: '#', isActive: false},
-    {icon: 'mdi-book-alert', link: '/booked', isActive: false},
-    {icon: 'mdi-human-female-female-child', link: '#', isActive: false},
-    {icon: 'mdi-cog', link: '#', isActive: false},
     {id: 0, icon: 'mdi-home', link: '/login', isActive: false},
     {id: 1, icon: 'mdi-magnify', link: '/', isActive: false},
     {id: 2, icon: 'mdi-bookmark-outline', link: '#', isActive: false},
@@ -17,22 +10,11 @@ const data = ref([
     {id: 6, icon: 'mdi-cog', link: '#', isActive: false},
 
 ])
-const saveClicks = ref([])
 
 function activatedOn(index) {
-    saveClicks.value.push(data.value[index].id)
-    data.value[index].isActive = !data.value[index.isActive]
-    if (saveClicks.value.length > 1) {
-        saveClicks.value.shift()
-        for (let i = 0; i < data.value.length; i++) { 
-                data.value[i].isActive = false
-        }
-        data.value[index].isActive = !data.value[index].isActive
-    } 
+    data.value.forEach(item => item.isActive = false);
+    data.value[index].isActive = true;
 }
-
-
-
 </script>
 <template>
     <section class="section-header">
@@ -50,7 +32,7 @@ function activatedOn(index) {
             </div>
         </div>
         <div class="arrow">
-                    <span class="mdi mdi-arrow-right"></span>
+        <span class="mdi mdi-arrow-right"></span>
         </div>
     </section>
 </template>
