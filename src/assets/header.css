@@ -1,3 +1,4 @@
+
 .section-header {
     height: 20vh;
     background-color: #EBDACC;
@@ -18,7 +19,21 @@
 
     &:hover .arrow {
         opacity: 0;
+        visibility: hidden;
     }
+
+    &:hover .main-content {
+        opacity: 1;
+        height: 100vh;
+        visibility: visible;
+    }
+
+    &:hover .main-content ul :nth-child(6) .item-header {
+        animation-name: roll;
+        animation-duration: 2s;
+        animation-iteration-count: 1;
+    }
+   
 }
 
 .container-header {
@@ -28,23 +43,20 @@
     flex-direction: column;
     transition: 0.4s ease;
 
-    &:hover .main-content {
-        opacity: 1;
-        position: unset;
-    }
+   
 }
 
 .main-content {
     width: 100%;
-    height: auto;
+    height: 5vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 30px;
     opacity: 0;
-    position: absolute;
-    right: 5000px;
-    transition: 0.1s ease;
+    visibility: hidden;
+    transition: 0.6s ease;
+    overflow-y: hidden;
 }
 
 .box-photo {
@@ -65,43 +77,45 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    height: 100%;
     padding: 0;
     gap: 10px;
     margin-top: 30px;
-
-    & :nth-child(6) {
+    
+    & :nth-child(6)  {
         position: absolute;
         bottom: 30px;
     }
 }
 
-.main-content ul li {
-    &:focus-within {
-        border-bottom: 3px solid black;
-        border-radius: 3px;
-    }
-}
-
 .mdiheader {
     font-size: 35px;
-}
-
-.mdiheader.active {
-    background-color: aqua;
-}
-
-.mdiheader-link {
     color: black;
 
     &:hover {
-        color: rgb(30, 30, 30);
+        color: rgb(201, 151, 108);
     }
 }
+
+.item-header-box.active {
+    border-bottom: 3px solid black;
+    border-radius: 3px;
+}
+
+
 
 .arrow {
     position: absolute;
     font-size: 30px;
     top: 35%;
-    left: 3px;
+    left: -7px;
     transition: 0.4s ease;
+    visibility: visible;
+    color: #c5a68d
+}
+
+@keyframes roll {
+    100% {
+        transform: rotate(360deg);
+    }
 }
