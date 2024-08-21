@@ -82,24 +82,26 @@
     transition: 0.4s;
 }
 .rarrow {
-    position: absolute;
+   
     font-size: 25px;
     right: 40px;
     bottom: 20%;
     z-index: 9999;
     transition: 0.3s;
+    position: absolute;
     &:hover {
         color: rgb(212, 166, 101);
     }
 }
 
 .larrow {
-    position: absolute;
+    
     font-size: 25px;
     left: 40px;
     bottom: 20%;
     z-index: 9999;
     transition: 0.3s;
+    position: absolute;
     &:hover {
         color: rgb(212, 166, 101);
     }
@@ -179,5 +181,18 @@
     .larrow {
         left: 20px;
         bottom: 20%;  
+    }
+}
+
+@media (max-width: 1500px) {
+
+    .rarrow {
+        right: 20px;
+        bottom: 30%;    
+    }
+    
+    .larrow {
+        left: 20px;
+        bottom: 30%;  
     }
 }

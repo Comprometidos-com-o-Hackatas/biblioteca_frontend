@@ -29,7 +29,7 @@
   <main class="main-home">
     <section class="corners">
       <div class="container-cards-out" v-for="(item, index) in booksList" :key="index">
-       
+        
         <div class="container-cards">
           <h3 class="title-container">Mais lidos</h3>
           <div class="container-book-out" :style="`right: ${item.right}px;`">
