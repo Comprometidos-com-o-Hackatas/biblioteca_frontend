@@ -85,7 +85,7 @@
     position: absolute;
     font-size: 25px;
     right: 40px;
-    bottom: 120px;
+    bottom: 20%;
     z-index: 9999;
     transition: 0.3s;
     &:hover {
@@ -97,7 +97,7 @@
     position: absolute;
     font-size: 25px;
     left: 40px;
-    bottom: 120px;
+    bottom: 20%;
     z-index: 9999;
     transition: 0.3s;
     &:hover {
@@ -147,5 +147,37 @@
 
     .box-infos {
         margin: 30px 0 0 0;
+    }
+}
+
+@media (max-width: 1920px) {
+    .container-cards {
+        height: 40vh;
+    }
+    .rarrow {
+        right: 20px;
+        bottom: 50%;    
+    }
+    
+    .larrow {
+        left: 20px;
+        bottom: 50%;  
+    }
+}
+
+@media (max-width: 1500px) {
+
+    .container-cards {
+        height: 55vh;
+    }
+
+    .rarrow {
+        right: 20px;
+        bottom: 20%;    
+    }
+    
+    .larrow {
+        left: 20px;
+        bottom: 20%;  
     }
 }
