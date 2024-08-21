@@ -1,28 +1,27 @@
 <script setup>
   import { bookdetails } from '@/utils/book';
   import BookDetail from '@/components/BookDetail.vue';
-import { reactive } from 'vue';
+import { ref } from 'vue';
   const illes = 4
   const cards = 10
 
-  const booksList = reactive({
-    mostRead: [],
-    popular: [],
-    launched: [],
-    romance: []
-  })
+  const booksList = ref([
+    {mostRead: []},
+    {popular: []},
+    {launched: []},
+    {romance: []}
+  ])
 
-  function moveRight() {
-
-  }
+  const padding = ref(0)
 </script>
 <template>
   <main class="main-home">
     <section class="corners">
-      <div class="container-cards" v-for="(item, index) in illes" :key="index">
+      <div class="container-cards-out" v-for="(item, index) in illes" :key="index">
+       
+        <div class="container-cards">
           <h3 class="title-container">Mais lidos</h3>
-
-          <div class="container-book-out">
+          <div class="container-book-out" :style="`right: ${padding}px;`">
           <div class="container-book" v-for="(index, itens) in cards" :key="index">
 
             <div class="card-container-home" v-for="(details, index) in bookdetails" :key="index">
@@ -33,10 +32,12 @@ import { reactive } from 'vue';
             <p>A17</p>
           </div>
           </div>
-          <span class="mdi mdi-arrow-right-thick rarrow" @click="moveRight(index)"></span>
+          
           <div class="stand-container">
             
           </div>
+        </div>
+        <span class="mdi mdi-arrow-right-thick rarrow" @click="padding = padding + 100"></span>
       </div>
     </section>  
     <footer class="footer-home">
