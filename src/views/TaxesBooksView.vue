@@ -5,11 +5,12 @@ import { usertaxes } from '@/utils/taxes'
 import { ref } from 'vue'
 const taxesitem = ref([])
 const popup = ref(false)
+
 function OpenPopUP(id) {
   taxesitem.value = [usertaxes.value.find((item) => item.id === id)]
   popup.value = !popup.value
-  console.log(taxesitem.value)
 }
+
 </script>
 <template>
   <div class="taxed-container">
@@ -32,6 +33,7 @@ function OpenPopUP(id) {
       <BookedPopUp
         v-for="booked in taxesitem"
         :key="booked.id"
+        :id="booked.id"
         :title="booked.book"
         :status="booked.action"
         :days="booked.days"
