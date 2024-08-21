@@ -13,13 +13,13 @@
 .container-cards-out {
     display: flex;
     max-width: 100%;
-    height: 50vh;
+    height: 55vh;
     justify-content: center;
 }
 .container-cards {
     display: flex;
     max-width: 90%;
-    height: 47vh;
+    height: 55vh;
     justify-content: left;
     align-items: end;
     overflow: hidden;
@@ -67,7 +67,7 @@
         font-size: 17px;
         user-select: none;
         position: absolute;
-        top: 190px;
+        top: 28.5vh;
         color: black;
     }
 }
@@ -85,6 +85,18 @@
     position: absolute;
     font-size: 25px;
     right: 40px;
+    bottom: 120px;
+    z-index: 9999;
+    transition: 0.3s;
+    &:hover {
+        color: rgb(212, 166, 101);
+    }
+}
+
+.larrow {
+    position: absolute;
+    font-size: 25px;
+    left: 40px;
     bottom: 120px;
     z-index: 9999;
     transition: 0.3s;
