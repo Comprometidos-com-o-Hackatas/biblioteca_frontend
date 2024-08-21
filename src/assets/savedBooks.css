@@ -7,6 +7,8 @@
     font-size: 2.65rem;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 1.75rem;
+    align-items: center;
     width: 85%;
 }
 
@@ -21,5 +23,13 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-top: 1rem;
+    margin-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
 }
+
+.saved-book {
+    margin: 1.5rem;
+}
+

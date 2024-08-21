@@ -1,5 +1,8 @@
 <script setup>
+import { savedBooks } from '@/stores/saveds';
 import BookDetail from '@/components/BookDetail.vue';
+
+const books = savedBooks
 </script>
 
 <template>
@@ -10,8 +13,8 @@ import BookDetail from '@/components/BookDetail.vue';
         </div>
     </header>
     <main class="saved-main">
-        <div class="saved-book" >
-
+        <div class="saved-book" v-for="(book, index) in books" :key="index">
+            <BookDetail :url="book.img" :categories="book.category" :genere="book.genere" is_list="list"/>
         </div>
     </main>
 </template>

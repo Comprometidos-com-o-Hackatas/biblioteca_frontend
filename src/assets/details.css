@@ -3,6 +3,16 @@
     flex-direction: column;
     gap: 20px;
 }
+.description-details-header {
+    display: flex;
+    flex-direction: row;
+}
+.save-btn {
+    font-size: 2rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    color: #8A3119;
+}
 #synopsis{
     max-width: 1200px;
     text-align: justify;
