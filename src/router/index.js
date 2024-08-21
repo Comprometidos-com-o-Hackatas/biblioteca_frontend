@@ -35,6 +35,11 @@ const router = createRouter({
       path: '/booked/taxes/:id',
       name: 'taxes',
       component: () => import('../views/TaxesView.vue')
+    },
+    {
+      path: '/saved-books',
+      name: 'saved-books',
+      component: () => import('../views/SavedBooksView.vue')
     }
   ]
 })
