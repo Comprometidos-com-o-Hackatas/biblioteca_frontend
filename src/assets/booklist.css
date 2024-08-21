@@ -1,11 +1,15 @@
+* {
+    position: relative;
+}
 .book-list-container{
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 275px;
-    width: 200px;
+    height: 230px;
+    width: 160px;
     transition: 1s;
+    margin-bottom: 15px;
 }
 .book-list-container:hover{
     transform: scale(1.05);
@@ -17,24 +21,28 @@
 }
 .book-list{
     width: 100%;
-    height: 300px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     border-radius: 20px ;
     position: relative;
+    z-index: 5;
 }
 
 .box-img {
     height: 100%;
     width: 100%;
+    z-index: 15;
+    position: relative;
 }
 .book-list img{
     width: 100%;
     height: 100%;
     border-radius: 20px;
-    z-index: -1;
+    z-index: 15;
+    position: relative;
 }
 
 .overlay {
@@ -43,14 +51,17 @@
     height: 100%;
     width: 100%;
     border-radius: 20px;
-    z-index: 1;
+    z-index: 50;
 }
 
 .box-list-list-container {
     position: absolute;
-    bottom: 30px;
+    bottom: 15px;
     z-index: 9999;
-    margin-left: 10px;
+    width: 90%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .list-list-container{
@@ -59,14 +70,15 @@
     align-items: center;
     color: black;
     gap: 5px;
-    z-index: 2;
+    z-index: 9999;
     & li {
         display: flex;
         list-style-type: none;
+        
     }
 }
 .category-list-adventure{
-    background-color: green;
+    background-color: #3BBC4F;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,7 +88,7 @@
     font-size: 9px;
 }
 .category-list-romance{
-    background-color: red;
+    background-color: #F95959;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,4 +107,5 @@
     width: 45px;
     color: black;
     font-size: 9px;
+    z-index: 9999;
 }
