@@ -8,10 +8,10 @@
   const widthScreen = window.innerWidth
 
   const booksList = ref([
-    {mostRead: [], right: 0, sizeShow: (cards - ((widthScreen*0.9) / 220))*220, title: 'Mais Lidos'},
-    {popular: [], right: 0, sizeShow: (cards - ((widthScreen*0.9) / 220))*220, title: 'Mais Populares'},
-    {launched: [], right: 0, sizeShow: (cards - ((widthScreen*0.9) / 220))*220, title: 'Lançamentos'},
-    {romance: [], right: 0, sizeShow: (cards - ((widthScreen*0.9) / 220))*220, title: 'Recomendações Para Você'}
+    {mostRead: [], right: 0, sizeShow: (cards - ((widthScreen*0.85) / 220))*220, title: 'Mais Lidos'},
+    {popular: [], right: 0, sizeShow: (cards - ((widthScreen*0.85) / 220))*220, title: 'Mais Populares'},
+    {launched: [], right: 0, sizeShow: (cards - ((widthScreen*0.85) / 220))*220, title: 'Lançamentos'},
+    {romance: [], right: 0, sizeShow: (cards - ((widthScreen*0.85) / 220))*220, title: 'Recomendações Para Você'}
   ])
 
   function goDirection(index, direction) {
@@ -29,7 +29,6 @@
   <main class="main-home">
     <section class="corners">
       <div class="container-cards-out" v-for="(item, index) in booksList" :key="index">
-        
         <div class="container-cards">
           <h3 class="title-container">{{item.title}}</h3>
           <div class="container-book-out" :style="`right: ${item.right}px;`">
@@ -47,11 +46,14 @@
           <div class="stand-container">
             
           </div>
+          
         </div>
-        <span :class="`mdi mdi-arrow-left-thick larrow`" v-if="item.right > 0" @click="goDirection(index, 'l')"></span>
         <span class="mdi mdi-arrow-right-thick rarrow" @click="goDirection(index, 'r')" v-if="item.right < item.sizeShow"></span>
+          <span :class="`mdi mdi-arrow-left-thick larrow`" v-if="item.right > 0" @click="goDirection(index, 'l')"></span>
       </div>
+      
     </section>  
+
     <footer class="footer-home">
       <div class="box-infos">
         <p>Get in touch:</p>
