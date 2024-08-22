@@ -1,0 +1,74 @@
+.taxes-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.taxes-container h1{
+    font-size: 50px; 
+    color: black;
+    font-weight: 500;
+}
+.docs-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+.docs{
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 700px;
+    border-radius: 10px;
+}
+.fine-table{
+    background-color: #945737;
+    width: 300px;
+    height: 500px;
+}
+.info-taxes-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    color: white;
+    padding: 10px ;
+    font-size: 17.5px;
+}
+.info-taxes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+.info-texes p{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.title-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.153);
+}
+.title-container h1{
+    color: white;
+    font-size: 20px;
+}
+.type-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: white;
+}
+.type-container p{
+    font-size: 20px;
+    font-weight: 200;
+}
+
+

@@ -13,6 +13,7 @@
     border-radius: 20px;
     position: absolute;
     z-index: 1;
+    cursor: pointer;
 }
 .box-container::-webkit-scrollbar{
     width: 15px;
@@ -47,6 +48,7 @@
     background-color: gray;
     color: white;
     padding: 40px;
+    
 }
 .booked-info{
     display: flex;
@@ -54,6 +56,7 @@
     align-items: center;
     width: 100%;
     font-size: 17.5px;
+    
 }
 .popup-container{
     width: 100%;

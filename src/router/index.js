@@ -25,6 +25,16 @@ const router = createRouter({
       path: '/booked',
       name: 'booked',
       component: () => import('../views/TaxesBooksView.vue')
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('../views/SearchView.vue')
+    },
+    {
+      path: '/booked/taxes/:id',
+      name: 'taxes',
+      component: () => import('../views/TaxesView.vue')
     }
   ]
 })
