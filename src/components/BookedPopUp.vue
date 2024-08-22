@@ -1,5 +1,6 @@
 <script setup>
     defineProps({
+        id: Number,
         title: String,
         status: String,
         fine: Number,
@@ -32,7 +33,7 @@
                 </div>
             </div>
                 <div class="fines-page">
-                    <button><i class="mdi mdi-information-variant"></i></button>
+                    <router-link :to="'/booked/taxes/' + id"><button ><i class="mdi mdi-information-variant"></i></button></router-link>
                     <p>Fines ?</p>
                 </div>
             </div>
