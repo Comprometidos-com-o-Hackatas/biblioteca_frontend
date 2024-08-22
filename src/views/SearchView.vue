@@ -1,6 +1,6 @@
 <template>
   <div class="search-page-container">
-    <SearchBar @filter="filterbooks" />
+    <SearchBar @filter="filterbooks" :width="100" :sizeIcon="20" />
     <div class="filtered-books-container">
       <div v-for="details in books" :key="details.id" class="page-filter-container">
         <router-link :to="'/' + details.id"><BookDetail

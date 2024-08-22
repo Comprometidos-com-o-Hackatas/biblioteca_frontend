@@ -35,6 +35,11 @@ const router = createRouter({
       path: '/booked/taxes/:id',
       name: 'taxes',
       component: () => import('../views/TaxesView.vue')
+    },
+    {
+      path: '/config',
+      name: 'config',
+      component: () => import('../views/ConfigView.vue')
     }
   ]
 })
