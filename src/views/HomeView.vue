@@ -3,15 +3,15 @@
   import BookDetail from '@/components/BookDetail.vue';
   import { ref } from 'vue';
   const illes = 4
-  const cards = 10
+  const cards = 8
 
   const widthScreen = window.innerWidth
 
   const booksList = ref([
-    {mostRead: [], right: 0, sizeShow: 220*cards - ((widthScreen - 150) / 220)},
-    {popular: [], right: 0, sizeShow: 95*cards},
-    {launched: [], right: 0, sizeShow: 95*cards},
-    {romance: [], right: 0, sizeShow: 95*cards}
+    {mostRead: [], right: 0, sizeShow: (cards - ((widthScreen*0.9) / 220))*220, title: 'Mais Lidos'},
+    {popular: [], right: 0, sizeShow: (cards - ((widthScreen*0.9) / 220))*220, title: 'Mais Populares'},
+    {launched: [], right: 0, sizeShow: (cards - ((widthScreen*0.9) / 220))*220, title: 'Lançamentos'},
+    {romance: [], right: 0, sizeShow: (cards - ((widthScreen*0.9) / 220))*220, title: 'Recomendações Para Você'}
   ])
 
   function goDirection(index, direction) {
@@ -31,7 +31,7 @@
       <div class="container-cards-out" v-for="(item, index) in booksList" :key="index">
         
         <div class="container-cards">
-          <h3 class="title-container">Mais lidos</h3>
+          <h3 class="title-container">{{item.title}}</h3>
           <div class="container-book-out" :style="`right: ${item.right}px;`">
           <div class="container-book" v-for="(index, itens) in cards" :key="index">
 
