@@ -36,8 +36,6 @@
     padding: 2rem;
 }
 
-.saved-book {
-}
 
 @media (max-width: 768px) {
     .saved-header {
