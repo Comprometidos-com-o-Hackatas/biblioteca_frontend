@@ -8,8 +8,11 @@
 @import './booked.css';
 @import './home.css';
 @import './search.css';
+@import './taxes.css';
+@import './savedBooks.css';
 @import './taxes.css'
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
