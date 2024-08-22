@@ -7,7 +7,7 @@ const books = savedBooks
 
 <template>
     <header class="saved-header">
-        <h2>Saved books</h2>
+        <h2 class="saved-title">SAVED BOOKS</h2>
         <div class="saved-search-btn">
             <i class="mdi mdi-magnify"/>
         </div>
