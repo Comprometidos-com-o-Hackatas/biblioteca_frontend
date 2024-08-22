@@ -1,7 +1,6 @@
 <script>
 import { ref } from 'vue';
 
-const repeticao = ref(1)
 </script>
 
 <template>
