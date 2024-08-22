@@ -11,7 +11,6 @@ const router = createRouter({
       component: HomeView
     },
     {
-
       path: '/:id',
       name: 'book-detail',
       component: () => import('../views/BookDetailView.vue')
@@ -41,6 +40,11 @@ const router = createRouter({
       name: 'User',
       component: () => import('../views/UserView.vue')
     },
+    {
+      path: '/saved-books',
+      name: 'saved-books',
+      component: () => import('../views/SavedBooksView.vue')
+    }
   ]
 })
 
