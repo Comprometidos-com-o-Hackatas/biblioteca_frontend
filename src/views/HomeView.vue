@@ -27,7 +27,6 @@ const padding = ref(0)
 </script>
 <template>
   <main class="main-home">
-    </div>
     <section class="corners">
       <div class="container-cards-out" v-for="(item, index) in booksList" :key="index">
         <div class="container-cards">

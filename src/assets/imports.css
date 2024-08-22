@@ -9,8 +9,7 @@
 @import './home.css';
 @import './search.css';
 @import './taxes.css';
-@import './user.css';
-@import './taxes.css'
+@import './taxes.css';
 
 @tailwind base;
 @tailwind components;
