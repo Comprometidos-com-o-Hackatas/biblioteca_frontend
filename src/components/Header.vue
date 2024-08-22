@@ -1,8 +1,9 @@
 <script setup>
+import router from '@/router';
 import {computed, ref} from 'vue'
 
 const data = ref([
-    {id: 0, icon: 'mdi-home', link: '/login', isActive: false},
+    {id: 0, icon: 'mdi-home', link: '/', isActive: false},
     {id: 1, icon: 'mdi-magnify', link: '/search', isActive: false},
     {id: 2, icon: 'mdi-bookmark-outline', link: '#', isActive: false},
     {id: 3, icon: 'mdi-book-alert', link: '/booked', isActive: false},
@@ -14,12 +15,16 @@ function activatedOn(index) {
     data.value.forEach(item => item.isActive = false);
     data.value[index].isActive = true;
 }
+
+function goLogin() {
+    router.push('/login')
+}
 </script>
 <template>
     <section class="section-header">
         <div class="container-header">
             <div class="main-content">
-                <div class="box-photo">
+                <div class="box-photo" @click="goLogin()">
                     <img src="../assets/media/crash.webp">
                 </div>
                 <ul class="focusicon">
