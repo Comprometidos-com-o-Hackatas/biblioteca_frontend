@@ -5,11 +5,11 @@ import SearchBar from '../SearchBar.vue';
     <div class="container-manage">
          <div class="box-age-limitor">
             <p>Age limitor: </p>
-            <p>7</p>
+                <input type="text" placeholder="7" maxlength="2" >
          </div>
 
          <div class="box-category-all">
-            <p>Category forbid</p>
+            <p>Category forbid:</p>
             <div class="box-category">
                 <div class="box-checkbox">
                 <input type="checkbox" class="checkbox-forbid" name="checkbox-forbid">
