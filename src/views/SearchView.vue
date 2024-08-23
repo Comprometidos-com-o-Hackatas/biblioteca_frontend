@@ -4,6 +4,7 @@ import SearchBar from '@/components/SearchBar.vue'
 import BookDetail from '@/components/BookDetail.vue'
 
 import { computed, ref } from 'vue'
+
 const booksfiltered = ref([])
 
 const books = computed(() => {

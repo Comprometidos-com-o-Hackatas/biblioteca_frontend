@@ -1,14 +1,8 @@
 <script setup>
+import { family } from '@/utils/config';
 import ConfigBox from './ConfigBox.vue';
 import BoxPeople from './BoxPeople.vue'
 import BoxManage from './BoxManage.vue';
-const family = [
-    {name: 'Fabio', icon: 'mdi mdi-crown'},
-    {name: 'Gabriel', icon: 'mdi mdi-human-cane'},
-    {name: 'João', icon: 'mdi mdi-human-cane'},
-    {name: 'Renato', icon: 'mdi mdi-teddy-bear'},
-    {name: 'Manco', icon: 'mdi mdi-teddy-bear'}
-]
 </script>
 <template>
     <section class="section-family">
