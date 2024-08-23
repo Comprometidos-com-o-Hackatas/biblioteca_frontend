@@ -22,7 +22,9 @@ const family = [
         </ConfigBox>
         
         <ConfigBox :hasButton="false" :title="'Manage people'">
+            <div class="box-manage">
             <BoxManage />
+            </div>
         </ConfigBox>
 
         <ConfigBox :hasButton="false" :title="'Settings'">

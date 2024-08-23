@@ -7,6 +7,9 @@ const props = defineProps({
         type: String,
         default: '100%'
     },
+    height: {
+        type: String
+    },
     sizeIcon: {
         type: String,
         default: '20px'
@@ -14,7 +17,7 @@ const props = defineProps({
 })
 </script>
 <template>
-    <div class="search-container" :style="props.width">
+    <div class="search-container" :style="[props.width, props.height]">
         <div class="search-box">
             <input v-model="search" @input="$emit('filter', search)"/>
             <i class="mdi mdi-magnify" :style="props.sizeIcon + 'px'" />

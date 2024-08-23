@@ -132,5 +132,49 @@
     }
 }
 
+/** MANAGE PEOPLE START**/
+
+.container-manage {
+    width: 100%;
+    height: 100%;
+}
+
+.box-manage {
+    width: 100%;
+    
+    display: flex;
+}
+
+.box-books-books {
+    height: 80px;
+    width: 80px;
+    
+    & img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.box-age-limitor {
+    width: 100%;
+    height: 50px;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    align-items: center;
+    font-size: 18px;
+    & :nth-child(2) {
+        background-color:#E8E8E8;
+        width: 70px;
+        display: flex;
+        justify-content: center;
+        height: 25px;
+        align-items: center;
+        border-radius: 5px;
+    } 
+}
+
+/** MANAGE PEOPLE END**/
 
 
