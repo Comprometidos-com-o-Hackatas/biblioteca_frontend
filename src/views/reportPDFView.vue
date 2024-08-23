@@ -1,23 +1,29 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { computed } from 'vue';
+
+const dados = ref('')
 
 // Conteúdo HTML inicial
-const htmlContent = ref(`
-    <html>
-        <head>
-            <style>
-                body { font-family: Arial, sans-serif; margin: 40px; }
-                h1 { color: #333; }
-                p { font-size: 14px; }
-            </style>
-        </head>
-        <body>
-            <h1>Relatório de PDF</h1>
-            <p>Este PDF foi gerado com conteúdo personalizado!</p>
-        </body>
-    </html>
-`);
+const htmlContent = computed(() => {
+    const pdf = ref(`
+        <html>
+            <head>
+                <style>
+                    body { font-family: Arial, sans-serif; margin: 40px; }
+                    h1 { color: #333; }
+                    p { font-size: 14px; }
+                </style>
+            </head>
+            <body>
+                <h1>Relatório de PDF</h1>
+                <p>`+ dados.value + `</p>
+            </body>
+        </html>
+    `)
+    return pdf.value
+});
 
 const generatePDF = async () => {
     try {
@@ -28,7 +34,7 @@ const generatePDF = async () => {
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement('a');
         link.href = url;
-        link.setAttribute('download', 'ŕeport.pdf');
+        link.setAttribute('download', 'report.pdf');
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -41,8 +47,8 @@ const generatePDF = async () => {
 <template>
     <div>
         <h2>Edite o conteúdo do relatório que será gerado</h2>
-        <textarea v-model="htmlContent" rows="10" cols="50"></textarea>
+        <textarea v-model="dados" rows="10" cols="50"></textarea>
         <br/>
-        <button style="margin-left: 3rem;" @click="generatePDF"></button>
+        <button style="margin-left: 3rem;" @click="generatePDF">Gerar PDF</button>
     </div>
 </template>
