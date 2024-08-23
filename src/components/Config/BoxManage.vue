@@ -1,3 +1,6 @@
+<script setup>
+import SearchBar from '../SearchBar.vue';
+</script>
 <template>
     <div class="container-manage">
          <div class="box-age-limitor">
@@ -18,10 +21,7 @@
          <div class="box-books-block">
             <div class="box-title-search">
                 <p>Books: </p>
-                <div class="box-search">
-                    <input type="text">
-                    
-                </div>
+                <SearchBar :width="'width: 80%'" style="font-size: 15px;" />
             </div>
          </div>
     </div>

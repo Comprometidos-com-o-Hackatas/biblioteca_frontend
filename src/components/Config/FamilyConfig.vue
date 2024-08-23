@@ -1,7 +1,7 @@
 <script setup>
 import ConfigBox from './ConfigBox.vue';
 import BoxPeople from './BoxPeople.vue'
-
+import BoxManage from './BoxManage.vue';
 const family = [
     {name: 'Fabio', icon: 'mdi mdi-crown'},
     {name: 'Gabriel', icon: 'mdi mdi-human-cane'},
@@ -22,7 +22,7 @@ const family = [
         </ConfigBox>
         
         <ConfigBox :hasButton="false" :title="'Manage people'">
-            
+            <BoxManage />
         </ConfigBox>
 
         <ConfigBox :hasButton="false" :title="'Settings'">
