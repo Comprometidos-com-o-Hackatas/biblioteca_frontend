@@ -87,6 +87,7 @@
     transition: 0.3s;
     position: absolute;
     margin-right: 2%;
+    right: 0;
     top: 50%;
     &:hover {
         color: rgb(212, 166, 101);
@@ -100,6 +101,7 @@
     transition: 0.3s;
     position: absolute;
     margin-left: 2%;
+    left: 0;
     top: 50%;
     &:hover {
         color: rgb(212, 166, 101);

@@ -11,11 +11,11 @@ export const booksList = ref([
   {romance: [], right: 0, sizeShow: (cards - ((widthScreen*0.85) / 220))*220, title: 'Recomendações Para Você'}
 ])
 
-export function goDirection(index, direction, data) {
+export function goDirection(direction, data) {
     if (direction == 'r') {
-      data[index].right += 140
+      data.right += 140
     } else if (direction == 'l') {
-      data[index].right -= 140
+      data.right -= 140
     }
-    console.log(data[index].right)
+    console.log(data.right)
   }
