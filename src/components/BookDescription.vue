@@ -1,6 +1,9 @@
 <template>
 <div class="description-details-container">
-    <h1 style="font-size: 30px;">{{ title }}</h1>
+    <div class="description-details-header">
+        <h1 style="font-size: 30px;">{{ title }}</h1>
+        <i :class="`mdi ${(saved) ? 'mdi-bookmark' : 'mdi-bookmark-outline'} save-btn`" @click="saved = !saved"/>
+    </div>
     <p>disponivel: {{ is_avalaible ? 'sim' : 'não' }}</p>
     <p id="synopsis">synopsis: {{ synopsis }}</p>
     <p>localização: {{ location.description }}</p>
@@ -11,6 +14,7 @@
 </div>
 </template>
 <script setup>
+import { ref } from 'vue';
 import AnalisysComp from './AnalisysComp.vue';
 import GlobalButton from './GlobalButton.vue';
 import { userratings } from '@/utils/ratings';
@@ -33,4 +37,6 @@ import { userratings } from '@/utils/ratings';
             required: true
         }
     })
+
+    const saved = ref(false)
 </script>

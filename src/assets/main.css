@@ -41,13 +41,14 @@ a,
 }
 
 * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
   font-family: "Poppins", sans-serif;  
 }
 
 #app {
   width: 100dvw;
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
 }

@@ -11,7 +11,6 @@ const router = createRouter({
       component: HomeView
     },
     {
-
       path: '/:id',
       name: 'book-detail',
       component: () => import('../views/BookDetailView.vue')
@@ -40,6 +39,16 @@ const router = createRouter({
       path: '/config',
       name: 'config',
       component: () => import('../views/ConfigView.vue')
+    },
+    {
+      path: '/User',
+      name: 'User',
+      component: () => import('../views/UserView.vue')
+    },
+    {
+      path: '/saved-books',
+      name: 'saved-books',
+      component: () => import('../views/SavedBooksView.vue')
     }
   ]
 })

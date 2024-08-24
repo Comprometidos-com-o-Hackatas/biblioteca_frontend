@@ -1,4 +1,3 @@
-
 @import './bookdetail.css';
 @import './icons.css';
 @import './booklist.css';
@@ -12,3 +11,8 @@
 @import './taxes.css';
 @import './config.css';
 @import './settings.css';
+@import './savedBooks.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
