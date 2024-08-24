@@ -44,6 +44,11 @@ const router = createRouter({
       path: '/saved-books',
       name: 'saved-books',
       component: () => import('../views/SavedBooksView.vue')
+    },
+    {
+      path: '/report',
+      name: 'report',
+      component: () => import('../views/reportPDFView.vue')
     }
   ]
 })
