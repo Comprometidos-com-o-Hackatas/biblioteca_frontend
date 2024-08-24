@@ -1,8 +1,9 @@
 <script setup>
-import { family } from '@/utils/config';
+import { family, setAgeLimit } from '@/utils/config';
 import ConfigBox from './ConfigBox.vue';
 import BoxPeople from './BoxPeople.vue'
 import BoxManage from './BoxManage.vue';
+import Settings from './Settings.vue';
 </script>
 <template>
     <section class="section-family">
@@ -22,7 +23,9 @@ import BoxManage from './BoxManage.vue';
         </ConfigBox>
 
         <ConfigBox :hasButton="false" :title="'Settings'">
-            
+            <div class="box-settings">
+                <Settings @set="setAgeLimit = !setAgeLimit" :state="setAgeLimit" />
+            </div>
         </ConfigBox>
     </div>
     </section>

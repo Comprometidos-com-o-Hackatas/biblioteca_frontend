@@ -1,6 +1,6 @@
 <script setup>
 import {ref,computed} from 'vue'
-import {manage_book_data, manage_category_data} from '@/utils/config'
+import {manage_book_data, manage_category_data, setAgeLimit} from '@/utils/config'
 import SearchBar from '../SearchBar.vue';
 
 
@@ -23,7 +23,7 @@ const books = computed(() => {
     <div class="container-manage">
          <div class="box-age-limitor">
             <p>Age limitor: </p>
-                <input type="text" placeholder="7" maxlength="2" >
+                <input type="text" :placeholder="!setAgeLimit ? 'Off': '7'" maxlength="2" :disabled="!setAgeLimit" >
          </div>
 
          <div class="box-category-all">

@@ -44,4 +44,7 @@ export function activatedOn(index, data) {
     data.forEach((item)=> item.isActive = false)
     data[index].isActive = true
 }
+
+export const setAgeLimit = ref(false)
+
  
