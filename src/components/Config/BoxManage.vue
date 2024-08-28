@@ -23,7 +23,7 @@ const books = computed(() => {
     <div class="container-manage">
          <div class="box-age-limitor">
             <p>Age limitor: </p>
-                <input type="text" :placeholder="!setAgeLimit ? 'Off': '7'" maxlength="2" :disabled="!setAgeLimit" >
+                <input type="number" :placeholder="!setAgeLimit ? 'Off': '7'" maxlength="2" :disabled="!setAgeLimit" >
          </div>
 
          <div class="box-category-all">
