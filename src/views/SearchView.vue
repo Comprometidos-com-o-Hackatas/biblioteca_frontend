@@ -24,7 +24,7 @@ function filterbooks(search) {
     <SearchBar @filter="filterbooks" :width="'width: 100%'" :sizeIcon="'font-size: 5px'" />
     <div class="filtered-books-container">
       <div v-for="details in books" :key="details.id" class="page-filter-container">
-        <router-link :to="'/' + details.id"><BookDetail
+        <router-link :to="'/' + details.id" class="tste"><BookDetail
           @rate="isopenpopup = !isopenpopup"
           :url="details.img"
           :categories="details.category"

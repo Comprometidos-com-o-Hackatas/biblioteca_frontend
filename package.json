@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
-    "@passageidentity/passage-elements": "^1.23.0",
+    "@passageidentity/passage-auth": "^0.1.0-beta.28",
+    "@passageidentity/passage-elements": "^1.23.1",
     "axios": "^1.7.5",
     "install": "^0.13.0",
     "pinia": "^2.1.7",

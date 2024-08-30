@@ -12,7 +12,6 @@ import { ref } from 'vue';
           
           <ContainerBookOut :item="item.right" />
           <div class="stand-container">
-            
           </div>
           
         </div>

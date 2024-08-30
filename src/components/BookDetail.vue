@@ -14,7 +14,7 @@
         
         
       </div>
-      
+      <div :class="is_list != 'list' ? 'detail-overlay' : 'overlay'"></div>
     </div>
   
     <StarsComp :is_rating="false"  v-show="is_list === 'details'"/>
@@ -25,10 +25,10 @@
             
               <li :id="is_list != 'list' ? 'genere' : 'genere-list'">{{ genere.description }}</li> 
               <li v-for="category in categories" :key="category.id"  :class="getcategory(category)">{{ category.description }}</li>
-
           </div>
         </div>
-        <div class="overlay"></div>
+
+       
 </div>
 
 </template>

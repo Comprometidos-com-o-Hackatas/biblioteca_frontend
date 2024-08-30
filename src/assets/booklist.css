@@ -14,11 +14,7 @@
 .book-list-container:hover{
     transform: scale(1.05);
 }
-.book-list-in {
-    height: 100%;
-    width: 100%;
-    position: relative;
-}
+
 .book-list{
     width: 100%;
     height: 100%;
@@ -31,11 +27,15 @@
     z-index: 5;
 }
 
-.box-img {
+.book-list-in {
     height: 100%;
     width: 100%;
-    z-index: 15;
     position: relative;
+}
+
+.box-list-img {
+    width: 100%;
+    height: 100%;
 }
 .book-list img{
     width: 100%;
