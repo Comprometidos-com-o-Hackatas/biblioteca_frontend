@@ -23,8 +23,8 @@
           
           <div :class="is_list != 'list' ? 'list-container' : 'list-list-container'">
             
-              <li :id="is_list != 'list' ? 'genere' : 'genere-list'">{{ genere.description }}</li> 
-              <li v-for="category in categories" :key="category.id"  :class="getcategory(category)">{{ category.description }}</li>
+              <li class="genere-list" v-for="item, index in genere" :key="index">{{ item.descricao }}</li> 
+              <li class="category-list">{{ categories.descricao }}</li>
           </div>
         </div>
 
@@ -33,20 +33,27 @@
 
 </template>
 <script setup>
+import { onMounted } from 'vue';
+import { useBookStore } from '@/stores/index';
 import StarsComp from './StarsComp.vue';
 import GlobalButton from './GlobalButton.vue';
+
+const bookStore = useBookStore()
+
+onMounted(async()=> {
+  console.log(props.categories)
+})
 
 const props = defineProps({
   url:{
     type: URL,
-    required: true
   },
   genere:{
-    type: Object,
+    type: Array,
     required: true
   },
   categories:{
-    type: Array,
+    type: Object,
     required: true
   }, 
   is_list:{
@@ -55,15 +62,4 @@ const props = defineProps({
   },
 })
 
-const getcategory = (category) => {
-  if (category.description === 'Aventura' && props.is_list !== 'list') {
-    return 'category-adventure';
-  } else if (category.description === 'Romance' && props.is_list !== 'list') {
-    return 'category-romance';
-  } else if (category.description === 'Romance' && props.is_list === 'list') {
-    return 'category-list-romance';
-  } else {
-    return 'category-list-adventure';
-  }
-}
 </script>

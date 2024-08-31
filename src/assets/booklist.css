@@ -9,7 +9,7 @@
     height: 230px;
     width: 160px;
     transition: 1s;
-    margin-bottom: 15px;
+    margin-bottom: 35px;
 }
 .book-list-container:hover{
     transform: scale(1.05);
@@ -77,35 +77,28 @@
         
     }
 }
-.category-list-adventure{
-    background-color: #3BBC4F;
+.category-list {
+    background-color: #fefdfd;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
     padding: 5px;
-    width: 45px;
     font-size: 9px;
-}
-.category-list-romance{
-    background-color: #F95959;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    padding: 5px;
-    width: 45px;
-    font-size: 9px;
-}
-#genere-list{
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    padding: 5px;
-    width: 45px;
     color: black;
+}
+
+.genere-list {
+    background-color: #f9f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px;
     font-size: 9px;
-    z-index: 9999;
+    color: black;
+}
+
+.linkBooks {
+    z-index: 999999;
 }

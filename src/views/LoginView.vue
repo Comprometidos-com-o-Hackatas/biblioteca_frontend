@@ -16,6 +16,9 @@ const show = computed(()=> {
        <AuthBase :title="'Login'" :first_box="'Username or Email'" :second_box="'Password'" :directiveMessage="'Do not have an account?'" :directiveButton="'Sign Up'"  @sign="changeToSign = !changeToSign" v-show="changeToSign == true" :position="'left'" :amount="show > 700 ? '60px' : '0px'" />
        <Sign @sign="changeToSign = !changeToSign" :position="'right'" :amount="show > 700 ? '60px' : '0px'" v-show="changeToSign == false" />
     </section>
+    <div class="authContainer">
+  <passage-auth :app-id="'2jFnUqSKhygm8jEbOqYnlcIv'"></passage-auth>
+    </div>
     </main>
 </template>
 <style scoped>
@@ -23,4 +26,10 @@ const show = computed(()=> {
 * {
     cursor: default;
 }
+
+.authContainer {
+    position: absolute; 
+    width: 800px;
+}
+
 </style>

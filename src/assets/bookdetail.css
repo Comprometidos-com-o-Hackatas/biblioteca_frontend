@@ -58,6 +58,8 @@
     align-items: center;
     color: black;
     gap: 10px;
+    position: absolute;
+    bottom: 50px;
     & li {
         display: flex;
         list-style-type: none;

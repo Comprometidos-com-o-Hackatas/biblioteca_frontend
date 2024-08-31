@@ -7,6 +7,7 @@ export const useBookStore = defineStore('book', () => {
     const state = reactive({
         books: [],
         error: null,
+        selectedBook: null,
     })
 
     const getBooks = async () => {

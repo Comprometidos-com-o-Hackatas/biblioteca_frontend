@@ -1,37 +1,48 @@
 <script setup>
-import { bookstofilter } from '@/utils/searchbooks'
+import { computed, onMounted, ref } from 'vue'
 import SearchBar from '@/components/SearchBar.vue'
-import BookDetail from '@/components/BookDetail.vue'
-
-import { computed, ref } from 'vue'
+import { useBookStore } from '@/stores/index';
+import router from '@/router';
+import BookDetail from '@/components/BookDetail.vue';
 
 const booksfiltered = ref([])
+
+const bookStore = useBookStore()
+
+onMounted(async ()=>{
+  await bookStore.getBooks()
+})
 
 const books = computed(() => {
   if (booksfiltered.value.length > 0) {
     return booksfiltered.value
   }
-  return bookstofilter.value
+  return bookStore.state.books
 })
 
 function filterbooks(search) {
-  booksfiltered.value = bookstofilter.value.filter((book) => book.title.startsWith(search))
+  booksfiltered.value = bookStore.state.books.filter((book) => book.titulo.startsWith(search))
   console.log(booksfiltered.value)
+}
+
+function toRoute(data) {
+    bookStore.state.selectedBook = data
+   router.push('/detail/' + data.id.toString())
 }
 </script>
 <template>
   <div class="search-page-container">
     <SearchBar @filter="filterbooks" :width="'width: 100%'" :sizeIcon="'font-size: 5px'" />
     <div class="filtered-books-container">
-      <div v-for="details in books" :key="details.id" class="page-filter-container">
-        <router-link :to="'/' + details.id" class="tste"><BookDetail
+      <div v-for="details, index in books" :key="index" class="page-filter-container">
+        <span class="linkBooks" @click="toRoute(details)">
+          <BookDetail
           @rate="isopenpopup = !isopenpopup"
-          :url="details.img"
-          :categories="details.category"
-          :genere="details.genere"
+          :categories="details.categoria"
+          :genere="details.generos"
           is_list="list"
-        />
-    </router-link>
+         />
+    </span>
       </div>
     </div>
   </div>

@@ -47,9 +47,6 @@ onMounted(()=>{
 <template>
     <RouterView />
     <Header v-if="showHeader" />
-    <div class="authContainer" v-if="isLogged == false">
-  <!--<passage-auth :app-id="'2jFnUqSKhygm8jEbOqYnlcIv'"></passage-auth>-->
-    </div>
 </template>
 
 

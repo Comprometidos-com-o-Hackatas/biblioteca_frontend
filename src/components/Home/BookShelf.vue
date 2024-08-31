@@ -1,9 +1,16 @@
 <script setup>
-import { ref } from 'vue';
-  import { booksList, goDirection } from '@/utils/home';
+import { ref, onMounted } from 'vue';
+  import { booksList, goDirection, cards } from '@/utils/home';
   import ContainerBookOut from './ContainerBookOut.vue';
-  
+  import { useBookStore } from '@/stores/index';
+
+  const bookStore = useBookStore()
   const padding = ref(0)
+  onMounted(() => {
+    bookStore.getBooks()
+    cards.value = bookStore.state.books.length
+}) 
+
 </script>
 <template>
     <div class="container-cards-out" v-for="(item, index) in booksList" :key="index">
