@@ -1,12 +1,29 @@
 <template>
   <div :class='is_rating ? null : "box-rate"'>
-    <div :class="is_rating ? 'box-user-rate-in' : 'box-rate-in'">
+    <div :class="is_rating ? 'box-user-rate-in' : 'box-rate-in'" v-if="is_popup">
         <i v-for="star, index in starsrating" @click="rate(index)" :key="index" :class="star.icon" :style="{fontSize: is_rating ? '15px': '30px', color: is_rating && is_popup ? star.color : null}  "></i>
     </div>
+    <div :class="is_rating ? 'box-user-rate-in' : 'box-rate-in'" v-else>
+        <i v-for="star, index in starsrating" :key="index" :class="star.icon" :style="'color: ' + (Math.round(getRate) > (index) ? 'yellow' : 'black')"></i> 
+    </div>
+
   </div>
 </template>
 <script setup>
+import { useBookStore } from '@/stores';
 import { starsrating } from '@/utils/stars';
+import { ref, computed, onMounted } from 'vue';
+const bookStore = useBookStore()
+
+const getRate = ref(0)
+
+onMounted(async () => {
+  bookStore.getBooks()
+
+  getRate.value = bookStore.state.selectedBook.nota
+  console.log(getRate.value)
+})
+
 const emit = defineEmits(['rating'])
 function rate(i){
   if(props.is_rating){
@@ -25,4 +42,7 @@ const props = defineProps({
   is_rating: Boolean,
   is_popup: Boolean
 })
+
+
+
 </script>

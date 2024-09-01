@@ -6,9 +6,11 @@ import { ref, onMounted } from 'vue';
 
   const bookStore = useBookStore()
   const padding = ref(0)
+ 
   onMounted(() => {
     bookStore.getBooks()
     cards.value = bookStore.state.books.length
+    console.log(cards.value)
 }) 
 
 </script>

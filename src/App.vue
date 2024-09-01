@@ -4,9 +4,10 @@
     import router from './router'
     import '@passageidentity/passage-elements/passage-auth'
     import { PassageUser } from '@passageidentity/passage-elements/passage-user';
-    import { useAuthStore } from './stores'
+    import { useAuthStore, useBookStore } from './stores'
 
     const authStore = useAuthStore()
+    const bookStore = useBookStore()
     const showHeader = ref(true)
     const isLogged = ref(false)
     router.beforeEach((to, from, next ) =>{
@@ -42,6 +43,8 @@
 
 onMounted(()=>{
     getUserInfo()
+    bookStore.getBooks()
+    
 })
 </script>
 <template>

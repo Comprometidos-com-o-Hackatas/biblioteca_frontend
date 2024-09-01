@@ -9,7 +9,7 @@ const bookStore = useBookStore()
 const props = defineProps({
     item: {
         type: String
-    }
+    },
 })
 
 onMounted(async () => {
