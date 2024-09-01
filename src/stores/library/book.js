@@ -1,6 +1,7 @@
-import { reactive } from "vue";
+import { computed, reactive, ref } from "vue";
 import { defineStore } from "pinia";
 import { BookService } from "@/services/index";
+import { PassageUser } from "@passageidentity/passage-elements/passage-user";
 
 
 export const useBookStore = defineStore('book', () => {
@@ -9,6 +10,17 @@ export const useBookStore = defineStore('book', () => {
         error: null,
         selectedBook: null,
     })
+
+    const widthScreen = window.innerWidth
+
+const cards = ref(0)
+
+const booksList = ref([
+  {books: [], right: 0, sizeShow: (cards - ((widthScreen*0.85) / 220))*220, title: 'Aventura'},
+  {books: [], right: 0, sizeShow: (cards - ((widthScreen*0.85) / 220))*220, title: 'Ação'},
+  {books: [], right: 0, sizeShow: (cards - ((widthScreen*0.85) / 220))*220, title: 'Romance'},
+  {books: [], right: 0, sizeShow: (cards - ((widthScreen*0.85) / 220))*220, title: 'Ficção'}
+])
 
     const getBooks = async () => {
         try {
@@ -45,7 +57,17 @@ export const useBookStore = defineStore('book', () => {
         }
     }
 
+    function logOut() {
+
+        try {
+            PassageUser.signOut()
+        
+        } catch (error) {
+        throw error;
+    }
+    }
+
     return {
-        state, getBooks, postBooks, putBooks, deleteBooks
+        state, getBooks, postBooks, putBooks, deleteBooks, cards, booksList, logOut
     }
 })

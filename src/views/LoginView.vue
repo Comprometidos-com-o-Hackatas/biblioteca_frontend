@@ -9,6 +9,7 @@ const widthscreen = ref(window.innerWidth)
 const show = computed(()=> {
     return widthscreen.value
 })
+
 </script>
 <template>
     <main class="main-login">

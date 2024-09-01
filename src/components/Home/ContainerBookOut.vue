@@ -10,6 +10,9 @@ const props = defineProps({
     item: {
         type: String
     },
+    data: {
+        type: Object
+    }
 })
 
 onMounted(async () => {
@@ -24,14 +27,14 @@ function toRoute(data) {
 </script>
 <template>
     <div class="container-book-out" :style="`right: ${props.item}px;`">
-          <div class="container-book" v-for="(book, index) in bookStore.state.books" :key="index">
+          <div class="container-book">
 
             <div class="card-container-home">
-             <span class="linkBooks" @click="toRoute(book)" ><BookDetail :url="book.capa" :categories="book.categoria" :genere="book.generos" is_list="list"/>
+             <span class="linkBooks" @click="toRoute(props.data)" ><BookDetail :url="props.data.capa" :categories="props.data.categoria" :genere="props.data.generos" is_list="list"/>
              </span>
             </div>
 
             <p>A17</p>
           </div>
-          </div>
+        </div>
 </template>
