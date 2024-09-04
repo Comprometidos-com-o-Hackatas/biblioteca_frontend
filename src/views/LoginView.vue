@@ -2,7 +2,7 @@
 import {ref, computed} from 'vue'
 import AuthBase from '@/components/AuthBase.vue'
 import Sign from '@/components/Sign.vue'
-
+import '@passageidentity/passage-elements/passage-auth'
 const changeToSign = ref(true)
 const widthscreen = ref(window.innerWidth)
 
@@ -17,9 +17,6 @@ const show = computed(()=> {
        <AuthBase :title="'Login'" :first_box="'Username or Email'" :second_box="'Password'" :directiveMessage="'Do not have an account?'" :directiveButton="'Sign Up'"  @sign="changeToSign = !changeToSign" v-show="changeToSign == true" :position="'left'" :amount="show > 700 ? '60px' : '0px'" />
        <Sign @sign="changeToSign = !changeToSign" :position="'right'" :amount="show > 700 ? '60px' : '0px'" v-show="changeToSign == false" />
     </section>
-    <div class="authContainer">
-  <passage-auth :app-id="'2jFnUqSKhygm8jEbOqYnlcIv'"></passage-auth>
-    </div>
     </main>
 </template>
 <style scoped>
@@ -29,8 +26,10 @@ const show = computed(()=> {
 }
 
 .authContainer {
-    position: absolute; 
-    width: 800px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 100%;
 }
-
 </style>

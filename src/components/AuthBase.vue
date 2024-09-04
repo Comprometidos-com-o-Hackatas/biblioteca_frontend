@@ -1,8 +1,23 @@
 <script setup>
+import router from '@/router';
+import { useAuthStore } from '@/stores';
+import { reactive } from 'vue';
+
 const emits = defineEmits([
     'sign'
 ])
 
+const store = useAuthStore()
+
+const user = reactive({
+    email: '',
+    password: ''
+})
+
+function executelogin(){
+    store.Login(user)
+    router.push('home/')
+}
 
 const props = defineProps({
     title: {
@@ -43,11 +58,11 @@ const props = defineProps({
             <div class="login-input-boxes">
                 <div class="input-box">
                     <p>{{ props.first_box }}</p>
-                    <input type="text">
+                    <input type="text" v-model="user.email">
                 </div>
                 <div class="input-box">
                     <p>{{props.second_box}}</p>
-                    <input type="text">
+                    <input type="text" v-model="user.password">
                 </div>
                 <div class="input-box" v-show="hasThird">
                     <p>{{props.third_box}}</p>
@@ -56,7 +71,7 @@ const props = defineProps({
             </div>
 
             <div class="login-buttons">
-            <button>Next</button>
+            <button @click="executelogin">Next</button>
             <p>or try</p>
             <div class="ways-logins-box">
             <span class="mdi mdi-google mdi-h mdilogin" ></span>

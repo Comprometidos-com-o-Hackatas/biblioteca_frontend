@@ -1,19 +1,33 @@
 import {ref} from 'vue'
 import { defineStore } from 'pinia'
-import AuthService from '../../services/auth/auth'
-
-const authService = new AuthService()
+import router from '@/router'
+import axios from 'axios'
 
 export const useAuthStore = defineStore('auth', ()=> {
-    const user = ref({})
-
-    async function  setToken (token) {
-        user.value = await authService.postUsetToken(token)
+    const email = ref(null)
+    const access = ref(null)
+    const refresh = ref(null)
+    const logged = ref(false)
+    const password = ref(null)
+    
+    async function Login(user){
+        const { data } = await axios.post("http://127.0.0.1:8000/api/token/", user)
+        localStorage.setItem('access', data.access)
+        localStorage.setItem('refresh', data.refresh)
+        email.value = user.email
+        password.value = user.password    
+        logged.value = !logged.value
+        access.value = data.access
+        refresh.value = data.refresh
+        console.log(data)
     }
 
-    function unsetToken() {
-        user.value = {}
+    async function logout(){
+        localStorage.removeItem('access')
+        localStorage.removeItem('refresh')
+        logged.value = !logged.value
+        router.push('/')
     }
-
-    return {user, setToken, unsetToken}
+    
+    return {email, Login, logout}
 })

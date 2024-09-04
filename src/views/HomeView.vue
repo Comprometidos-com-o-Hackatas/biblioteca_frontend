@@ -1,7 +1,6 @@
 <script setup>
   import BookShelf from '@/components/Home/BookShelf.vue'
   import FooterHome from '@/components/Home/FooterHome.vue';
-  
 </script>
 <template>
   <main class="main-home">
