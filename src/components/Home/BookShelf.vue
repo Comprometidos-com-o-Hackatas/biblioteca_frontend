@@ -5,7 +5,6 @@
   import { useBookStore } from '@/stores/index';
 
   const bookStore = useBookStore()
-  const padding = ref(0)
 
   const organizeBooks = () => {
     for (let i = 0; i < bookStore.booksList.length; i++) {
@@ -17,7 +16,6 @@
       }
       }
     }
-
     console.log(bookStore.booksList)
   }
  

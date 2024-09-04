@@ -3,7 +3,7 @@ import { useAuthStore } from '@/stores';
 import { activatedOn } from '@/utils/config';
 import {dataHeader} from '@/utils/header'
 
-const store = useAuthStore()
+const authStore = useAuthStore()
 
 </script>
 <template>
@@ -20,7 +20,7 @@ const store = useAuthStore()
                     <router-link  :to="item.link" class="mdiheader" :class="`mdi ${item.icon} `"  @click="activatedOn(index, dataHeader)"></router-link>
                     </div>
                     </li>
-                    <li><button @click="store.logout()">Logout</button></li>
+                    <li v-if="authStore.logged" ><span class="mdi mdi-logout mdiheader" @click="authStore.logout()"></span></li>
 
                 </ul>
                 

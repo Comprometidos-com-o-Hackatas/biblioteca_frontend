@@ -1,11 +1,9 @@
 import api from '@/plugins/api'
-const token = localStorage.getItem('psg_auth_token')
-
 
 class BookService {
     async getBook(){
     try {
-        const {data} = await api.get('/livro', {headers: {authorization: `Bearer ${token}`}})
+        const {data} = await api.get('/livro')
         return data.results;
     } catch (error) {
         console.log('error in get book', error)
@@ -15,7 +13,7 @@ class BookService {
 
     async postBook(book) {
     try {
-        const {data} = await api.post('/livro', book, {headers: {authorization: `Bearer ${token}`}})
+        const {data} = await api.post('/livro', book)
         return data.results
     } catch (error) {
         console.log('error in post book', error)
@@ -25,17 +23,17 @@ class BookService {
 
     async putBook(book) {
         try {
-            const {data} = await api.put(`/livro/${book.id}`, book, {headers: {authorization: `Bearer ${token}`}})
+            const {data} = await api.put(`/livro/${book.id}`, book)
             return data.results
         } catch (error) {
-            console.log('error in put book', error, {headers: {authorization: `Bearer ${token}`}})
+            console.log('error in put book', error)
             throw error;
         }
     }
 
     async deleteBook(id) {
         try {
-            const {data} = await api.delete(`/livro/${id}`, {headers: {authorization: `Bearer ${token}`}})
+            const {data} = await api.delete(`/livro/${id}`)
             return data.results
         } catch (error) {
             console.log('error in delete book', error)

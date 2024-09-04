@@ -2,20 +2,35 @@
 import {ref, computed} from 'vue'
 import AuthBase from '@/components/AuthBase.vue'
 import Sign from '@/components/Sign.vue'
-import '@passageidentity/passage-elements/passage-auth'
+import Login from '@/components/Login.vue';
+import { useAuthStore } from '@/stores';
+import router from '@/router';
 const changeToSign = ref(true)
 const widthscreen = ref(window.innerWidth)
+
+const store = useAuthStore()
+
+
+function executelogin(user){
+    store.Login(user)
+    router.push('/home/')
+}
 
 const show = computed(()=> {
     return widthscreen.value
 })
 
+function createAccount(userSign) {
+    store.createAccount(userSign)
+    window.location.reload()
+}
+
 </script>
 <template>
     <main class="main-login">
         <section class="section-login" :class="{active: !changeToSign}">
-       <AuthBase :title="'Login'" :first_box="'Username or Email'" :second_box="'Password'" :directiveMessage="'Do not have an account?'" :directiveButton="'Sign Up'"  @sign="changeToSign = !changeToSign" v-show="changeToSign == true" :position="'left'" :amount="show > 700 ? '60px' : '0px'" />
-       <Sign @sign="changeToSign = !changeToSign" :position="'right'" :amount="show > 700 ? '60px' : '0px'" v-show="changeToSign == false" />
+       <Login :amount="show > 700 ? '60px' : '0px'" @sign="changeToSign = !changeToSign" v-if="changeToSign" @auth="executelogin" />
+       <Sign @sign="changeToSign = !changeToSign" :amount="show > 700 ? '60px' : '0px'" @auth="createAccount" v-else />
     </section>
     </main>
 </template>

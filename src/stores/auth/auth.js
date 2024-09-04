@@ -2,6 +2,7 @@ import {ref} from 'vue'
 import { defineStore } from 'pinia'
 import router from '@/router'
 import axios from 'axios'
+import authService  from '@/services/auth/auth'
 
 export const useAuthStore = defineStore('auth', ()=> {
     const email = ref(null)
@@ -28,6 +29,11 @@ export const useAuthStore = defineStore('auth', ()=> {
         logged.value = !logged.value
         router.push('/')
     }
+
+    async function createAccount(user) {
+        await authService.postUser(user)
+        
+    }
     
-    return {email, Login, logout}
+    return {email, Login, logout, logged, createAccount}
 })

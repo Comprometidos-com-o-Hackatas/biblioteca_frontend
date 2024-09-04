@@ -57,17 +57,7 @@ const booksList = ref([
         }
     }
 
-    function logOut() {
-
-        try {
-            PassageUser.signOut()
-        
-        } catch (error) {
-        throw error;
-    }
-    }
-
     return {
-        state, getBooks, postBooks, putBooks, deleteBooks, cards, booksList, logOut
+        state, getBooks, postBooks, putBooks, deleteBooks, cards, booksList
     }
 })
