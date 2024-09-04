@@ -26,14 +26,22 @@ export const useAuthStore = defineStore('auth', ()=> {
     async function logout(){
         localStorage.removeItem('access')
         localStorage.removeItem('refresh')
+        access.value = ''
+        refresh.value = ''
         logged.value = !logged.value
         router.push('/')
     }
 
     async function createAccount(user) {
         await authService.postUser(user)
-        
+
+    }
+
+    async function autoLogin () {
+       access.value = localStorage.getItem('access')
+       refresh.value = localStorage.getItem('refresh')
+       logged.value = true
     }
     
-    return {email, Login, logout, logged, createAccount}
+    return {email, Login, logout, logged, createAccount, autoLogin}
 })

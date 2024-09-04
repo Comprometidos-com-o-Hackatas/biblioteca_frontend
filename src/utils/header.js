@@ -1,4 +1,5 @@
 import {ref} from 'vue'
+
 export const dataHeader = ref([
     {id: 0, icon: 'mdi-home', link: '/home', isActive: false},
     {id: 1, icon: 'mdi-magnify', link: '/search', isActive: false},

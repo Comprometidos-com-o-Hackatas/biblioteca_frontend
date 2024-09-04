@@ -11,7 +11,14 @@ const authStore = useAuthStore()
         <div class="container-header">
             <div class="main-content">
                 <div class="box-photo">
-                    <img src="../assets/media/crash.webp">
+                    <router-link to="/User" v-if="authStore.logged">
+                    <img src="../assets/media/crash.webp" >
+                    </router-link>
+                    <router-link to="/" v-else> 
+                    <div style="width: 100%; display: flex; justify-content: center; align-items: center;" >
+                        <span class="mdi mdi-account mdiheader"></span>
+                    </div>
+                    </router-link>
                 </div>
                 <ul class="focusicon">
                  

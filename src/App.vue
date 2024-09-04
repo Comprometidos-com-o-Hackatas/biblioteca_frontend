@@ -5,19 +5,11 @@
     import { useAuthStore } from './stores';
     const showHeader = ref(true)
     const store = useAuthStore()
-    router.beforeEach((to, from, next ) =>{
-        if(to.path === '/login'){
-            showHeader.value = false
-            next()
-        }
-        else {
-            showHeader.value = true
-            next()
-        }
-    }
-)
+    
 onMounted(() =>{
-    showHeader.value = !store.header
+    if (localStorage.getItem('access') && localStorage.getItem('refresh')) {
+    store.autoLogin()
+}
 })
 </script>
 <template>
