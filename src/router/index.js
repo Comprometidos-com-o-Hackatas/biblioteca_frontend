@@ -8,54 +8,104 @@ const router = createRouter({
     {
       path: '/home',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/detail/:id',
       name: 'book-detail',
-      component: () => import('../views/BookDetailView.vue')
+      component: () => import('../views/BookDetailView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/',
       name: 'login',
-      component: LoginView
+      component: LoginView,
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: '/booked',
       name: 'booked',
-      component: () => import('../views/TaxesBooksView.vue')
+      component: () => import('../views/TaxesBooksView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/search',
       name: 'search',
-      component: () => import('../views/SearchView.vue')
+      component: () => import('../views/SearchView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/booked/taxes/:id',
       name: 'taxes',
-      component: () => import('../views/TaxesView.vue')
+      component: () => import('../views/TaxesView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/config',
       name: 'config',
-      component: () => import('../views/ConfigView.vue')
+      component: () => import('../views/ConfigView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/User',
       name: 'User',
-      component: () => import('../views/UserView.vue')
+      component: () => import('../views/UserView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/saved-books',
       name: 'saved-books',
-      component: () => import('../views/SavedBooksView.vue')
+      component: () => import('../views/SavedBooksView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/report',
       name: 'report',
-      component: () => import('../views/reportPDFView.vue')
+      component: () => import('../views/reportPDFView.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/notfound',
+      name: 'not-found',
+      component: () => import('../views/NotFoundView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
+})
+
+router.beforeEach((to, from, next) =>{
+  if (to.meta.requiresAuth && !localStorage.getItem('access')) {
+    next({ path: '/notfound' });
+  }
+  else if(!to.meta.requiresAuth && localStorage.getItem('access')){
+    next({ path: '/notfound' })
+  }
+  else{
+    next()
+  }
 })
 
 export default router

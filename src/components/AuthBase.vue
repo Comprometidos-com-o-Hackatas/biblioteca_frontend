@@ -1,7 +1,7 @@
 <script setup>
 import router from '@/router';
 import { useAuthStore } from '@/stores';
-import { reactive } from 'vue';
+import { onMounted, reactive } from 'vue';
 
 const emits = defineEmits([
     'sign',
@@ -14,6 +14,21 @@ const user = reactive({
     email: '',
     password: ''
 })
+
+function executelogin(){
+    store.Login(user)
+}
+
+onMounted(() =>{
+    const password = localStorage.getItem('password')
+    const email = localStorage.getItem('email')
+
+    if(password && email){
+        user.email = email
+        user.password = password
+    }
+})
+
 
 const props = defineProps({
     title: {

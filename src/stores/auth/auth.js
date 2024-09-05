@@ -15,17 +15,20 @@ export const useAuthStore = defineStore('auth', ()=> {
         const { data } = await axios.post("http://127.0.0.1:8000/api/token/", user)
         localStorage.setItem('access', data.access)
         localStorage.setItem('refresh', data.refresh)
+        localStorage.setItem('email', user.email)
+        localStorage.setItem('password', user.password)
         email.value = user.email
         password.value = user.password    
-        logged.value = !logged.value
+        logged.value = true
         access.value = data.access
         refresh.value = data.refresh
-        console.log(data)
+        router.push('/home/')
     }
 
     async function logout(){
         localStorage.removeItem('access')
         localStorage.removeItem('refresh')
+<<<<<<< HEAD
         access.value = ''
         refresh.value = ''
         logged.value = !logged.value
@@ -44,4 +47,21 @@ export const useAuthStore = defineStore('auth', ()=> {
     }
     
     return {email, Login, logout, logged, createAccount, autoLogin}
+=======
+        logged.value = false
+        router.push('/')
+    }
+
+    function autologin(){
+        if(localStorage.getItem('access') && localStorage.getItem('refresh')){
+            logged.value = true
+            access.value = localStorage.getItem('access')
+            refresh.value = localStorage.getItem('refresh')
+            email.value = localStorage.getItem('email')
+            password.value = localStorage.getItem('password')
+        }
+    }
+    
+    return {logged, Login, logout, autologin}
+>>>>>>> 840f90b (sistema de login completado)
 })
