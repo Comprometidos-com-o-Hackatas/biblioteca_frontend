@@ -1,21 +1,34 @@
 <script setup>
-    import { onMounted, ref } from 'vue';
+    import { onMounted, reactive, ref } from 'vue';
     import BookDetail from '@/components/BookDetail.vue';
     import BookDescription from '@/components/BookDescription.vue';
     import { useBookStore } from '@/stores/index';
     import RatingComp from '@/components/RatingComp.vue';
+import router from '@/router';
     const bookStore = useBookStore()
     const isopenpopup = ref(false)
 
     onMounted(()=>{
         bookStore.getBooks()
     })
+
+    async function ownBook(book) {
+        const changedBook = reactive({...bookStore.state.selectedBook})
+        changedBook.disponivel = false
+        await bookStore.putBooks(changedBook)
+        router.push('/home')
+        setTimeout(()=> {
+            window.location.reload()
+        }, 1000)
+        const changedUser = reactive({})
+    }
+
 </script>
 <template>
     <div class="book-detail-container">
         <div :key="index" class="page-detail-container">
             <BookDetail @rate="isopenpopup = !isopenpopup" :categories="bookStore.state.selectedBook.categoria" :genere="bookStore.state.selectedBook.generos" is_list="details"/>
-            <BookDescription @rate="isopenpopup = !isopenpopup" :is_avalaible="bookStore.state.selectedBook.disponivel"  :synopsis="bookStore.state.selectedBook.descricao" :title="bookStore.state.selectedBook.titulo" />
+            <BookDescription :allow="bookStore.state.selectedBook.disponivel ? true : false" @ownBook="ownBook(bookStore.state.selectedBook)" @rate="isopenpopup = !isopenpopup" :is_avalaible="bookStore.state.selectedBook.disponivel"  :synopsis="bookStore.state.selectedBook.descricao" :title="bookStore.state.selectedBook.titulo" />
         </div>
         <div :class=" isopenpopup ? 'rate-container' : null" >
             <RatingComp v-show="isopenpopup" @rate="isopenpopup = !isopenpopup"/>

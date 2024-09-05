@@ -11,19 +11,18 @@
 
       for (let book = 0; book < bookStore.state.books.length; book++) {
 
-        if (bookStore.booksList[i].title === bookStore.state.books[book].generos[0].descricao) {
+        if (bookStore.booksList[i].title == bookStore.state.books[book].generos[0].descricao) {
         bookStore.booksList[i].books.push(bookStore.state.books[book])
       }
       }
     }
-    console.log(bookStore.booksList)
+    console.log(bookStore.state.books[0].generos[0].descricao)
   }
  
   onMounted( async () => {
     await bookStore.getBooks()
     bookStore.cards = bookStore.state.books.length
     organizeBooks()
-    
 }) 
 
 </script>

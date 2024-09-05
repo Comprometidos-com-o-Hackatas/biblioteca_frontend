@@ -13,7 +13,7 @@ class BookService {
 
     async postBook(book) {
     try {
-        const {data} = await api.post('/livro', book)
+        const {data} = await api.post('/livro/', book)
         return data.results
     } catch (error) {
         console.log('error in post book', error)
@@ -23,7 +23,7 @@ class BookService {
 
     async putBook(book) {
         try {
-            const {data} = await api.put(`/livro/${book.id}`, book)
+            const {data} = await api.put(`/livro/${book.id}/`, book)
             return data.results
         } catch (error) {
             console.log('error in put book', error)

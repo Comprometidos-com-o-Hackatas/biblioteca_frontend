@@ -1,6 +1,6 @@
 <template>
     <div :class="buttonclass">
-       <button :id="idbutton">{{ title }}</button> 
+       <button :id="idbutton"> {{ title }}  </button>
     </div>
 </template>
 <script setup>
@@ -16,6 +16,6 @@
         idbutton:{
             type: String,
             required: false
-        }
+        },
     })
 </script>
