@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
-
+import { useRoute } from 'vue-router'
+const route = useRoute()
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -89,9 +90,6 @@ const router = createRouter({
       path: '/notfound',
       name: 'not-found',
       component: () => import('../views/NotFoundView.vue'),
-      meta: {
-        requiresAuth: true
-      }
     }
   ]
 })

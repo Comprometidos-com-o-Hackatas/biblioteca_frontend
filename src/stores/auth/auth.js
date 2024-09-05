@@ -28,7 +28,6 @@ export const useAuthStore = defineStore('auth', ()=> {
     async function logout(){
         localStorage.removeItem('access')
         localStorage.removeItem('refresh')
-<<<<<<< HEAD
         access.value = ''
         refresh.value = ''
         logged.value = !logged.value
@@ -39,19 +38,6 @@ export const useAuthStore = defineStore('auth', ()=> {
         await authService.postUser(user)
 
     }
-
-    async function autoLogin () {
-       access.value = localStorage.getItem('access')
-       refresh.value = localStorage.getItem('refresh')
-       logged.value = true
-    }
-    
-    return {email, Login, logout, logged, createAccount, autoLogin}
-=======
-        logged.value = false
-        router.push('/')
-    }
-
     function autologin(){
         if(localStorage.getItem('access') && localStorage.getItem('refresh')){
             logged.value = true
@@ -62,6 +48,5 @@ export const useAuthStore = defineStore('auth', ()=> {
         }
     }
     
-    return {logged, Login, logout, autologin}
->>>>>>> 840f90b (sistema de login completado)
+    return {logged, Login, logout, autologin, createAccount}
 })

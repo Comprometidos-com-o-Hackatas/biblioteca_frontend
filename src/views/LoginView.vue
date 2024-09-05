@@ -22,7 +22,7 @@ const show = computed(()=> {
 
 function createAccount(userSign) {
     store.createAccount(userSign)
-    window.location.reload()
+    changeToSign.value = !changeToSign.value
 }
 
 </script>
