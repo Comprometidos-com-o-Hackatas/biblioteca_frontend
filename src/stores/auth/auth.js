@@ -1,4 +1,4 @@
-import {ref} from 'vue'
+import {computed, reactive, ref} from 'vue'
 import { defineStore } from 'pinia'
 import router from '@/router'
 import axios from 'axios'
@@ -10,6 +10,10 @@ export const useAuthStore = defineStore('auth', ()=> {
     const refresh = ref(null)
     const logged = ref(false)
     const password = ref(null)
+    const userInfo = reactive({
+        email: '',
+        username: '',
+    })
     
     async function Login(user){
         const { data } = await axios.post("http://127.0.0.1:8000/api/token/", user)
@@ -18,7 +22,8 @@ export const useAuthStore = defineStore('auth', ()=> {
         localStorage.setItem('email', user.email)
         localStorage.setItem('password', user.password)
         email.value = user.email
-        password.value = user.password    
+        password.value = user.password
+        username.value = user.first_name
         logged.value = true
         access.value = data.access
         refresh.value = data.refresh
@@ -47,6 +52,15 @@ export const useAuthStore = defineStore('auth', ()=> {
             password.value = localStorage.getItem('password')
         }
     }
+
+    const getUserInfo = async () => {
+        const data = ref([]);
+            const response = await axios.get("http://127.0.0.1:8000/api/usuarios/");
+            data.value = response.data;  // Aqui você acessa os dados dentro de response.data
+            const result = data.value.results.findIndex(s => s.email === email.value)
+            userInfo.email = data.value.results[result].email
+            userInfo.username = data.value.results[result].first_name
+    }  
     
-    return {logged, Login, logout, autologin, createAccount}
+    return {logged, Login, logout, autologin, createAccount, email, getUserInfo, userInfo}
 })

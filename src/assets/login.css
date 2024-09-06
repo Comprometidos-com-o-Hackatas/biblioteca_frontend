@@ -52,11 +52,12 @@
     width: 100%;
     height: 100%;
     background-image: url('../assets/media/baseTemplate.png');
-    background-size: 110%;
+    background-position: top;
+    background-size: 130%;
     transform: scaleX(-1); 
     z-index: 1;
     animation-name: changeComp;
-    animation-duration: 2s;
+    animation-duration: 1.2s;
     animation-iteration-count: 1;
 }
 

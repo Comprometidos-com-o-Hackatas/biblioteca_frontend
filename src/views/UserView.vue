@@ -1,5 +1,16 @@
-<script>
+<script setup>
+import { ref } from 'vue';
+import { useAuthStore } from '@/stores';
+import { onMounted } from 'vue';
 
+const authStore = useAuthStore()
+
+const username = ref(null)
+
+onMounted(() => {
+    authStore.getUserInfo
+    console.log(authStore.userInfo)
+})
 </script>
 
 <template>
@@ -13,19 +24,14 @@
                     <div class="flex flex-col">
                         <div>
                             <h2 class="text-3xl text-black">
-                                Renato Chagas de Moraes
+                                {{ authStore.userInfo.username }}
                             </h2>
                         </div>
                         <div>
                             <h2 class="text-2xl text-black">
-                                @RenatoChagas
+                                {{ authStore.email }}
                             </h2>
                         </div>
-                    </div>
-                    <div class="w-full flex-wrap max-w-full pt-4">
-                        <h2 class="text-2xl  text-black">
-                            Bio: desenvolvedor meia bomba de 17 anos que ta aprendendo a ler
-                        </h2>
                     </div>
                 </div>
             </div>
@@ -35,19 +41,19 @@
                 </div>
                 <div class="w-full h-90/1 overflow-y-scroll scroll-smooth ">
                     <div v-for="index in 10" :key="index"
-                        class="flex flex-row w-full h-25/1 border-primmary-1 border-y gap-4">
+                        class="flex flex-row w-full h-28 border-primmary-1 border-y gap-4">
                         <div class="w-20/1 h-full">
-                            <img class="w-full h-full " src="../assets/media/crash.webp" alt="">
+                            <img class=" w-full h-full" src="../assets/media/crash.webp" alt="">
                         </div>
                         <div class="flex flex-col w-80/1 h-full">
                             <div class="flex flex-col h-50/1">
                                 <div class="flex gap-4">
-                                    <h3 class="text-black">RenatoChagas de Moraes</h3>
-                                    <h4 class="text-black">@RenatoChagas</h4>
+                                    <h3 class="text-black">{{ authStore.userInfo.username }}</h3>
+                                    <h4 class="text-black">{{ authStore.userInfo.email }}</h4>
                                 </div>
                                 <h5 class="text-black">livro: HarryPotter e a pedra</h5>
                             </div>
-                            <div class="h-70/1 text-black">
+                            <div class=" h-70/1 text-black overflow-hidden">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum consequatur voluptate
                                 placeat dolore maxime voluptates in ut laborum? Tenetur neque, doloribus voluptate cum
                                 accusamus illum impedit possimus perspiciatis corporis a!
@@ -59,7 +65,7 @@
         </div>
         <div class="w-50/1 h-full rounded-2xl bg-primmary-1">
             <div class="w-full h-5/1 bg-primmary-1 flex justify-center items-center text-4xl rounded-2xl">
-                <h1 class="text-white">Livros já Lidos</h1>
+                <h1 class="text-white mt-5">Livros já Lidos</h1>
             </div>
             <div class="w-full h-95/1">
                 <!--Livros Lidos Aqui-->

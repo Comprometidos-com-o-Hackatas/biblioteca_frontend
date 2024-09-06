@@ -21,7 +21,6 @@ onMounted(async () => {
   bookStore.getBooks()
 
   getRate.value = bookStore.state.selectedBook.nota
-  console.log(getRate.value)
 })
 
 const emit = defineEmits(['rating'])

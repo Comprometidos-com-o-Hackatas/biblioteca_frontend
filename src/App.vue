@@ -8,6 +8,8 @@ onMounted(() =>{
     if (localStorage.getItem('access') && localStorage.getItem('refresh')) {
         store.autologin()
     }
+
+    store.getUserInfo()
 })
 </script>
 <template>

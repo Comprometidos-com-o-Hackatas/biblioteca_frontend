@@ -11,7 +11,7 @@ const store = useAuthStore()
 
 const user = reactive({
     email: '',
-    password: ''
+    password: '',
 })
 
 const props = defineProps({

@@ -8,7 +8,7 @@ const booksfiltered = ref([])
 
 function filterbooks(search) {
   booksfiltered.value = manage_book_data.value.filter((book) => book.title.startsWith(search))
-  console.log(booksfiltered.value)
+  
 }
 
 const books = computed(() => {

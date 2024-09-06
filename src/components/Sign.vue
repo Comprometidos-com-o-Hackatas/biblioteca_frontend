@@ -19,6 +19,7 @@ const props = defineProps({
 const userSign = reactive({
     email: '',
     password: '',
+    first_name: '',
     is_active: true
 })
 
@@ -33,8 +34,12 @@ const userSign = reactive({
             <div class="container-login">
             <div class="login-input-boxes">
                 <div class="input-box">
-                    <p> Username or Email </p>
+                    <p> Email </p>
                     <input type="text" v-model="userSign.email">
+                </div>
+                <div class="input-box">
+                    <p>Username</p>
+                    <input type="text" v-model="userSign.first_name">
                 </div>
                 <div class="input-box">
                     <p>Password</p>

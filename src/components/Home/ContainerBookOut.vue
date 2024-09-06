@@ -17,7 +17,6 @@ const props = defineProps({
 
 onMounted(async () => {
     await bookStore.getBooks()
-    console.log(bookStore.state.books)
 })
 
 function toRoute(data) {

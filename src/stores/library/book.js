@@ -11,16 +11,7 @@ export const useBookStore = defineStore('book', () => {
         selectedBook: null,
     })
 
-    const widthScreen = window.innerWidth
-
-const cards = ref(0)
-
-const booksList = ref([
-  {books: [], right: 0, sizeShow: (cards - ((widthScreen*0.85) / 220))*220, title: 'Aventura'},
-  {books: [], right: 0, sizeShow: (cards - ((widthScreen*0.85) / 220))*220, title: 'Ação'},
-  {books: [], right: 0, sizeShow: (cards - ((widthScreen*0.85) / 220))*220, title: 'Romance'},
-  {books: [], right: 0, sizeShow: (cards - ((widthScreen*0.85) / 220))*220, title: 'Ficção'}
-])
+    const count = ref(0)
 
     const getBooks = async () => {
         try {
@@ -58,6 +49,6 @@ const booksList = ref([
     }
 
     return {
-        state, getBooks, postBooks, putBooks, deleteBooks, cards, booksList
+        state, getBooks, postBooks, putBooks, deleteBooks, count
     }
 })

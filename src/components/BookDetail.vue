@@ -40,10 +40,6 @@ import GlobalButton from './GlobalButton.vue';
 
 const bookStore = useBookStore()
 
-onMounted(async()=> {
-  console.log(props.categories)
-})
-
 const props = defineProps({
   url:{
     type: URL,
