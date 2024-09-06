@@ -37,7 +37,7 @@
           <h3 class="title-container-home">{{item.title}}</h3>
           
           <div class="cardsOrganized">
-          <ContainerBookOut v-for="(book, index) in item.books" :key="index" :item="item.right" :data="item.books[index]" />
+          <ContainerBookOut v-for="(book, index) in item.books" :key="index" :item="item.right" :data="item.books[index]" :location="item.location + index" />
           </div>
           <div class="stand-container">
           </div>

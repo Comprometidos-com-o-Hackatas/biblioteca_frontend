@@ -5,8 +5,6 @@ import { onMounted } from 'vue';
 
 const authStore = useAuthStore()
 
-const username = ref(null)
-
 onMounted(() => {
     authStore.getUserInfo
     console.log(authStore.userInfo)

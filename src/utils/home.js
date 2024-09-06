@@ -20,10 +20,10 @@ export function goDirection(direction, data) {
    }
 
 export const booksList = ref([
-    {books: [], right: 0, sizeShow: (0 - ((widthScreen*0.85) / 220))*220, title: 'Aventura'},
-    {books: [], right: 0, sizeShow: (0 - ((widthScreen*0.85) / 220))*220, title: 'Ação'},
-    {books: [], right: 0, sizeShow: (0 - ((widthScreen*0.85) / 220))*220, title: 'Romance'},
-    {books: [], right: 0, sizeShow: (0 - ((widthScreen*0.85) / 220))*220, title: 'Ficção'}
+    {books: [], right: 0, sizeShow: (0 - ((widthScreen*0.85) / 220))*220, title: 'Aventura', location: 'A'},
+    {books: [], right: 0, sizeShow: (0 - ((widthScreen*0.85) / 220))*220, title: 'Ação', location: 'B'},
+    {books: [], right: 0, sizeShow: (0 - ((widthScreen*0.85) / 220))*220, title: 'Romance', location: 'C'},
+    {books: [], right: 0, sizeShow: (0 - ((widthScreen*0.85) / 220))*220, title: 'Ficção', location: 'D'}
   ])
 
 

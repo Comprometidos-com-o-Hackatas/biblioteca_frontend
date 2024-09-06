@@ -12,6 +12,9 @@ const props = defineProps({
     },
     data: {
         type: Object
+    },
+    location: {
+        type: String
     }
 })
 
@@ -33,7 +36,7 @@ function toRoute(data) {
              </span>
             </div>
 
-            <p>A17</p>
+            <p>{{ props.location }}</p>
           </div>
         </div>
 </template>
