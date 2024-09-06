@@ -26,7 +26,7 @@
             required: true
         },
         rate:{
-            type: Number,
+            type: String,
             required: true
         }
     })

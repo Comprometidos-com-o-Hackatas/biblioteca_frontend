@@ -7,7 +7,6 @@
 import router from '@/router';
     const bookStore = useBookStore()
     const isopenpopup = ref(false)
-
     onMounted(()=>{
         bookStore.getBooks()
     })
@@ -28,7 +27,7 @@ import router from '@/router';
     <div class="book-detail-container">
         <div :key="index" class="page-detail-container">
             <BookDetail @rate="isopenpopup = !isopenpopup" :categories="bookStore.state.selectedBook.categoria" :genere="bookStore.state.selectedBook.generos" is_list="details"/>
-            <BookDescription :allow="bookStore.state.selectedBook.disponivel ? true : false" @ownBook="ownBook(bookStore.state.selectedBook)" @rate="isopenpopup = !isopenpopup" :is_avalaible="bookStore.state.selectedBook.disponivel"  :synopsis="bookStore.state.selectedBook.descricao" :title="bookStore.state.selectedBook.titulo" />
+            <BookDescription @rate="isopenpopup = !isopenpopup" @ownBook="ownBook(bookStore.state.selectedBook)"  :allow="bookStore.state.selectedBook.disponivel ? true : false" :is_avalaible="bookStore.state.selectedBook.disponivel"  :synopsis="bookStore.state.selectedBook.descricao" :title="bookStore.state.selectedBook.titulo"  :nota="bookStore.state.selectedBook.nota"/>
         </div>
         <div :class=" isopenpopup ? 'rate-container' : null" >
             <RatingComp v-show="isopenpopup" @rate="isopenpopup = !isopenpopup"/>

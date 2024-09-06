@@ -2,9 +2,9 @@ import {computed, reactive, ref} from 'vue'
 import { defineStore } from 'pinia'
 import router from '@/router'
 import axios from 'axios'
-import authService  from '@/services/auth/auth'
+import authService from '@/services/auth/auth'
 
-export const useAuthStore = defineStore('auth', ()=> {
+export const useAuthStore = defineStore('auth', () => {
     const email = ref(null)
     const access = ref(null)
     const refresh = ref(null)
@@ -21,16 +21,17 @@ export const useAuthStore = defineStore('auth', ()=> {
         localStorage.setItem('refresh', data.refresh)
         localStorage.setItem('email', user.email)
         localStorage.setItem('password', user.password)
+        router.push('home/')
         email.value = user.email
         password.value = user.password
         username.value = user.first_name
         logged.value = true
         access.value = data.access
         refresh.value = data.refresh
-        router.push('/home/')
+       
     }
 
-    async function logout(){
+    async function logout() {
         localStorage.removeItem('access')
         localStorage.removeItem('refresh')
         access.value = ''
@@ -43,8 +44,8 @@ export const useAuthStore = defineStore('auth', ()=> {
         await authService.postUser(user)
 
     }
-    function autologin(){
-        if(localStorage.getItem('access') && localStorage.getItem('refresh')){
+    function autologin() {
+        if (localStorage.getItem('access') && localStorage.getItem('refresh')) {
             logged.value = true
             access.value = localStorage.getItem('access')
             refresh.value = localStorage.getItem('refresh')

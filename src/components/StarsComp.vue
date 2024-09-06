@@ -15,13 +15,15 @@ import { starsrating } from '@/utils/stars';
 import { ref, computed, onMounted } from 'vue';
 const bookStore = useBookStore()
 
-const getRate = ref(0)
+const getRate = ref(1)
 
 onMounted(async () => {
   bookStore.getBooks()
-
   getRate.value = bookStore.state.selectedBook.nota
+  
 })
+
+
 
 const emit = defineEmits(['rating'])
 function rate(i){

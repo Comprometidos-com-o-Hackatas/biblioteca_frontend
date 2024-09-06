@@ -1,9 +1,11 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, onMounted, onUpdated, ref } from 'vue';
 import AnalisysComp from './AnalisysComp.vue';
 import GlobalButton from './GlobalButton.vue';
 import { useAuthStore } from '@/stores';
-import { userratings } from '@/utils/ratings';
+
+import { useRatingStore } from '@/stores';
+const store = useRatingStore()
     defineProps({
         title: {
             type: String,
@@ -24,6 +26,9 @@ import { userratings } from '@/utils/ratings';
         allow: {
             type: Boolean,
             default: false
+        },
+        nota: {
+            type: Number
         }
     })
 
@@ -33,6 +38,13 @@ import { userratings } from '@/utils/ratings';
     defineEmits([
         'ownBook'
     ])
+    onMounted(() =>{
+        store.getRatings()
+    })
+    onUpdated(() =>{
+        store.getRatings()
+        
+    })
 </script>
 <template>
 <div class="description-details-container">
@@ -45,8 +57,10 @@ import { userratings } from '@/utils/ratings';
     <p>localização:  1  </p>
     <GlobalButton v-if="allow" title="pegar" buttonclass="button-container" idbutton="detail-button" @click="$emit('ownBook')"/>
     <p v-if="!allow" style="text-align: center; color: red;">Livro Indisponível no momento</p>
+    <p>{{nota}}</p>
+    <GlobalButton title="pegar" buttonclass="button-container" idbutton="detail-button"/>
     <h1 style="font-size: 20px;">resenhas:</h1>
-    <AnalisysComp v-for="rating in userratings" :key="rating.id" :description="rating.coment" :photo="rating.user.photo.file" :rate="rating.rating"/> 
+    <AnalisysComp v-for="rate in store.ratings" :key="rate.id" :description="rate.coment" :rate="rate.nota" /> 
     <GlobalButton :class="'rating-button-resp'" title="Avaliar" @click="$emit('rate') "></GlobalButton>
 </div>
 </template>
