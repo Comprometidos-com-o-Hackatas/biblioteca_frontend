@@ -13,6 +13,7 @@
 @import './settings.css';
 @import './savedBooks.css';
 @import './notfound.css';
+@import './report.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

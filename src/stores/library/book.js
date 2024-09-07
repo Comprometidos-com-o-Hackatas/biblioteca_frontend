@@ -9,6 +9,7 @@ export const useBookStore = defineStore('book', () => {
         books: [],
         error: null,
         selectedBook: null,
+        savedBooks: []
     })
 
     const count = ref(0)
@@ -17,6 +18,14 @@ export const useBookStore = defineStore('book', () => {
         try {
         state.books = await BookService.getBook()
         } catch(error) {
+            state.error = error
+        }
+    }
+
+    const getSavedBooks = async () => {
+        try {
+            state.savedBooks = await BookService.getSavedBook()
+        } catch (error) {
             state.error = error
         }
     }
@@ -49,6 +58,6 @@ export const useBookStore = defineStore('book', () => {
     }
 
     return {
-        state, getBooks, postBooks, putBooks, deleteBooks, count
+        state, getBooks, postBooks, putBooks, deleteBooks, count, getSavedBooks
     }
 })

@@ -2,18 +2,28 @@
     import { onMounted, reactive, ref } from 'vue';
     import BookDetail from '@/components/BookDetail.vue';
     import BookDescription from '@/components/BookDescription.vue';
-    import { useBookStore } from '@/stores/index';
+    import { useBookStore, useAuthStore } from '@/stores/index';
+
     import RatingComp from '@/components/RatingComp.vue';
+    import api from '@/plugins/api';
     import router from '@/router';
     const bookStore = useBookStore()
+    const authStore = useAuthStore()
     const isopenpopup = ref(false)
-    onMounted(()=>{
-       bookStore.getBooks()
-       setTimeout(() =>{
-        console.log(bookStore.state.selectedBook.categoria)
-        console.log('caiu aqui')
-       }, 2000)
+    const savedBooks = ref([])
+
+    onMounted(async()=>{
+        bookStore.getBooks()
+        authStore.getUserInfo()
+        bookStore.getSavedBooks()
+        console.log(bookStore.state.savedBooks())
     })
+
+        // if (data.results.filter(s => s.titulo === bookStore.state.selectedBook.titulo)) {
+        //     return true
+        // } else {
+        // return false
+    
 
     async function ownBook(book) {
         const changedBook = reactive({...bookStore.state.selectedBook})
@@ -26,12 +36,30 @@
         const changedUser = reactive({})
     }
 
+    const saveBook = async(book)=> {
+        if (seeSaved() == true) {
+        // if (setSave.value = true) {
+            const {data} = await api.delete(`/favorito/${savedBooks.value.findIndex(s => s.titulo === bookStore.state.selectedBook.titulo)}`)
+            return data.results
+        } else {
+            const {data} = await api.post(`/favorito/`, book)
+            return data.results
+        }
+        // } else {
+        // const {data} = await api.delete(`/favorito/${index}`)
+        // return data.results
+        // }
+        
+    }
+
+  
+
 </script>
 <template>
     <div class="book-detail-container">
         <div :key="index" class="page-detail-container">
-            <BookDetail @rate="isopenpopup = !isopenpopup" :categories="bookStore.state.selectedBook.categoria" :url="bookStore.state.selectedBook.capa.url" :genere="bookStore.state.selectedBook.generos" is_list="details"/>
-            <BookDescription @rate="isopenpopup = !isopenpopup" @ownBook="ownBook(bookStore.state.selectedBook)"  :allow="bookStore.state.selectedBook.disponivel ? true : false" :is_avalaible="bookStore.state.selectedBook.disponivel"  :synopsis="bookStore.state.selectedBook.descricao" :title="bookStore.state.selectedBook.titulo"  :nota="bookStore.state.selectedBook.nota"/>
+            <BookDetail @rate="isopenpopup = !isopenpopup" :categories="bookStore.state.selectedBook.categoria" :genere="bookStore.state.selectedBook.generos" is_list="details"/>
+            <BookDescription @saveBook="saveBook({usuario: authStore.userID, livro: bookStore.state.selectedBook.id}, bookStore.state.selectedBook.id)" @rate="isopenpopup = !isopenpopup" @ownBook="ownBook(bookStore.state.selectedBook)"  :allow="bookStore.state.selectedBook.disponivel ? true : false" :is_avalaible="bookStore.state.selectedBook.disponivel"  :synopsis="bookStore.state.selectedBook.descricao" :title="bookStore.state.selectedBook.titulo"  :nota="bookStore.state.selectedBook.nota"/>
         </div>
         <div :class=" isopenpopup ? 'rate-container' : null" >
             <RatingComp v-show="isopenpopup" @rate="isopenpopup = !isopenpopup"/>

@@ -33,6 +33,10 @@ const savedstore = useSavedStore()
         },
         nota: {
             type: Number
+        },
+        saved: {
+            type: Boolean,
+            default: false
         }
     })
 
@@ -51,7 +55,7 @@ const savedstore = useSavedStore()
         saved.value = !saved.value
     }
     defineEmits([
-        'ownBook'
+        'ownBook', 'saveBook'
     ])
     onMounted(() =>{
         store.getRatings()
@@ -59,12 +63,13 @@ const savedstore = useSavedStore()
     onUpdated(() =>{
         store.getRatings()
     })
+
 </script>
 <template>
 <div class="description-details-container">
     <div class="description-details-header">
         <h1 style="font-size: 30px;">{{ title }}</h1>
-        <i :class="`mdi ${(saved) ? 'mdi-bookmark' : 'mdi-bookmark-outline'} save-btn`" @click="savedbook"></i>
+        <i :class="`mdi ${(saved) ? 'mdi-bookmark' : 'mdi-bookmark-outline'} save-btn`" @click="$emit('saveBook')"></i>
     </div>
     <p>disponivel: {{ is_avalaible ? 'sim' : 'não' }}</p>
     <p id="synopsis">synopsis: {{ synopsis }}</p>

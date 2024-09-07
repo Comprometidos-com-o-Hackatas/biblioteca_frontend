@@ -11,6 +11,7 @@ export const useAuthStore = defineStore('auth', () => {
     const refresh = ref(null)
     const logged = ref(false)
     const password = ref(null)
+    const userID = ref(null)
     const userInfo = reactive({
         email: '',
         username: '',
@@ -66,7 +67,8 @@ export const useAuthStore = defineStore('auth', () => {
             const result = data.value.results.findIndex(s => s.email === email.value)
             userInfo.email = data.value.results[result].email
             userInfo.username = data.value.results[result].first_name
+            userID.value = data.value.results[result].id
     }  
     
-    return {logged, Login, logout, autologin, createAccount, email, getUserInfo, userInfo}
+    return {logged, Login, logout, autologin, createAccount, email, getUserInfo, userInfo, userID}
 })

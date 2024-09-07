@@ -1,0 +1,30 @@
+.pdf-box {
+    height: 50px;
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    margin: 20px 20px;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+
+    & span {
+        font-size: 20px;
+    }
+}
+
+.pdf-box-btn {
+    font-size: 15px;
+    background-color: #945737;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    &:hover {
+        background-color: #824b2e;
+    }
+}

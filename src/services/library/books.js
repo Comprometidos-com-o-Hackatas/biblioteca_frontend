@@ -11,6 +11,16 @@ class BookService {
     }
     }
 
+    async getSavedBook(){
+        try {
+            const {data} = await api.get('/favorito')
+            return data.results;
+        } catch (error) {
+            console.log('error in get saved book', error)
+            throw error;
+        }
+        }
+
     async postBook(book) {
     try {
         const {data} = await api.post('/livro/', book)
