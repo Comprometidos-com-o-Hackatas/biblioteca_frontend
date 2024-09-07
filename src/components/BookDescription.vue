@@ -39,8 +39,6 @@ const savedstore = useSavedStore()
             default: false
         }
     })
-
-    const authStore = useAuthStore()
     const saved = ref(false)
     async function savedbook(){
         const email = localStorage.getItem('email')
@@ -55,21 +53,14 @@ const savedstore = useSavedStore()
         saved.value = !saved.value
     }
     defineEmits([
-        'ownBook', 'saveBook'
+        'ownBook'
     ])
-    onMounted(() =>{
-        store.getRatings()
-    })
-    onUpdated(() =>{
-        store.getRatings()
-    })
-
 </script>
 <template>
 <div class="description-details-container">
     <div class="description-details-header">
         <h1 style="font-size: 30px;">{{ title }}</h1>
-        <i :class="`mdi ${(saved) ? 'mdi-bookmark' : 'mdi-bookmark-outline'} save-btn`" @click="$emit('saveBook')"></i>
+        <i :class="`mdi ${(saved) ? 'mdi-bookmark' : 'mdi-bookmark-outline'} save-btn`" @click="savedbook"></i>
     </div>
     <p>disponivel: {{ is_avalaible ? 'sim' : 'não' }}</p>
     <p id="synopsis">synopsis: {{ synopsis }}</p>

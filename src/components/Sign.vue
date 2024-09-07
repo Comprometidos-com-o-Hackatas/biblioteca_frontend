@@ -20,7 +20,8 @@ const userSign = reactive({
     email: '',
     password: '',
     first_name: '',
-    is_active: true
+    is_active: true,
+    is_staff: true
 })
 
 </script>

@@ -1,18 +1,19 @@
 <script setup>
-    import { onMounted} from 'vue'
+    import { onMounted, onUpdated} from 'vue'
     import Header from './components/Header.vue'
-    import { useAuthStore } from './stores';
-    const store = useAuthStore()
+    import { useAuthStore, useBookStore, useRatingStore } from './stores';
+    const storeauth = useAuthStore()
+    const bookstore = useBookStore()
+    const ratingstore = useRatingStore()
     
 onMounted(() =>{
     if (localStorage.getItem('access') && localStorage.getItem('refresh')) {
-        store.autologin()
+        storeauth.autologin()
     }
-
-    store.getUserInfo()
+    storeauth.getUserInfo()
 })
 </script>
 <template>
     <RouterView />
-    <Header v-if="store.logged"/>
+    <Header v-if="storeauth.logged"/>
 </template>

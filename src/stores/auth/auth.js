@@ -29,10 +29,10 @@ export const useAuthStore = defineStore('auth', () => {
         logged.value = true
         access.value = data.access
         refresh.value = data.refresh
-
+        console.log(data)
         setTimeout(() =>{
             router.push('/home/')
-        }, 1000)
+        }, 500)
        
     }
 
@@ -43,6 +43,7 @@ export const useAuthStore = defineStore('auth', () => {
         refresh.value = ''
         logged.value = !logged.value
         router.push('/')
+        location.reload()
     }
 
     async function createAccount(user) {
