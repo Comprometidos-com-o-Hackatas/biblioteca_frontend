@@ -23,7 +23,9 @@
     bookStore.count++
     await bookStore.getBooks()
     bookStore.cards = bookStore.state.books.length
-
+    setTimeout(() =>{
+      console.log(bookStore.state)
+    }, 2000)
     if (bookStore.count < 2) {
     organizeBooks()
     updateBookList()

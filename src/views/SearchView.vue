@@ -26,7 +26,7 @@ function filterbooks(search) {
 }
 
 function toRoute(data) {
-    bookStore.state.selectedBook = data
+   bookStore.state.selectedBook = data
    router.push('/detail/' + data.id.toString())
 }
 </script>
@@ -40,6 +40,7 @@ function toRoute(data) {
           @rate="isopenpopup = !isopenpopup"
           :categories="details.categoria"
           :genere="details.generos"
+          :url="details.capa.url"
           is_list="list"
          />
     </span>

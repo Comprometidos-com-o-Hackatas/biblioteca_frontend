@@ -3,9 +3,13 @@ import { onMounted, onUpdated, ref } from 'vue';
 import AnalisysComp from './AnalisysComp.vue';
 import GlobalButton from './GlobalButton.vue';
 import { useAuthStore } from '@/stores';
-
+import { useSavedStore } from '@/stores/saved/saved';
 import { useRatingStore } from '@/stores';
+import axios from 'axios';
+import { useRoute } from 'vue-router';
+const route = useRoute()
 const store = useRatingStore()
+const savedstore = useSavedStore()
     defineProps({
         title: {
             type: String,
@@ -34,7 +38,18 @@ const store = useRatingStore()
 
     const authStore = useAuthStore()
     const saved = ref(false)
-
+    async function savedbook(){
+        const email = localStorage.getItem('email')
+        const {data} = await axios.get('http://127.0.0.1:8000/api/usuarios/')
+        const finduser = data.results.find(user => user.email === email)
+        const id = route.params.id
+        const savedbooks = {
+            usuario: finduser.id,
+            livro: id
+        }
+        savedstore.CreateSavedBook(savedbooks)
+        saved.value = !saved.value
+    }
     defineEmits([
         'ownBook'
     ])
@@ -43,14 +58,13 @@ const store = useRatingStore()
     })
     onUpdated(() =>{
         store.getRatings()
-        
     })
 </script>
 <template>
 <div class="description-details-container">
     <div class="description-details-header">
         <h1 style="font-size: 30px;">{{ title }}</h1>
-        <i :class="`mdi ${(saved) ? 'mdi-bookmark' : 'mdi-bookmark-outline'} save-btn`" @click="saved = !saved"></i>
+        <i :class="`mdi ${(saved) ? 'mdi-bookmark' : 'mdi-bookmark-outline'} save-btn`" @click="savedbook"></i>
     </div>
     <p>disponivel: {{ is_avalaible ? 'sim' : 'não' }}</p>
     <p id="synopsis">synopsis: {{ synopsis }}</p>

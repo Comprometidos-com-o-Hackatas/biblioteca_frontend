@@ -5,6 +5,7 @@ import axios from 'axios'
 import authService from '@/services/auth/auth'
 
 export const useAuthStore = defineStore('auth', () => {
+    const username = ref(null)
     const email = ref(null)
     const access = ref(null)
     const refresh = ref(null)
@@ -21,13 +22,16 @@ export const useAuthStore = defineStore('auth', () => {
         localStorage.setItem('refresh', data.refresh)
         localStorage.setItem('email', user.email)
         localStorage.setItem('password', user.password)
-        router.push('home/')
         email.value = user.email
         password.value = user.password
         username.value = user.first_name
         logged.value = true
         access.value = data.access
         refresh.value = data.refresh
+
+        setTimeout(() =>{
+            router.push('/home/')
+        }, 1000)
        
     }
 
@@ -51,11 +55,12 @@ export const useAuthStore = defineStore('auth', () => {
             refresh.value = localStorage.getItem('refresh')
             email.value = localStorage.getItem('email')
             password.value = localStorage.getItem('password')
+            router.push('home/')
         }
     }
 
     const getUserInfo = async () => {
-        const data = ref([]);
+            const data = ref([]);
             const response = await axios.get("http://127.0.0.1:8000/api/usuarios/");
             data.value = response.data;  // Aqui você acessa os dados dentro de response.data
             const result = data.value.results.findIndex(s => s.email === email.value)

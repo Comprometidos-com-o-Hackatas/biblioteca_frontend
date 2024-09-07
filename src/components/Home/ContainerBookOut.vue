@@ -32,7 +32,7 @@ function toRoute(data) {
           <div class="container-book">
 
             <div class="card-container-home">
-             <span class="linkBooks" @click="toRoute(props.data)" ><BookDetail :url="props.data.capa" :categories="props.data.categoria" :genere="props.data.generos" is_list="list"/>
+             <span class="linkBooks" @click="toRoute(props.data)" ><BookDetail :url="props.data.capa.url" :categories="props.data.categoria" :genere="props.data.generos" is_list="list"/>
              </span>
             </div>
 
