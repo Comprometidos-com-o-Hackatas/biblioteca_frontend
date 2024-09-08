@@ -23,5 +23,15 @@ export const useSavedStore = defineStore('store', () =>{
         })
     }
 
-    return {GetSavedBooks, CreateSavedBook, savedbooks}
+    async function DeleteBook(id) {
+        const book = savedbooks.value.find(book => book.livro.id === Number(id))
+        const savedbookapi = await axios.delete(`http://127.0.0.1:8000/api/favorito/${book.id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+        console.log(savedbookapi)
+    }
+
+    return {GetSavedBooks, CreateSavedBook, DeleteBook, savedbooks}
 })

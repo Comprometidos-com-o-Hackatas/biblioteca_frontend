@@ -1,11 +1,8 @@
 <script setup>
-import { savedBooks } from '@/stores/saveds';
 import BookDetail from '@/components/BookDetail.vue';
 import { onMounted } from 'vue';
-import { useBookStore } from '@/stores';
 import { useSavedStore } from '@/stores/saved/saved';
 const store = useSavedStore()
-const books = savedBooks
 
 onMounted(() =>{
     store.GetSavedBooks()

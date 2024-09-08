@@ -1,8 +1,7 @@
 <script setup>
-import { onMounted, onUpdated, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import AnalisysComp from './AnalisysComp.vue';
 import GlobalButton from './GlobalButton.vue';
-import { useAuthStore } from '@/stores';
 import { useSavedStore } from '@/stores/saved/saved';
 import { useRatingStore } from '@/stores';
 import axios from 'axios';
@@ -41,20 +40,42 @@ const savedstore = useSavedStore()
     })
     const saved = ref(false)
     async function savedbook(){
-        const email = localStorage.getItem('email')
-        const {data} = await axios.get('http://127.0.0.1:8000/api/usuarios/')
-        const finduser = data.results.find(user => user.email === email)
-        const id = route.params.id
-        const savedbooks = {
-            usuario: finduser.id,
-            livro: id
+        if(saved.value){
+            const id = route.params.id
+            savedstore.DeleteBook(id)
+            saved.value = !saved.value
         }
-        savedstore.CreateSavedBook(savedbooks)
-        saved.value = !saved.value
+        else{
+            const email = localStorage.getItem('email')
+            const {data} = await axios.get('http://127.0.0.1:8000/api/usuarios/')
+            const finduser = data.results.find(user => user.email === email)
+            const id = route.params.id
+            const savedbooks = {
+                usuario: finduser.id,
+                livro: id
+            }
+            savedstore.CreateSavedBook(savedbooks)
+            saved.value = !saved.value
+        }
     }
     defineEmits([
         'ownBook'
     ])
+onMounted(() =>{
+    savedstore.GetSavedBooks()
+
+    setTimeout(() =>{
+        const savedbook = savedstore.savedbooks
+        const id = route.params.id
+
+        const book = savedbook.find(book => book.livro.id === Number(id))
+        if(book){
+            saved.value = true
+        }
+        console.log(book)
+    }, 1000)
+
+})
 </script>
 <template>
 <div class="description-details-container">
