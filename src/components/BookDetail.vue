@@ -14,7 +14,7 @@
         
         
       </div>
-      <div :class="is_list != 'list' ? 'detail-overlay' : 'overlay'"></div>
+      <div :class="is_list != 'list' ? 'detail-overlay' : !is_avaible ? 'unavaible' : 'overlay'"></div>
     </div>
   
     <StarsComp :is_rating="false"  v-show="is_list === 'details'"/>
@@ -56,6 +56,10 @@ const props = defineProps({
     type: String,
     required: true
   },
+  is_avaible: {
+    type: Boolean,
+    required: true
+  }
 })
 
 </script>

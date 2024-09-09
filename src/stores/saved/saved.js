@@ -13,7 +13,6 @@ export const useSavedStore = defineStore('store', () =>{
             },
         })
         savedbooks.value = data.results
-        console.log(data)
     }
     async function CreateSavedBook(save) {
         await axios.post("http://127.0.0.1:8000/api/favorito/", save, {
@@ -32,6 +31,5 @@ export const useSavedStore = defineStore('store', () =>{
         })
         console.log(savedbookapi)
     }
-
     return {GetSavedBooks, CreateSavedBook, DeleteBook, savedbooks}
 })

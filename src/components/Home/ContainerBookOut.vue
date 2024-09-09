@@ -15,7 +15,7 @@ const props = defineProps({
     },
     location: {
         type: String
-    }
+    },
 })
 
 onMounted(async () => {
@@ -23,8 +23,10 @@ onMounted(async () => {
 })
 
 function toRoute(data) {
-    bookStore.state.selectedBook = data
-   router.push('/detail/' + data.id.toString())
+    if(props.data.disponivel){
+        bookStore.state.selectedBook = data
+        router.push('/detail/' + data.id.toString())
+    }
 }
 </script>
 <template>
@@ -32,7 +34,7 @@ function toRoute(data) {
           <div class="container-book">
 
             <div class="card-container-home">
-             <span class="linkBooks" @click="toRoute(props.data)" ><BookDetail :url="props.data.capa.url" :categories="props.data.categoria" :genere="props.data.generos" is_list="list"/>
+             <span class="linkBooks" @click="toRoute(props.data)" ><BookDetail :url="props.data.capa.url" :categories="props.data.categoria" :genere="props.data.generos" :is_avaible="props.data.disponivel" is_list="list"/>
              </span>
             </div>
 

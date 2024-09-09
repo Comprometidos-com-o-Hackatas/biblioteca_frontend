@@ -102,3 +102,11 @@
 .linkBooks {
     z-index: 999999;
 }
+.unavaible{
+    background: linear-gradient(360deg, rgba(255, 255, 255, 0.6) 10%, rgba(186, 186, 186, 0.6) 30%, rgb(255, 255, 255, 0.6) 60%);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    z-index: 50;
+}

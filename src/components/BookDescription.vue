@@ -86,9 +86,9 @@ onMounted(() =>{
     <p>disponivel: {{ is_avalaible ? 'sim' : 'não' }}</p>
     <p id="synopsis">synopsis: {{ synopsis }}</p>
     <p>localização:  1  </p>
-    <p v-if="!allow" style="text-align: center; color: red;">Livro Indisponível no momento</p>
+    <p  style="text-align: center; color: red;">Livro Indisponível no momento</p>
     <p>{{nota}}</p>
-    <GlobalButton v-if="allow" title="pegar" buttonclass="button-container" idbutton="detail-button" @click="$emit('ownBook')"/>
+    <GlobalButton title="pegar" buttonclass="button-container" idbutton="detail-button" @click="$emit('ownBook', route.params.id)"/>
     <h1 style="font-size: 20px;">resenhas:</h1>
     <AnalisysComp v-for="rate in store.ratings" :key="rate.id" :description="rate.coment" :rate="rate.nota" /> 
     <GlobalButton :class="'rating-button-resp'" title="Avaliar" @click="$emit('rate') "></GlobalButton>
