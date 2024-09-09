@@ -14,6 +14,7 @@ export const useUserBooks = defineStore('userbooks', () =>{
             },
         })
         userbooks.value = data.results
+        console.log(userbooks.value)
     }
 
     async function CreateUserBooks(book){
@@ -24,6 +25,19 @@ export const useUserBooks = defineStore('userbooks', () =>{
         })
     }
 
-    return {GetUserBooks, CreateUserBooks, userbooks}
+    async function UpdateUserBooks(id){
+        const update = {
+            livro: {
+                disponivel: true
+            }
+        }
+        await axios.patch(`http://127.0.0.1:8000/api/livropego/${id}/`, update, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+    }
+
+    return {GetUserBooks, UpdateUserBooks, CreateUserBooks, userbooks}
     
 }) 

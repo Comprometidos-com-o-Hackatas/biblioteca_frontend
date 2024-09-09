@@ -42,8 +42,9 @@ export const useAuthStore = defineStore('auth', () => {
         access.value = ''
         refresh.value = ''
         logged.value = !logged.value
-        router.push('/')
-        location.reload()
+        setTimeout(() =>{
+            router.push('/')
+        }, 1000)
     }
 
     async function createAccount(user) {

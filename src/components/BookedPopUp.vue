@@ -8,11 +8,15 @@
         expire_in: String,
         days: Number
     })
+
 </script>
 <template>
         <div class="popup-card">
             <div class="back">
-                <button @click="$emit('back')">X</button>
+                <div class="actions">
+                    <button @click="$emit('back')">X</button>
+                    <button v-if="status === 'pendente'" @click="$emit('devolver', id)" id="devolver">devolver</button>
+                </div>
                 <p>{{ title }}</p>
             </div>
             <div class="data-container">

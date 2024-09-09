@@ -4,7 +4,7 @@
   import ContainerBookOut from './ContainerBookOut.vue';
   import { useBookStore } from '@/stores/index';
   import { booksList, updateBookList } from '@/utils/home';
-
+  const data = new Date()
   const bookStore = useBookStore()
 
   const organizeBooks = () => {
@@ -27,8 +27,8 @@
       console.log(bookStore.state)
     }, 2000)
     if (bookStore.count < 2) {
-    organizeBooks()
-    updateBookList()
+      organizeBooks()
+      updateBookList()
     }
 }) 
 

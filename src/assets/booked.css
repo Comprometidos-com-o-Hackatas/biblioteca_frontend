@@ -93,6 +93,7 @@
     font-size: 25px;
     border: none;
     color: #945737;
+    background-color: white;
 }
 .data-container{
     background-color: #1B1B1B;
@@ -136,4 +137,16 @@
     width: 25px;
     height: 25px;
     border: none;
+}
+.actions{
+    display: flex;
+    gap: 20px;
+}
+#devolver{
+    width: 200px;
+    transition: 1s;
+}
+#devolver:hover{
+    background-color: black;
+    color: antiquewhite;
 }

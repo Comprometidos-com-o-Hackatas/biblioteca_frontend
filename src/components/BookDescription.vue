@@ -86,7 +86,6 @@ onMounted(() =>{
     <p>disponivel: {{ is_avalaible ? 'sim' : 'não' }}</p>
     <p id="synopsis">synopsis: {{ synopsis }}</p>
     <p>localização:  1  </p>
-    <p  style="text-align: center; color: red;">Livro Indisponível no momento</p>
     <p>{{nota}}</p>
     <GlobalButton title="pegar" buttonclass="button-container" idbutton="detail-button" @click="$emit('ownBook', route.params.id)"/>
     <h1 style="font-size: 20px;">resenhas:</h1>

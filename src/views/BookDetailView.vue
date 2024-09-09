@@ -5,9 +5,10 @@
     import { useBookStore, useRatingStore } from '@/stores/index';
     import RatingComp from '@/components/RatingComp.vue';
     import { useRoute } from 'vue-router';
-import { useUserBooks } from '@/stores/userbooks/userbooks';
-import axios from 'axios';
-import router from '@/router';
+    import { useUserBooks } from '@/stores/userbooks/userbooks';
+    import axios from 'axios';
+    import router from '@/router';
+    const date = new Date()
     const route = useRoute()
     const bookStore = useBookStore()
     const userbookstore = useUserBooks()
@@ -21,7 +22,8 @@ import router from '@/router';
         const finduser = data.results.find(user => user.email === email)
         const bookgot = {
             usuario: finduser.id,
-            livro: Number(id)
+            livro: Number(id),
+            data_devolucao: `${date.getFullYear()}-${Number(date.getMonth() + 3).toString()}-${date.getDate()}`
         }
         userbookstore.CreateUserBooks(bookgot)
         router.push('/home/')
@@ -33,6 +35,7 @@ import router from '@/router';
        setTimeout(() =>{
         console.log(bookStore.state.selectedBook.categoria)
        }, 2000)
+       
     })
 </script>
 <template>
