@@ -8,9 +8,7 @@
     <div class="docs-container">
       <div class="docs">
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore, excepturi enim quae
-          dolorum reiciendis nulla ad rem molestias facilis totam blanditiis dolore assumenda id
-          voluptates, minus, voluptate est quasi laudantium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut accusantium porro minus beatae temporibus ab ea pariatur, autem, possimus rerum sit veritatis praesentium esse! Ducimus dignissimos cumque vel tempore Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium numquam, expedita quos voluptatum quas, ut totam ipsam maiores voluptatem eius et nam optio fugiat neque cumque praesentium! Quae, modi! Nam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores similique blanditiis cum nemo harum cumque expedita quia illo ex, ratione unde deleniti voluptates eveniet id? Eligendi officiis voluptas magnam nemo?
+          O sistema de taxas da biblioteca é simples e transparente. Cada livro emprestado possui uma data de devolução estipulada. Caso o usuário não devolva o livro até essa data, uma multa diária é aplicada. A cada dia de atraso, R$ 1,00 é adicionado à multa. Por exemplo, se um livro for devolvido com três dias de atraso, a multa total será de R$ 3,00. O valor é cumulativo e aumenta diariamente até que o livro seja devolvido. Esse sistema incentiva a devolução pontual dos livros, garantindo que outros usuários possam usufruir do acervo da biblioteca em tempo hábil.  
         </p>
       </div>
       <div class="fine-table">
