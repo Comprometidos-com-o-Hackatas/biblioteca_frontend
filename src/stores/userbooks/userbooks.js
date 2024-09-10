@@ -2,7 +2,7 @@ import axios from "axios";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 const token = localStorage.getItem('access')
-
+const date = new Date()
 
 export const useUserBooks = defineStore('userbooks', () =>{
     const userbooks = ref([])
@@ -18,11 +18,11 @@ export const useUserBooks = defineStore('userbooks', () =>{
     }
 
     async function CreateUserBooks(book){
-        await axios.post("http://127.0.0.1:8000/api/livropego/", book, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        })
+            await axios.post("http://127.0.0.1:8000/api/livropego/", book, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+           })
     }
 
     async function UpdateUserBooks(id){

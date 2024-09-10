@@ -1,24 +1,31 @@
 import axios from "axios"
 import { defineStore } from "pinia"
 import { ref } from "vue"
-
 export const useRatingStore = defineStore('rating', () => {
     const ratings = ref([])
-
+    const userrating = ref([])
     async function getRatings(id) {
+        const email = localStorage.getItem('email')
         const { data } = await axios.get("http://127.0.0.1:8000/api/avaliacao/")
         const results = data.results
         let arr = []
+        let arr2 = []
         for (let i = 0; i < data.results.length; i++) {
             if (results[i].livro.id === Number(id)) {
                 arr.push(results[i])
             }
+            if(results[i].usuario.email === email){
+                arr2.push(results[i])
+            }
         }
+        userrating.value = arr2
         ratings.value = arr
-        console.log(ratings.value)
+        console.log(userrating.value)
     }
     async function CreateRating(rating) {
         const api = await axios.post("http://127.0.0.1:8000/api/avaliacao/", rating)
     }
-    return { getRatings, ratings, CreateRating }
+
+    return { getRatings, ratings,userrating, CreateRating }
 })
+

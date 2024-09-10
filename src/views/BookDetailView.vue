@@ -26,7 +26,7 @@
             data_devolucao: `${date.getFullYear()}-${Number(date.getMonth() + 3).toString()}-${date.getDate()}`
         }
         userbookstore.CreateUserBooks(bookgot)
-        router.push('/home/')
+        location.reload()
     }
 
     onMounted(()=>{

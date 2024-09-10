@@ -1,13 +1,16 @@
 <script setup>
 import { ref } from 'vue';
-import { useAuthStore } from '@/stores';
+import { useAuthStore, useRatingStore } from '@/stores';
 import { onMounted } from 'vue';
+import { useUserBooks } from '@/stores/userbooks/userbooks';
 
 const authStore = useAuthStore()
-
+const userbookstore = useUserBooks()
+const getRatingsstore = useRatingStore()
 onMounted(() => {
-    authStore.getUserInfo
-    console.log(authStore.userInfo)
+    authStore.getUserInfo()
+    userbookstore.GetUserBooks()
+    getRatingsstore.getRatings()
 })
 </script>
 
@@ -38,7 +41,7 @@ onMounted(() => {
                     <h1 class="text-3xl ">Resenhas</h1>
                 </div>
                 <div class="w-full h-90/1 overflow-y-scroll scroll-smooth ">
-                    <div v-for="index in 10" :key="index"
+                    <div v-for="userrating in getRatingsstore.userrating" :key="userrating.id"
                         class="flex flex-row w-full h-28 border-primmary-1 border-y gap-4">
                         <div class="w-20/1 h-full">
                             <img class=" w-full h-full" src="../assets/media/crash.webp" alt="">
@@ -46,15 +49,13 @@ onMounted(() => {
                         <div class="flex flex-col w-80/1 h-full">
                             <div class="flex flex-col h-50/1">
                                 <div class="flex gap-4">
-                                    <h3 class="text-black">{{ authStore.userInfo.username }}</h3>
-                                    <h4 class="text-black">{{ authStore.userInfo.email }}</h4>
+                                    <h3 class="text-black">{{ userrating.usuario.email }}</h3>
+                                    <h4 class="text-black">{{ userrating.usuario.first_name }}</h4>
                                 </div>
-                                <h5 class="text-black">livro: HarryPotter e a pedra</h5>
+                                <h5 class="text-black">livro: {{userrating.livro.titulo}}</h5>
                             </div>
                             <div class=" h-70/1 text-black overflow-hidden">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum consequatur voluptate
-                                placeat dolore maxime voluptates in ut laborum? Tenetur neque, doloribus voluptate cum
-                                accusamus illum impedit possimus perspiciatis corporis a!
+                                {{ userrating.coment }}
                             </div>
                         </div>
                     </div>
@@ -65,8 +66,13 @@ onMounted(() => {
             <div class="w-full h-5/1 bg-primmary-1 flex justify-center items-center text-4xl rounded-2xl">
                 <h1 class="text-white mt-5">Livros já Lidos</h1>
             </div>
-            <div class="w-full h-95/1">
-                <!--Livros Lidos Aqui-->
+            <div class="w-full h-95/1 p-3">
+                <div v-for="books in userbookstore.userbooks" :key="books.id" class="p-4">
+                    <div class="w-full flex items-center gap-5 ">
+                        <img :src="books.livro.capa.file" width="100" height="100" alt="">
+                        <p class="text-white text-lg">{{ books.livro.titulo }}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
