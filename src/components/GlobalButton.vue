@@ -1,6 +1,6 @@
 <template>
-    <div :class="buttonclass">
-       <button :id="idbutton"> {{ title }}  </button>
+    <div :class="userhasbook ? 'disabled' : buttonclass ">
+       <button :disabled="userhasbook" :id="idbutton" > {{ title }}  </button>
     </div>
 </template>
 <script setup>
@@ -17,5 +17,9 @@
             type: String,
             required: false
         },
+        userhasbook: {
+            type: Boolean,
+            required: true
+        }
     })
 </script>

@@ -43,6 +43,19 @@
     background-color: black;
     color: blanchedalmond;
 }
+.disabled{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.disabled > button{
+    width: 150px;
+    padding: 7.5px;
+    background-color: rgba(255, 235, 205, 0.358);
+    border: none;
+    border-radius: 20px;
+    font-size: 15px;
+}
 @media (max-width: 1350px){
     .description-details-container{
         justify-content: center;

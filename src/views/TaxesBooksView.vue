@@ -2,10 +2,12 @@
 import BookedBooks from '@/components/BookedBooks.vue'
 import BookedPopUp from '@/components/BookedPopUp.vue'
 import { useUserBooks } from '@/stores/userbooks/userbooks';
+import axios from 'axios';
 import { onMounted, ref, watch } from 'vue'
 const taxesitem = ref([])
 const popup = ref(false)
 const store = useUserBooks()
+const userid = ref(null)
 function OpenPopUP(id) {
   taxesitem.value = [store.userbooks.find((item) => item.id === id)]
   popup.value = !popup.value
@@ -19,6 +21,7 @@ watch(diasfaltantes, (dias) =>{
     }
 })
 
+
 function calculardias(final){
   const dataInicial = new Date()
   const dataFinal = new Date(final)
@@ -28,13 +31,16 @@ function calculardias(final){
   return Math.round(diferencaEmDias)
 }
 
-onMounted(() =>{
+onMounted(async() =>{
   store.GetUserBooks()
+  const email = localStorage.getItem('email')
+  const { data } = await axios.get("http://127.0.0.1:8000/api/usuarios")
+  const finduser = data.results.find(user => user.email === email)
+  userid.value = finduser.id
 })
 
 function devolverLivro(id){
-  store.UpdateUserBooks(id)
-  location.reload()
+  store.UpdateUserBooks(id, userid.value)
 }
 </script>
 <template>

@@ -17,7 +17,7 @@ onMounted(() =>{
     </header>
     <main class="saved-main">
         <div class="saved-book" v-for="book in store.savedbooks" :key="book.id">
-            <BookDetail :url="book.livro.capa.file" :categories="book.livro.categoria" :genere="book.livro.generos"  is_list="list"/>
+            <BookDetail :url="book.livro.capa.url" :categories="book.livro.categoria" :genere="book.livro.generos"  is_list="list"/>
         </div>
     </main>
 </template>
