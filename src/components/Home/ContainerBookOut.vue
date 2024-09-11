@@ -1,5 +1,5 @@
 <script setup>
-import { useBookStore } from '@/stores/index';
+import { useBookStore, useAuthStore } from '@/stores/index';
 import BookDetail from '@/components/BookDetail.vue';
 import { onMounted } from 'vue';
 import router from '@/router';
@@ -34,7 +34,7 @@ function toRoute(data) {
           <div class="container-book">
 
             <div class="card-container-home">
-             <span class="linkBooks" @click="toRoute(props.data)" ><BookDetail :url="props.data.capa.url" :categories="props.data.categoria" :genere="props.data.generos" :is_avaible="props.data.disponivel" is_list="list"/>
+             <span class="linkBooks" @click="toRoute(props.data)" ><BookDetail :categories="props.data.categoria" :genere="props.data.generos" :is_avaible="props.data.disponivel" is_list="list"/>
              </span>
             </div>
 

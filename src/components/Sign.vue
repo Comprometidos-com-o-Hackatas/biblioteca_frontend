@@ -2,7 +2,7 @@
 
 import AuthBase from '@/components/AuthBase.vue'
 import { useAuthStore } from '@/stores';
-import { reactive } from 'vue';
+import { reactive, computed, ref } from 'vue';
 
 const authStore = useAuthStore()
 
@@ -20,6 +20,7 @@ const userSign = reactive({
     email: '',
     password: '',
     first_name: '',
+    age: 0,
     is_active: true,
     is_staff: true
 })
@@ -48,7 +49,7 @@ const userSign = reactive({
                 </div>
                 <div class="input-box">
                     <p>Age</p>
-                    <input type="text">
+                    <input type="number" v-model="userSign.age">
                 </div>
             </div>
 

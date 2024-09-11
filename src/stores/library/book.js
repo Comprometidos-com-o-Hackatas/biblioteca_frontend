@@ -2,11 +2,14 @@ import { computed, reactive, ref } from "vue";
 import { defineStore } from "pinia";
 import { BookService } from "@/services/index";
 import { PassageUser } from "@passageidentity/passage-elements/passage-user";
-
+import { useAuthStore } from "../auth/auth";
 
 export const useBookStore = defineStore('book', () => {
+    const authStore = useAuthStore()
+
     const state = reactive({
         books: [],
+        booksByAge: [],
         error: null,
         selectedBook: null,
         savedBooks: []
@@ -14,9 +17,34 @@ export const useBookStore = defineStore('book', () => {
 
     const count = ref(0)
 
+    const setbooksByage = () => {
+        for (let i = 0; i < state.books.length; i++) {
+            switch (state.books[i].categoria.descricao) {
+                case 'Adulto':
+                    if (authStore.userInfo.age >= 16) {
+                        state.booksByAge.push(state.books[i])
+                    }
+                    break;
+                case 'Infantojuvenil':
+                    if (authStore.userInfo.age >= 12) {
+                        state.booksByAge.push(state.books[i])
+                    }
+                    break;
+                case 'Infantil':
+                    if (authStore.userInfo.age >= 0) {
+                        state.booksByAge.push(state.books[i])
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+     }
+
     const getBooks = async () => {
         try {
         state.books = await BookService.getBook()
+        
         } catch(error) {
             state.error = error
         }
@@ -58,6 +86,6 @@ export const useBookStore = defineStore('book', () => {
     }
 
     return {
-        state, getBooks, postBooks, putBooks, deleteBooks, count, getSavedBooks
+        state, getBooks, postBooks, putBooks, deleteBooks, count, getSavedBooks, setbooksByage
     }
 })

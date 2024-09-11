@@ -15,6 +15,7 @@ export const useAuthStore = defineStore('auth', () => {
     const userInfo = reactive({
         email: '',
         username: '',
+        age: 0
     })
     
     async function Login(user){
@@ -49,7 +50,6 @@ export const useAuthStore = defineStore('auth', () => {
 
     async function createAccount(user) {
         await authService.postUser(user)
-
     }
     function autologin() {
         if (localStorage.getItem('access') && localStorage.getItem('refresh')) {
@@ -69,6 +69,7 @@ export const useAuthStore = defineStore('auth', () => {
             const result = data.value.results.findIndex(s => s.email === email.value)
             userInfo.email = data.value.results[result].email
             userInfo.username = data.value.results[result].first_name
+            userInfo.age = data.value.results[result].age
             userID.value = data.value.results[result].id
     }  
     

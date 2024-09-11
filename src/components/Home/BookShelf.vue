@@ -9,12 +9,11 @@
 
   const organizeBooks = () => {
     for (let i = 0; i < booksList.value.length; i++) {
-      bookStore.state.books.forEach((book, index)=>{
-        if (booksList.value[i].title == bookStore.state.books[index].generos[0].descricao ) {
-          booksList.value[i].books.push(bookStore.state.books[index])
+      bookStore.state.booksByAge.forEach((book, index)=>{
+        if (booksList.value[i].title == bookStore.state.booksByAge[index].generos[0].descricao ) {
+          booksList.value[i].books.push(bookStore.state.booksByAge[index])
         }
-    })
-    
+    }) 
   }
  
 }
@@ -23,12 +22,12 @@
     bookStore.count++
     await bookStore.getBooks()
     bookStore.cards = bookStore.state.books.length
-    setTimeout(() =>{
-      console.log(bookStore.state)
-    }, 2000)
+
     if (bookStore.count < 2) {
+      bookStore.setbooksByage()
       organizeBooks()
       updateBookList()
+      console.log(booksList)
     }
 }) 
 
