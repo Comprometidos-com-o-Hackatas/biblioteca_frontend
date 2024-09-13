@@ -1,14 +1,16 @@
 <script setup>
-import {ref,computed} from 'vue'
+import {ref,computed, onMounted} from 'vue'
 import {manage_book_data, manage_category_data, setAgeLimit} from '@/utils/config'
 import SearchBar from '../SearchBar.vue';
+import { useBookStore } from '@/stores';
+import { booksList, updateBookList } from '@/utils/home';
+import ContainerBookOut from '../Home/ContainerBookOut.vue';
 
-
+const bookStore = useBookStore()
 const booksfiltered = ref([])
 
 function filterbooks(search) {
   booksfiltered.value = manage_book_data.value.filter((book) => book.title.startsWith(search))
-  
 }
 
 const books = computed(() => {
@@ -18,24 +20,56 @@ const books = computed(() => {
   return manage_book_data.value
 })
 
+const organizeBooks = () => {
+    for (let i = 0; i < booksList.value.length; i++) {
+      bookStore.state.booksByAge.forEach((book, index)=>{
+        if (booksList.value[i].title == bookStore.state.booksByAge[index].generos[0].descricao ) {
+          booksList.value[i].books.push(bookStore.state.booksByAge[index])
+        }
+    }) 
+  }
+ 
+}
+
+onMounted(async()=>{
+  await bookStore.getBooks()
+  console.log(bookStore.state.books[0])
+})
+
 </script>
 <template>
     <div class="container-manage">
-         <div class="box-age-limitor">
-            <p>Age limitor: </p>
-                <input type="number" :placeholder="!setAgeLimit ? 'Off': '7'" maxlength="2" :disabled="!setAgeLimit" >
-         </div>
-
-         <div class="box-category-all">
-            <p>Category forbid:</p>
-            <div class="box-category">
-                <div class="box-checkbox" v-for="(item, index) in manage_category_data" :key="index">
-                <input type="checkbox" class="checkbox-forbid" name="checkbox-forbid" :value="item.label">
-                <label for="checkbox-forbid">{{item.label}}</label>
-                </div>
+      <div class="manage-reading-box">
+        <div class="title-reading">
+        <p>Lendo: </p>
+        <span class="mdi mdi-delete">Remover</span>
+        </div>
+        <div class="container-data-reading">
+        <div class="box-reading-img">
+          <ContainerBookOut :data="bookStore.state.books[0]" />
+        </div>
+        <div class="box-reading-data">
+          <p>Datas:</p>
+          <div class="box-data-informed">
+            <div class="box-info-data">
+              <p>Pego em</p>
+              <p>13/09/2024</p>
             </div>
-         </div>
 
+            <div class="box-info-data">
+              <p>Dias Restantes: </p>
+              <p>40</p>
+            </div>
+
+            <div class="box-info-data">
+              <p>Status: </p>
+              <p>Dentro do Prazo</p>
+            </div>
+          </div>
+        </div>
+        </div>
+
+      </div>
          <div class="box-books-block">
             <div class="box-title-search">
                 <p>Books: </p>

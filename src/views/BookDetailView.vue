@@ -32,10 +32,6 @@
     onMounted(()=>{
         bookStore.getBooks()
         ratingstore.getRatings(id)
-       setTimeout(() =>{
-        console.log(bookStore.state.selectedBook.categoria)
-       }, 2000)
-       
     })
 </script>
 <template>

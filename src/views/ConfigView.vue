@@ -19,6 +19,7 @@ const familyInfo = reactive({
 
 onMounted(()=>{
    familyStore.getFamilies() 
+   console.log(familyStore.family.family)
 })
 
 function addFamily(usr) {

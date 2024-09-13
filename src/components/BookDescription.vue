@@ -72,7 +72,7 @@ onMounted(() =>{
         if(book){
             saved.value = true
         }
-        console.log(book)
+       
     }, 1000)
 
 })

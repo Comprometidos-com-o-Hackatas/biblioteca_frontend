@@ -22,7 +22,6 @@ const books = computed(() => {
 
 function filterbooks(search) {
   booksfiltered.value = bookStore.state.books.filter((book) => book.titulo.startsWith(search))
-  console.log(booksfiltered.value)
 }
 
 function toRoute(data) {
