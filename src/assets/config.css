@@ -118,6 +118,7 @@
 
 .id-people {
     width: 100%;
+    overflow: hidden;
     height: 30%;
     display: flex;
     gap: 5px;
@@ -289,6 +290,12 @@
     100% {
         opacity: 1;
     }
+}
+
+.main-config {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /** MANAGE PEOPLE END**/

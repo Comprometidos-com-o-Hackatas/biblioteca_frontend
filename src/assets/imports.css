@@ -14,6 +14,7 @@
 @import './savedBooks.css';
 @import './notfound.css';
 @import './report.css';
+@import './family.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

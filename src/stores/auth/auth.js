@@ -12,6 +12,8 @@ export const useAuthStore = defineStore('auth', () => {
     const logged = ref(false)
     const password = ref(null)
     const userID = ref(null)
+    const users = ref([])
+    const user = ref(null)
     const userInfo = reactive({
         email: '',
         username: '',
@@ -65,13 +67,16 @@ export const useAuthStore = defineStore('auth', () => {
     const getUserInfo = async () => {
             const data = ref([]);
             const response = await axios.get("http://127.0.0.1:8000/api/usuarios/");
-            data.value = response.data;  // Aqui você acessa os dados dentro de response.data
+            users.value = response.data.results
+            data.value = response.data;
+            console.log(users.value)
             const result = data.value.results.findIndex(s => s.email === email.value)
             userInfo.email = data.value.results[result].email
             userInfo.username = data.value.results[result].first_name
             userInfo.age = data.value.results[result].age
             userID.value = data.value.results[result].id
+            user.value = data.value.results[result]
     }  
     
-    return {logged, Login, logout, autologin, createAccount, email, getUserInfo, userInfo, userID}
+    return {logged, Login, logout, autologin, createAccount, email, getUserInfo, userInfo, userID, users, user}
 })
