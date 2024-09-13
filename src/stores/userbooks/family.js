@@ -2,12 +2,15 @@ import axios from 'axios'
 import api from '@/plugins/api'
 import { defineStore } from 'pinia'
 import { reactive } from 'vue'
+import { useAuthStore } from '../auth/auth'
 const token = localStorage.getItem('access')
 
 export const useFamilyStore = defineStore('familyStore', () => {
+    const authStore = useAuthStore()
     const family = reactive({
         family: [],
         users: [],
+        usersForReal: [],
         error: null
     })
 
@@ -28,6 +31,16 @@ export const useFamilyStore = defineStore('familyStore', () => {
             family.error = error
         }
     }
+
+    setTimeout(()=>{
+        for (let i = 0; i < family.users.length; i++) {
+            if (authStore.users.filter(s => s.id === family.users[i])) {
+                const index = authStore.users.findIndex(s => s.id === family.users[i])
+                family.usersForReal.push(authStore.users[index])
+            }
+        }
+    },2000)
+   
 
     const postFamilies = async (families) => {
         try {

@@ -14,6 +14,7 @@ defineEmits([
 
 onMounted(()=>{
     familyStore.getFamilies()
+    console.log(familyStore.family.users)
 })
 </script>
 <template>
@@ -23,7 +24,7 @@ onMounted(()=>{
        <div class="container-config-cards">
         <ConfigBox @popFamily="$emit('popFamily')" :hasButton="true" :title="'Add people'" >
             <div class="box-people">
-            <BoxPeople v-for="(item, index) in familyStore.family.users" :key="index" :name="item.first_name == '' ? item.email : item.first_name" :icon="item.age >= 16 ? 'mdi mdi-human-cane' : 'mdi mdi-teddy-bear'" />
+            <BoxPeople v-for="(item, index) in familyStore.family.usersForReal" :key="index" :name="item.first_name == '' ? item.email : item.first_name" :icon="item.age >= 16 ? 'mdi mdi-human-cane' : 'mdi mdi-teddy-bear'" />
             </div>
         </ConfigBox>
         
