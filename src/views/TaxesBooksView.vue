@@ -1,11 +1,15 @@
 <script setup>
 import BookedBooks from '@/components/BookedBooks.vue'
 import BookedPopUp from '@/components/BookedPopUp.vue'
+import { useAuthStore } from '@/stores';
 import { useUserBooks } from '@/stores/userbooks/userbooks';
-import { onMounted, ref, watch } from 'vue'
+import axios from 'axios';
+import { onMounted, ref, watch, computed } from 'vue'
 const taxesitem = ref([])
 const popup = ref(false)
 const store = useUserBooks()
+const authStore = useAuthStore()
+const userid = ref(null)
 function OpenPopUP(id) {
   taxesitem.value = [store.userbooks.find((item) => item.id === id)]
   popup.value = !popup.value
@@ -19,6 +23,7 @@ watch(diasfaltantes, (dias) =>{
     }
 })
 
+
 function calculardias(final){
   const dataInicial = new Date()
   const dataFinal = new Date(final)
@@ -28,20 +33,28 @@ function calculardias(final){
   return Math.round(diferencaEmDias)
 }
 
-onMounted(() =>{
+const userBooksByUser = computed(()=> store.userbooks.filter(s => s.usuario.id == authStore.user.id) )
+
+onMounted(async() =>{
   store.GetUserBooks()
+  const email = localStorage.getItem('email')
+  const { data } = await axios.get("http://127.0.0.1:8000/api/usuarios")
+  const finduser = data.results.find(user => user.email === email)
+  userid.value = finduser.id
+  console.log(userBooksByUser.value)
 })
 
+
+
 function devolverLivro(id){
-  store.UpdateUserBooks(id)
-  location.reload()
+  store.UpdateUserBooks(id, userid.value)
 }
 </script>
 <template>
   <div class="taxed-container">
     <div class="box-container">
       <div
-        v-for="taxes in store.userbooks"
+        v-for="taxes in userBooksByUser"
         :key="taxes.id"
         :class="taxes.id % 2 === 0 ? 'box-pair' : 'box-odd'"
       >

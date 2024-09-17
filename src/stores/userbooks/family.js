@@ -4,13 +4,18 @@ import { defineStore } from 'pinia'
 import { reactive } from 'vue'
 import { useAuthStore } from '../auth/auth'
 import { FamilyService } from '@/services'
-
-
+import { useUserBooks } from './userbooks'
+import {computed} from 'vue'
+import FamilyConfig from '@/components/Config/FamilyConfig.vue'
 export const useFamilyStore = defineStore('familyStore', () => {
+    const userBooks = useUserBooks()
     const authStore = useAuthStore()
     const family = reactive({
         family: [],
         users: [],
+        selectedUser: null,
+        userBooks: [],
+        userReading: [],
         usersForReal: [],
         error: null
     })
@@ -18,6 +23,42 @@ export const useFamilyStore = defineStore('familyStore', () => {
     const familyObj = reactive({
         nome: '',
         usuario: []
+    })
+
+    //Essa função abaixo serve para identificar o objeto do usuario dentro da array users do authStore que pega o objeto inteiro do usuario através do id que se recebe pela função de listar familias (get). Isso ocorre pois os usuarios da tabela familias sao recebidos por um ID.
+    setTimeout(()=>{
+        for (let i = 0; i < family.users.length; i++) {
+            if (authStore.users.filter(s => s.id === family.users[i])) {
+                const index = authStore.users.findIndex(s => s.id === family.users[i])
+                family.usersForReal.push(authStore.users[index])
+            }
+        }
+
+    },500)
+
+    const getUserBooksFamily = async () => {
+        try {      
+            family.userBooks = []
+            family.userReading = []
+            for (let i = 0; i < userBooks.userbooks.length; i++) {
+                if (userBooks.userbooks[i].usuario.id == family.selectedUser.id) {
+                    family.userBooks.push(userBooks.userbooks[i].livro)
+                    if (userBooks.userbooks[i].active == true && userBooks.userbooks[i].usuario.id === family.selectedUser.id) {
+                        console.log(userBooks.userbooks[i].usuario)
+                        family.userReading.push(userBooks.userbooks[i])
+                       
+                    }
+                }
+            }
+        
+            console.log(family.userBooks)
+        } catch (error) {
+            family.error = error
+        }
+    }
+
+    const calculateUserBooks = computed(()=>{
+        return family.userBooks
     })
 
     const getFamilies = async () => {
@@ -28,16 +69,6 @@ export const useFamilyStore = defineStore('familyStore', () => {
             family.error = error
         }
     }
-
-//Essa função abaixo serve para identificar o objeto do usuario dentro da array users do authStore que pega o objeto inteiro do usuario através do id que se recebe pela função de listar familias (get). Isso ocorre pois os usuarios da tabela familias sao recebidos por um ID.
-    setTimeout(()=>{
-        for (let i = 0; i < family.users.length; i++) {
-            if (authStore.users.filter(s => s.id === family.users[i])) {
-                const index = authStore.users.findIndex(s => s.id === family.users[i])
-                family.usersForReal.push(authStore.users[index])
-            }
-        }
-    },500)
    
 
     const postFamilies = async (families) => {
@@ -67,6 +98,6 @@ export const useFamilyStore = defineStore('familyStore', () => {
     }
 
     return {
-        family, getFamilies, postFamilies, putFamilies, deleteFamilies, familyObj
+        family, getFamilies, postFamilies, putFamilies, deleteFamilies, familyObj, getUserBooksFamily, calculateUserBooks
     }
 })

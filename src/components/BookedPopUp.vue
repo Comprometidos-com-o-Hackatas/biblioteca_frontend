@@ -23,10 +23,10 @@
             <div class="box-data">
                 <div class="title-data">
                     <p>Status:</p>
-                    <p>Fine:</p>
+                    <p>Taxa:</p>
                     <p>Booked in:</p>
-                    <p>Expired in:</p>
-                    <p>Days late</p>
+                    <p>Expira em:</p>
+                    <p>Dias restantes:</p>
                 </div>
                 <div class="data-items">
                     <p>{{ status }}</p>

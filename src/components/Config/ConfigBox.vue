@@ -28,7 +28,7 @@ onMounted(()=>{
     <div class="container-config">
           
            <div class="box-title-add">
-            <button @click="$emit('popFamily')" class="mdi mdi-plus addPeople" v-if="props.hasButton"></button>
+            <button @click="$emit('popFamily')" class="mdi mdi-plus addPeople" v-if="props.hasButton && authStore.user.age > 16"></button>
            
             <p>{{props.title}}</p>
             </div>

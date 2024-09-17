@@ -3,11 +3,12 @@ import { onMounted, ref } from 'vue';
 import AnalisysComp from './AnalisysComp.vue';
 import GlobalButton from './GlobalButton.vue';
 import { useSavedStore } from '@/stores/saved/saved';
-import { useRatingStore } from '@/stores';
+import { useAuthStore, useRatingStore } from '@/stores';
 import axios from 'axios';
 import { useRoute } from 'vue-router';
 const route = useRoute()
 const store = useRatingStore()
+const authstore = useAuthStore()
 const savedstore = useSavedStore()
     defineProps({
         title: {
@@ -34,6 +35,10 @@ const savedstore = useSavedStore()
             type: Number
         },
         saved: {
+            type: Boolean,
+            default: false
+        },
+        userhasbook: {
             type: Boolean,
             default: false
         }
@@ -63,16 +68,15 @@ const savedstore = useSavedStore()
     ])
 onMounted(() =>{
     savedstore.GetSavedBooks()
-
     setTimeout(() =>{
         const savedbook = savedstore.savedbooks
         const id = route.params.id
-
+        
         const book = savedbook.find(book => book.livro.id === Number(id))
         if(book){
             saved.value = true
         }
-       
+        console.log(book)
     }, 1000)
 
 })
@@ -87,9 +91,9 @@ onMounted(() =>{
     <p id="synopsis">synopsis: {{ synopsis }}</p>
     <p>localização:  1  </p>
     <p>{{nota}}</p>
-    <GlobalButton title="pegar" buttonclass="button-container" idbutton="detail-button" @click="$emit('ownBook', route.params.id)"/>
+    <GlobalButton title="pegar" buttonclass="button-container" :userhasbook="userhasbook"  idbutton="detail-button" @click="$emit('ownBook', route.params.id)"/>
     <h1 style="font-size: 20px;">resenhas:</h1>
     <AnalisysComp v-for="rate in store.ratings" :key="rate.id" :description="rate.coment" :rate="rate.nota" /> 
-    <GlobalButton :class="'rating-button-resp'" title="Avaliar" @click="$emit('rate') "></GlobalButton>
+    <GlobalButton :class="'rating-button-resp'"  title="Avaliar" @click="$emit('rate') "></GlobalButton>
 </div>
 </template>
