@@ -5,6 +5,7 @@ import GlobalButton from './GlobalButton.vue';
 import { useSavedStore } from '@/stores/saved/saved';
 import { useAuthStore, useRatingStore } from '@/stores';
 import axios from 'axios';
+import api from '@/plugins/api'
 import { useRoute } from 'vue-router';
 const route = useRoute()
 const store = useRatingStore()
@@ -52,7 +53,7 @@ const savedstore = useSavedStore()
         }
         else{
             const email = localStorage.getItem('email')
-            const {data} = await axios.get('http://127.0.0.1:8000/api/usuarios/')
+            const {data} = await api.get('/usuarios/')
             const finduser = data.results.find(user => user.email === email)
             const id = route.params.id
             const savedbooks = {

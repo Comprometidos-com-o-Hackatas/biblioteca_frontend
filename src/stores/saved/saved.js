@@ -1,13 +1,13 @@
-import axios from "axios"
 import { defineStore } from "pinia"
 import { ref } from "vue"
+import api from "@/plugins/api"
 const token = localStorage.getItem('access')
 
 export const useSavedStore = defineStore('store', () =>{
     const savedbooks = ref([])
 
     async function GetSavedBooks(){
-        const { data } = await axios.get("http://127.0.0.1:8000/api/favorito/", {
+        const { data } = await api.get("/favorito/", {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -15,7 +15,7 @@ export const useSavedStore = defineStore('store', () =>{
         savedbooks.value = data.results
     }
     async function CreateSavedBook(save) {
-        await axios.post("http://127.0.0.1:8000/api/favorito/", save, {
+        await api.post("/favorito/", save, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -24,7 +24,7 @@ export const useSavedStore = defineStore('store', () =>{
 
     async function DeleteBook(id) {
         const book = savedbooks.value.find(book => book.livro.id === Number(id))
-        const savedbookapi = await axios.delete(`http://127.0.0.1:8000/api/favorito/${book.id}`, {
+        const savedbookapi = await api.delete(`/favorito/${book.id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

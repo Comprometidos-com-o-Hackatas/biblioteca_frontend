@@ -8,6 +8,7 @@
     import { useUserBooks } from '@/stores/userbooks/userbooks';
     import axios from 'axios';
     import router from '@/router';
+    import api from '@/plugins/api' 
     const date = new Date()
     const route = useRoute()
     const bookStore = useBookStore()
@@ -18,7 +19,7 @@
     const userhasbook = ref(false)
     async function ownBook(id){
         const email = localStorage.getItem('email')
-        const {data} = await axios.get('http://127.0.0.1:8000/api/usuarios/')
+        const {data} = await api.get('/usuarios/')
         const finduser = data.results.find(user => user.email === email)
         const bookgot = {
             usuario: finduser.id,
@@ -27,19 +28,16 @@
             active: true,
         }
         userbookstore.CreateUserBooks(bookgot)
-<<<<<<< feat-group
         setTimeout(()=>{
             window.location.reload()
         }, 1000)
-=======
->>>>>>> dev
     }
 
     onMounted( async ()=>{
         bookStore.getBooks()
         ratingstore.getRatings(id)
         const email = localStorage.getItem('email')
-        const {data} = await axios.get('http://127.0.0.1:8000/api/usuarios/')
+        const {data} = await api.get('/usuarios/')
         const finduser = data.results.find(user => user.email === email)
         userhasbook.value = finduser.has_book
        setTimeout(() =>{

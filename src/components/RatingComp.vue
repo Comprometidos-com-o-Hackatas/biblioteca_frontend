@@ -5,6 +5,7 @@ import GlobalButton from './GlobalButton.vue';
 import { useRatingStore } from '@/stores';
 import axios from 'axios';
 import { useRoute } from 'vue-router';
+import api from '@/plugins/api'
 const rate = ref(1)
 const coment = ref('')
 const route = useRoute()
@@ -14,7 +15,7 @@ function changevalue(i){
 }
 async function Avaliate(){
     const email = localStorage.getItem('email')
-    const {data} = await axios.get('http://127.0.0.1:8000/api/usuarios/')
+    const {data} = await api.get('/usuarios/')
     const finduser = data.results.find(user => user.email === email)
     const id = route.params.id
     const rating = {

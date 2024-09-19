@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import axios from 'axios';
 import { computed } from 'vue';
-
+import api from '@/plugins/api'
 const dados = ref('')
 
 // Conteúdo HTML inicial
@@ -28,7 +28,7 @@ const htmlContent = computed(() => {
 const generatePDF = async () => {
     try {
         // Fazendo o poste definindo que a respota deve ser em binário
-        const response = await axios.post('http://localhost:8000/generate-pdf/', { html: htmlContent.value }, { responseType: 'blob'});
+        const response = await api.post('/generate-pdf/', { html: htmlContent.value }, { responseType: 'blob'});
 
         // Criando um link para o download
         const url = window.URL.createObjectURL(new Blob([response.data]));

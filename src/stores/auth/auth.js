@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import router from '@/router'
 import axios from 'axios'
 import authService from '@/services/auth/auth'
+import api from '@/plugins/api'
 
 export const useAuthStore = defineStore('auth', () => {
     const username = ref(null)
@@ -21,7 +22,7 @@ export const useAuthStore = defineStore('auth', () => {
     })
     
     async function Login(user){
-        const { data } = await axios.post("http://127.0.0.1:8000/api/token/", user)
+        const { data } = await api.post("/token/", user)
         localStorage.setItem('access', data.access)
         localStorage.setItem('refresh', data.refresh)
         localStorage.setItem('email', user.email)
