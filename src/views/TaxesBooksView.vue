@@ -4,11 +4,18 @@ import BookedPopUp from '@/components/BookedPopUp.vue'
 import { useAuthStore } from '@/stores';
 import { useUserBooks } from '@/stores/userbooks/userbooks';
 import axios from 'axios';
+<<<<<<< feat-group
 import { onMounted, ref, watch, computed } from 'vue'
 const taxesitem = ref([])
 const popup = ref(false)
 const store = useUserBooks()
 const authStore = useAuthStore()
+=======
+import { onMounted, ref, watch } from 'vue'
+const taxesitem = ref([])
+const popup = ref(false)
+const store = useUserBooks()
+>>>>>>> dev
 const userid = ref(null)
 function OpenPopUP(id) {
   taxesitem.value = [store.userbooks.find((item) => item.id === id)]
@@ -33,15 +40,21 @@ function calculardias(final){
   return Math.round(diferencaEmDias)
 }
 
+<<<<<<< feat-group
 const userBooksByUser = computed(()=> store.userbooks.filter(s => s.usuario.id == authStore.user.id) )
 
+=======
+>>>>>>> dev
 onMounted(async() =>{
   store.GetUserBooks()
   const email = localStorage.getItem('email')
   const { data } = await axios.get("http://127.0.0.1:8000/api/usuarios")
   const finduser = data.results.find(user => user.email === email)
   userid.value = finduser.id
+<<<<<<< feat-group
   console.log(userBooksByUser.value)
+=======
+>>>>>>> dev
 })
 
 

@@ -5,10 +5,14 @@ const token = localStorage.getItem('access')
 const date = new Date()
 export const useUserBooks = defineStore('userbooks', () => {
     const userbooks = ref([])
+<<<<<<< feat-group
     const userbooksToConfig = ref([])
     const errorBook = ref(null)
     let books = null
 
+=======
+    let books = null
+>>>>>>> dev
     async function GetUserBooks() {
         const { data } = await axios.get("http://127.0.0.1:8000/api/livropego/", {
             headers: {
@@ -19,6 +23,7 @@ export const useUserBooks = defineStore('userbooks', () => {
         console.log(userbooks.value)
     }
 
+<<<<<<< feat-group
     async function GetUserBooksToConfig(){
         try {
         userbooksToConfig.value = await GotBookService.listGotBooks()
@@ -28,6 +33,8 @@ export const useUserBooks = defineStore('userbooks', () => {
         }
     }
 
+=======
+>>>>>>> dev
     async function CreateUserBooks(book) {
         if (books) {
             await axios.patch(`http://127.0.0.1:8000/api/usuarios/${book.usuario}/`, {
@@ -61,7 +68,10 @@ export const useUserBooks = defineStore('userbooks', () => {
                     Authorization: `Bearer ${token}`,
                 },
             })
+<<<<<<< feat-group
 
+=======
+>>>>>>> dev
         }
     }
 
@@ -76,8 +86,12 @@ export const useUserBooks = defineStore('userbooks', () => {
         await axios.patch(`http://127.0.0.1:8000/api/livropego/${id}/`, {
             livro: {
                 disponivel: true
+<<<<<<< feat-group
             },
             active: false
+=======
+            }
+>>>>>>> dev
         }, {
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -94,6 +108,10 @@ export const useUserBooks = defineStore('userbooks', () => {
         const finduser = data.results.find(user => user.livro.id === Number(book))
         books = finduser.id
     }
+<<<<<<< feat-group
     return { GetUserBooks, usuariohadbook, UpdateUserBooks, CreateUserBooks, GetUserBooksToConfig, userbooks, userbooksToConfig }
+=======
+    return { GetUserBooks, usuariohadbook, UpdateUserBooks, CreateUserBooks, userbooks }
+>>>>>>> dev
 
 }) 

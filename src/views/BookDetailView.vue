@@ -27,9 +27,12 @@
             active: true,
         }
         userbookstore.CreateUserBooks(bookgot)
+<<<<<<< feat-group
         setTimeout(()=>{
             window.location.reload()
         }, 1000)
+=======
+>>>>>>> dev
     }
 
     onMounted( async ()=>{
