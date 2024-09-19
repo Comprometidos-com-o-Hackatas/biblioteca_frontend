@@ -48,7 +48,7 @@
     width: 330px;
     max-height: 450px;
     height: 450px;
-    overflow: auto;
+ 
     background-color: #FAFAFA;
     display: flex;
     margin-top: 50px;
@@ -118,6 +118,7 @@
 
 .id-people {
     width: 100%;
+    overflow: hidden;
     height: 30%;
     display: flex;
     gap: 5px;
@@ -141,7 +142,8 @@
 
 .box-manage {
     width: 100%;
-    
+    height: 390px;
+    overflow: auto;
     display: flex;
 }
 
@@ -209,10 +211,10 @@
 
 .box-books-block {
     width: 100%;
-    height: 180px;
     display: flex;
-    flex-wrap: wrap;
-    margin-top: 5px;
+    flex-direction: column;
+    margin-top: 40px;
+    align-items: center;
     justify-content: center;
 }
 
@@ -222,20 +224,32 @@
     height: 20%;
     justify-content: space-between;
     align-items: center;
+    
     & p {
         padding-left: 10px;
     }
+    
 }
 
 .box-books-books {
     height: 80%;
     width: 95%;
     border-radius: 5px;
+    padding: 15px;
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
-    background-color: #E3E3E3;
+    background-color: #e6e6e6;
+   
+    gap: 30px;
+    overflow-x: auto;
+
 }
+
+.span {
+    background-color: aqua;
+}
+
 
 .book-block-card {
     height: 95%;
@@ -289,6 +303,59 @@
     100% {
         opacity: 1;
     }
+}
+
+.main-config {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-reading {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+
+    & span {
+        color: red;
+    }
+}
+
+.box-reading-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.box-reading-data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    & > p {
+        font-size: 20px;
+        margin-left: 30px;
+        position: relative;
+    }
+}
+
+.box-data-informed {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.box-info-data {
+    background-color: #E3E3E3;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 15px;
 }
 
 /** MANAGE PEOPLE END**/

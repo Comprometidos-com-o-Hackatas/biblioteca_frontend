@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useAuthStore, useRatingStore } from '@/stores';
-import { onMounted } from 'vue';
+import { onMounted, computed } from 'vue';
 import { useUserBooks } from '@/stores/userbooks/userbooks';
 
 const authStore = useAuthStore()
@@ -12,6 +12,8 @@ onMounted(() => {
     userbookstore.GetUserBooks()
     getRatingsstore.getRatings()
 })
+
+const userBooksByUser = computed(()=> userbookstore.userbooks.filter(s => s.usuario.id == authStore.user.id))
 </script>
 
 <template>
@@ -67,7 +69,7 @@ onMounted(() => {
                 <h1 class="text-white mt-5">Livros já Lidos</h1>
             </div>
             <div class="w-full h-95/1 p-3">
-                <div v-for="books in userbookstore.userbooks" :key="books.id" class="p-4">
+                <div v-for="books in userBooksByUser" :key="books.id" class="p-4">
                     <div class="w-full flex items-center gap-5 ">
                         <img :src="books.livro.capa.file" width="100" height="100" alt="">
                         <p class="text-white text-lg">{{ books.livro.titulo }}</p>

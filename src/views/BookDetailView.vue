@@ -23,9 +23,16 @@
         const bookgot = {
             usuario: finduser.id,
             livro: Number(id),
-            data_devolucao: `${date.getFullYear()}-${Number(date.getMonth() + 3).toString()}-${date.getDate()}`
+            data_devolucao: `${date.getFullYear()}-${Number(date.getMonth() + 3).toString()}-${date.getDate()}`,
+            active: true,
         }
         userbookstore.CreateUserBooks(bookgot)
+<<<<<<< feat-group
+        setTimeout(()=>{
+            window.location.reload()
+        }, 1000)
+=======
+>>>>>>> dev
     }
 
     onMounted( async ()=>{

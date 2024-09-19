@@ -1,4 +1,8 @@
 <script setup>
+import { useFamilyStore } from '@/stores/userbooks/family';
+import { onMounted } from 'vue';
+
+const familyStore = useFamilyStore()
 const props = defineProps({
     name: {
         type: String,
@@ -9,6 +13,10 @@ const props = defineProps({
         required: true
     }
 })
+
+onMounted(()=>{
+    familyStore.getFamilies()
+})
 </script>
 <template>
                 <div class="card-people">
@@ -17,7 +25,7 @@ const props = defineProps({
                     </div>
                     <div class="id-people">
                         <span :class="props.icon" />
-                        <p>{{props.name}}</p>
+                        <p style="width: 100%;">{{props.name}}</p>
                     </div>
                 </div>
 </template>

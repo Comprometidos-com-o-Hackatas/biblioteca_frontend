@@ -24,6 +24,9 @@ async function Avaliate(){
         livro: id
     }
     store.CreateRating(rating)
+    setTimeout(()=>{
+            window.location.reload()
+        }, 1000)
 }   
 </script>
 <template>
