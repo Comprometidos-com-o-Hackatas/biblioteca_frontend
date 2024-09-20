@@ -13,11 +13,6 @@ const store = useAuthStore()
 
 function executelogin(user){
     store.Login(user)
-    router.push('/home/')
-    setTimeout(()=>{
-        window.location.reload()
-    }, 1000)
-   
 }
 
 const show = computed(()=> {

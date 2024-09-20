@@ -34,10 +34,7 @@ export const useAuthStore = defineStore('auth', () => {
         access.value = data.access
         refresh.value = data.refresh
         console.log(data)
-        setTimeout(() =>{
-            router.push('/home/')
-        }, 500)
-       
+        router.push('/home/')
     }
 
     async function logout() {
@@ -46,9 +43,7 @@ export const useAuthStore = defineStore('auth', () => {
         access.value = ''
         refresh.value = ''
         logged.value = !logged.value
-        setTimeout(() =>{
-            router.push('/')
-        }, 1000)
+        router.push('/')
     }
 
     async function createAccount(user) {
@@ -67,7 +62,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     const getUserInfo = async () => {
             const data = ref([]);
-            const response = await axios.get("http://127.0.0.1:8000/api/usuarios/");
+            const response = await api.get("/usuarios/");
             users.value = response.data.results
             data.value = response.data;
             console.log(users.value)

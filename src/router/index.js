@@ -87,7 +87,7 @@ const router = createRouter({
       }
     },
     {
-      path: '/notfound',
+      path: '/pagenotfound',
       name: 'not-found',
       component: () => import('../views/NotFoundView.vue'),
     }
@@ -96,10 +96,10 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) =>{
   if (to.meta.requiresAuth && !localStorage.getItem('access')) {
-    next({ path: '/notfound' });
+    next({ path: '/pagenotfound' });
   }
   else if(!to.meta.requiresAuth && localStorage.getItem('access')){
-    next({ path: '/notfound' })
+    next({ path: '/pagenotfound' })
   }
   else{
     next()

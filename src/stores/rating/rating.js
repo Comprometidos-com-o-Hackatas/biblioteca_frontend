@@ -2,7 +2,6 @@ import axios from "axios"
 import { defineStore } from "pinia"
 import { ref } from "vue"
 import api from "@/plugins/api"
-import api from "@/plugins/api"
 export const useRatingStore = defineStore('rating', () => {
     const ratings = ref([])
     const userrating = ref([])
