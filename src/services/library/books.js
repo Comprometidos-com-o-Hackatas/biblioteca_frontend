@@ -3,7 +3,7 @@ import api from '@/plugins/api'
 class BookService {
     async getBook(){
     try {
-        const {data} = await api.get('/livro')
+        const {data} = await api.get('/livro/')
         return data.results;
     } catch (error) {
         console.log('error in get book', error)

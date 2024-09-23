@@ -44,7 +44,6 @@ export const useBookStore = defineStore('book', () => {
     const getBooks = async () => {
         try {
         state.books = await BookService.getBook()
-        
         } catch(error) {
             state.error = error
         }
