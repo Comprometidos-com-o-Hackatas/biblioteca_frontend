@@ -15,6 +15,7 @@ export const useAuthStore = defineStore('auth', () => {
     const userID = ref(null)
     const users = ref([])
     const user = ref(null)
+    const getError = ref(null)
     const userInfo = reactive({
         email: '',
         username: '',
@@ -22,6 +23,7 @@ export const useAuthStore = defineStore('auth', () => {
     })
     
     async function Login(user){
+        try {
         const { data } = await api.post("/token/", user)
         localStorage.setItem('access', data.access)
         localStorage.setItem('refresh', data.refresh)
@@ -35,6 +37,9 @@ export const useAuthStore = defineStore('auth', () => {
         refresh.value = data.refresh
         console.log(data)
         router.push('/home/')
+    } catch (error) {
+        getError.value = error
+    }
     }
 
     async function logout() {
@@ -74,5 +79,5 @@ export const useAuthStore = defineStore('auth', () => {
             user.value = data.value.results[result]
     }  
     
-    return {logged, Login, logout, autologin, createAccount, email, getUserInfo, userInfo, userID, users, user}
+    return {logged, Login, logout, autologin, createAccount, email, getUserInfo, userInfo, userID, users, user, getError }
 })

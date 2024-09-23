@@ -19,7 +19,7 @@ const familyInfo = reactive({
 
 onMounted(()=>{
    familyStore.getFamilies() 
-   console.log(authStore.user.age)
+   authStore.getUserInfo()
 })
 
 function addFamily(usr) {
@@ -34,6 +34,7 @@ function addFamily(usr) {
    }
    window.location.reload()
 }
+
 </script>
 <template>
 <main class="main-config">

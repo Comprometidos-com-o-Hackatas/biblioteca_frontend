@@ -21,7 +21,7 @@ onMounted(()=>{
     familyStore.getFamilies()
     userBooks.GetUserBooksToConfig()
     userBooks.GetUserBooks()
-    console.log(familyStore.family.userBooks)
+    console.log(familyStore.family.usersForReal)
 })
 
 async function selectUser(user) {

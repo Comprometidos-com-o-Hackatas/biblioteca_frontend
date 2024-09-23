@@ -34,7 +34,7 @@ export const useFamilyStore = defineStore('familyStore', () => {
             }
         }
 
-    },500)
+    },2000)
 
     const getUserBooksFamily = async () => {
         try {      

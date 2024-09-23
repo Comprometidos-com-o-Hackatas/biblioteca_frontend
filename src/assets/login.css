@@ -10,6 +10,7 @@
     z-index: 0;
 }
 .section-login {
+    position: relative;
     animation-duration: 2s;
     animation-iteration-count: 1;
     transition: ease-in-out;
@@ -176,6 +177,41 @@
    gap: 10px;
 }
 
+.message-error {
+    background-color: white;
+    color: red;
+    padding: 10px;
+    font-size: 13px;
+    width: 300px;
+}
+
+.message-box {
+    position: absolute;
+    top: 135px;
+    left: 270px;
+    width: 0px;
+    border-bottom: 2px solid red;
+    animation: timeout 5s ease-in-out 1;
+}
+
+.message-box-create {
+    position: absolute;
+    top: 135px;
+    left: 1200px;
+    width: 0px;
+    border-bottom: 2px solid red;
+    animation: timeout 5s ease-in-out 1;
+}
+
+@keyframes timeout {
+    from {
+        width: 0px;
+    }
+    to {
+        width: 300px;
+    }
+}
+
 .sign-text {
     text-decoration: none;
    }
@@ -211,6 +247,11 @@
     .container-login-out {
         align-items: center;
         width: 100%;
+    }
+
+    .message-box {
+        top: 165px;
+        left: 40px;
     }
 
 }
