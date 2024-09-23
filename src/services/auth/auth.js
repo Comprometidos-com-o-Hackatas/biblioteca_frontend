@@ -5,7 +5,7 @@ class authService {
     async postUser(user) {
         try {
         const {data} = await api.post(`/usuarios/`, user)
-        return data.results
+        return data
     } catch (error) {
         throw error;
     }

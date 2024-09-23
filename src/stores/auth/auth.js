@@ -68,15 +68,15 @@ export const useAuthStore = defineStore('auth', () => {
     const getUserInfo = async () => {
             const data = ref([]);
             const response = await api.get("/usuarios/");
-            users.value = response.data.results
+            users.value = response.data
             data.value = response.data;
             console.log(users.value)
-            const result = data.value.results.findIndex(s => s.email === email.value)
-            userInfo.email = data.value.results[result].email
-            userInfo.username = data.value.results[result].first_name
-            userInfo.age = data.value.results[result].age
-            userID.value = data.value.results[result].id
-            user.value = data.value.results[result]
+            const result = data.value.findIndex(s => s.email === email.value)
+            userInfo.email = data.value[result].email
+            userInfo.username = data.value[result].first_name
+            userInfo.age = data.value[result].age
+            userID.value = data.value[result].id
+            user.value = data.value[result]
     }  
     
     return {logged, Login, logout, autologin, createAccount, email, getUserInfo, userInfo, userID, users, user, getError }

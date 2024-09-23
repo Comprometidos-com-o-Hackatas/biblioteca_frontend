@@ -8,7 +8,7 @@ class FamilyService {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }})
-            return data.results
+            return data
             } catch(error) {
                 throw error;
             }
@@ -20,7 +20,7 @@ class FamilyService {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }})
-        return data.results
+        return data
         } catch (error) {
             throw error;
         }
@@ -32,7 +32,7 @@ class FamilyService {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }})
-            return data.results
+            return data
         } catch (error) {
             throw error;
         }
@@ -44,7 +44,7 @@ class FamilyService {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }})
-            return data.results
+            return data
         } catch (error) {
             throw error;
         }

@@ -40,7 +40,7 @@ onMounted(async() =>{
   store.GetUserBooks()
   const email = localStorage.getItem('email')
   const { data } = await api.get("/usuarios/")
-  const finduser = data.results.find(user => user.email === email)
+  const finduser = data.find(user => user.email === email)
   userid.value = finduser.id
   console.log(userBooksByUser.value)
 })

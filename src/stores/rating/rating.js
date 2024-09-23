@@ -8,10 +8,10 @@ export const useRatingStore = defineStore('rating', () => {
     async function getRatings(id) {
         const email = localStorage.getItem('email')
         const { data } = await api.get("/avaliacao/")
-        const results = data.results
+        const results = data
         let arr = []
         let arr2 = []
-        for (let i = 0; i < data.results.length; i++) {
+        for (let i = 0; i < data.length; i++) {
             if (results[i].livro.id === Number(id)) {
                 arr.push(results[i])
             }
@@ -21,10 +21,10 @@ export const useRatingStore = defineStore('rating', () => {
         }
         userrating.value = arr2
         ratings.value = arr
-        console.log(userrating.value)
+        console.log(data)
     }
     async function CreateRating(rating) {
-        const api = await api.post("/avaliacao/", rating)
+        await api.post("/avaliacao/", rating)
     }
 
     return { getRatings, ratings,userrating, CreateRating }

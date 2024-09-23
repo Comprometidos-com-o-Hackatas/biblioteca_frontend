@@ -16,7 +16,7 @@ function changevalue(i){
 async function Avaliate(){
     const email = localStorage.getItem('email')
     const {data} = await api.get('/usuarios/')
-    const finduser = data.results.find(user => user.email === email)
+    const finduser = data.find(user => user.email === email)
     const id = route.params.id
     const rating = {
         coment: coment.value,

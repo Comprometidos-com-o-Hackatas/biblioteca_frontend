@@ -39,6 +39,7 @@ function toRoute(data) {
           @rate="isopenpopup = !isopenpopup"
           :categories="details.categoria"
           :genere="details.generos"
+          :is_avaible="details.disponivel"
           :url="details.capa.url"
           is_list="list"
          />

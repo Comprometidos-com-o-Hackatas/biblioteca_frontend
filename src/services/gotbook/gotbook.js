@@ -10,7 +10,7 @@ class GotBookService {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }})
-            return data.results
+            return data
             } catch(error) {
                 throw error;
             }
@@ -22,7 +22,7 @@ class GotBookService {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }})
-            return data.results
+            return data
         } catch (error) {
             throw error;
         }
@@ -34,7 +34,7 @@ class GotBookService {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }})
-            return data.results
+            return data
         } catch (error) {
             throw error;
         }
@@ -46,7 +46,7 @@ class GotBookService {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }})
-            return data.results
+            return data
         } catch (error) {
             throw error;
         }

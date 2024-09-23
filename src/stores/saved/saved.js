@@ -12,7 +12,7 @@ export const useSavedStore = defineStore('store', () =>{
                 Authorization: `Bearer ${token}`,
             },
         })
-        savedbooks.value = data.results
+        savedbooks.value = data
     }
     async function CreateSavedBook(save) {
         await api.post("/favorito/", save, {

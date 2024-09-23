@@ -16,7 +16,7 @@ export const useUserBooks = defineStore('userbooks', () => {
                 Authorization: `Bearer ${token}`,
             },
         })
-        userbooks.value = data.results
+        userbooks.value = data
         console.log(userbooks.value)
     }
 
@@ -91,7 +91,7 @@ export const useUserBooks = defineStore('userbooks', () => {
                 Authorization: `Bearer ${token}`,
             },
         })
-        const finduser = data.results.find(user => user.livro.id === Number(book))
+        const finduser = data.find(user => user.livro.id === Number(book))
         books = finduser.id
     }
     return { GetUserBooks, usuariohadbook, UpdateUserBooks, CreateUserBooks, GetUserBooksToConfig, userbooks, userbooksToConfig }
