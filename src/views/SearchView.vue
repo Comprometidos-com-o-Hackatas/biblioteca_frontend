@@ -10,7 +10,7 @@ const booksfiltered = ref([])
 const bookStore = useBookStore()
 
 onMounted(async ()=>{
-  await bookStore.getBooks()
+    await bookStore.getBooks()
 })
 
 const books = computed(() => {
@@ -40,7 +40,7 @@ function toRoute(data) {
           :categories="details.categoria"
           :genere="details.generos"
           :is_avaible="details.disponivel"
-          :url="details.capa.url"
+          :url="details.capa ? details.capa.url : ''"
           is_list="list"
          />
     </span>

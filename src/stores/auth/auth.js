@@ -6,16 +6,16 @@ import authService from '@/services/auth/auth'
 import api from '@/plugins/api'
 
 export const useAuthStore = defineStore('auth', () => {
-    const username = ref(null)
-    const email = ref(null)
-    const access = ref(null)
-    const refresh = ref(null)
+    const username = ref('')
+    const email = ref('')
+    const access = ref('')
+    const refresh = ref('')
     const logged = ref(false)
-    const password = ref(null)
-    const userID = ref(null)
+    const password = ref('')
+    const userID = ref('')
     const users = ref([])
-    const user = ref(null)
-    const getError = ref(null)
+    const user = ref('')
+    const getError = ref('')
     const userInfo = reactive({
         email: '',
         username: '',

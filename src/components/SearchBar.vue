@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-const search = ref(null)
+const search = ref('')
 
 const props = defineProps({
     width: {

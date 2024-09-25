@@ -34,7 +34,7 @@ function toRoute(data) {
           <div class="container-book">
 
             <div class="card-container-home">
-             <span class="linkBooks" @click="toRoute(props.data)" ><BookDetail :categories="props.data.categoria" :url="props.data.capa.url" :genere="props.data.generos" :is_avaible="props.data.disponivel" is_list="list"/>
+             <span class="linkBooks" @click="toRoute(props.data)" ><BookDetail :categories="props.data.categoria" :url="props.data.capa ? props.data.capa.url : ''" :genere="props.data.generos" :is_avaible="props.data.disponivel" is_list="list"/>
              </span>
             </div>
 

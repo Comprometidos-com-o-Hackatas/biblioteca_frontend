@@ -1,6 +1,6 @@
 <template>
 
-  <div :class="is_list != 'list' ? 'detail-container' : 'book-list-container'" :id="is_list != 'list' ? 'detail-container-esp' : null">
+  <div :class="is_list != 'list' ? 'detail-container' : 'book-list-container'" :id="is_list != 'list' ? 'detail-container-esp' : ''">
     
     <div :class="is_list != 'list' ? 'book-details' : 'book-list'">
       

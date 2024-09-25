@@ -10,12 +10,12 @@ const taxesitem = ref([])
 const popup = ref(false)
 const store = useUserBooks()
 const authStore = useAuthStore()
-const userid = ref(null)
+const userid = ref('')
 function OpenPopUP(id) {
   taxesitem.value = [store.userbooks.find((item) => item.id === id)]
   popup.value = !popup.value
 }
-const diasfaltantes = ref(null)
+const diasfaltantes = ref('')
 const taxas = ref(0.0)
 
 watch(diasfaltantes, (dias) =>{

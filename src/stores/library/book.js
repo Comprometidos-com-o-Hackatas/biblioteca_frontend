@@ -10,8 +10,8 @@ export const useBookStore = defineStore('book', () => {
     const state = reactive({
         books: [],
         booksByAge: [],
-        error: null,
-        selectedBook: null,
+        error: '',
+        selectedBook: '',
         savedBooks: []
     })
 

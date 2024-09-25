@@ -30,7 +30,7 @@ const booksRead = computed(()=> {
   const reading = familyStore.family.userReading
   return reading
 })
-const diasfaltantes = ref(null)
+const diasfaltantes = ref('')
 watch(diasfaltantes, (dias) =>{
     if(dias < 0){
         taxas.value++

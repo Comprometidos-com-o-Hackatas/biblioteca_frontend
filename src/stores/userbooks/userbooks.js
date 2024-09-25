@@ -7,8 +7,8 @@ const date = new Date()
 export const useUserBooks = defineStore('userbooks', () => {
     const userbooks = ref([])
     const userbooksToConfig = ref([])
-    const errorBook = ref(null)
-    let books = null
+    const errorBook = ref('')
+    let books = ''
 
     async function GetUserBooks() {
         const { data } = await api.get("/livropego/", {
@@ -91,8 +91,10 @@ export const useUserBooks = defineStore('userbooks', () => {
                 Authorization: `Bearer ${token}`,
             },
         })
-        const finduser = data.find(user => user.livro.id === Number(book))
-        books = finduser.id
+        setTimeout(() =>{
+            const finduser = data.find(user => user.livro.id === Number(book))
+            books = finduser.id
+        }, 2000)
     }
     return { GetUserBooks, usuariohadbook, UpdateUserBooks, CreateUserBooks, GetUserBooksToConfig, userbooks, userbooksToConfig }
 

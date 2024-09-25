@@ -10,7 +10,7 @@ const familyActive = ref(false)
 const familyStore = useFamilyStore()
 const authStore = useAuthStore()
 
-const person = ref(null)
+const person = ref('')
 
 const familyInfo = reactive({
    nome: '',

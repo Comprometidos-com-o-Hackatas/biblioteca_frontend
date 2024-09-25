@@ -14,7 +14,7 @@ const props = defineProps({
         }
 })
 
-const family = ref(null)
+const family = ref('')
 
 defineEmits([
         'popFamily'

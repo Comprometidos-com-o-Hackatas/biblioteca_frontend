@@ -13,11 +13,11 @@ export const useFamilyStore = defineStore('familyStore', () => {
     const family = reactive({
         family: [],
         users: [],
-        selectedUser: null,
+        selectedUser: '',
         userBooks: [],
         userReading: [],
         usersForReal: [],
-        error: null
+        error: ''
     })
 
     const familyObj = reactive({

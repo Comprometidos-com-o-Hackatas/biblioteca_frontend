@@ -1,7 +1,7 @@
 import api from "@/plugins/api";
 import axios from 'axios'
 const token = localStorage.getItem('access')
-let book = null
+let book = ''
 class GotBookService {
 
     async listGotBooks() {

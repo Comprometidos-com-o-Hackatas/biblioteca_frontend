@@ -54,7 +54,7 @@
             <BookDetail @rate="isopenpopup = !isopenpopup"  :categories="bookStore.state.selectedBook.categoria" :url="bookStore.state.selectedBook.capa.url"  :genere="bookStore.state.selectedBook.generos" is_list="details"/>
             <BookDescription @rate="isopenpopup = !isopenpopup" @ownBook="ownBook" :userhasbook="userhasbook"  :allow="bookStore.state.selectedBook.disponivel ? true : false" :is_avalaible="bookStore.state.selectedBook.disponivel"  :synopsis="bookStore.state.selectedBook.descricao" :title="bookStore.state.selectedBook.titulo"  :nota="bookStore.state.selectedBook.nota"/>
         </div>
-        <div :class=" isopenpopup ? 'rate-container' : null" >
+        <div :class=" isopenpopup ? 'rate-container' : ''" >
             <RatingComp v-show="isopenpopup" @rate="isopenpopup = !isopenpopup"/>
         </div>
     </div>
