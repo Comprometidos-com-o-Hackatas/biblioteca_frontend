@@ -1,0 +1,128 @@
+.box-rate {
+    position: absolute;
+    top: 510px;
+    display: flex;
+    width: 300px;
+    justify-content: center;
+}
+.box-rate-in {
+    width: 100%;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+
+.mdi-star {
+    font-size: 30px;
+}
+
+.box-critic-container {
+    display: flex;
+    gap: 30px;
+}
+
+.user-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-box img {
+    border-radius: 999px;
+    width: 100px;
+    height: 100px;
+}
+
+#rate {
+    display: flex;
+    gap: 5px;
+    
+}
+
+.rating-button {
+    top: 150px;
+}
+
+.rating-button button {
+    width: 200px;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    background-color: blanchedalmond;
+    border-radius: 10px;
+}
+.rating-button-resp button{
+    width: 200px;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    background-color: blanchedalmond;
+    display: none;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 500px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.card textarea {
+    width: 100%;
+    resize: none;
+    height: 200px;
+    border: none;
+    background-color: rgba(128, 128, 128, 0.388);
+    outline: 0;
+    padding: 10px;
+}
+.rate-box {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+}
+.back-box{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    color: red;
+}
+
+#hint {
+    font-size: 10px;
+}
+
+.rate-button button {
+    width: 150px;
+    background-color: blanchedalmond;
+    border: none;
+    padding: 7.5px;
+    border-radius: 5px;
+}
+@media (max-width: 1350px) {
+    .rating-button button {
+        display: none;
+    }
+    .box-rate{
+        top: 540px;
+    }
+    .rating-button-resp button{
+        display: block;
+    }
+}
+@media (max-width: 600px){
+    .card {
+        margin-left: 120px;
+    }
+}
+@media (max-width: 400px){
+    .card{
+        margin-left: 150px;
+    }
+}

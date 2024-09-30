@@ -1,0 +1,112 @@
+* {
+    position: relative;
+}
+.book-list-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 230px;
+    width: 160px;
+    transition: 1s;
+    margin-bottom: 35px;
+}
+.book-list-container:hover{
+    transform: scale(1.05);
+}
+
+.book-list{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px ;
+    position: relative;
+    z-index: 5;
+}
+
+.book-list-in {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.box-list-img {
+    width: 100%;
+    height: 100%;
+}
+.book-list img{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    z-index: 15;
+    position: relative;
+}
+
+.overlay {
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0.8) 10%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 60%);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    z-index: 50;
+}
+
+.box-list-list-container {
+    position: absolute;
+    bottom: 15px;
+    z-index: 9999;
+    width: 90%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-list-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    gap: 5px;
+    z-index: 9999;
+    & li {
+        display: flex;
+        list-style-type: none;
+        
+    }
+}
+.category-list {
+    background-color: #fefdfd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px;
+    font-size: 9px;
+    color: black;
+}
+
+.genere-list {
+    background-color: #f9f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px;
+    font-size: 9px;
+    color: black;
+}
+
+.linkBooks {
+    z-index: 999999;
+}
+.unavaible{
+    background: linear-gradient(360deg, rgba(255, 255, 255, 0.6) 10%, rgba(186, 186, 186, 0.6) 30%, rgb(255, 255, 255, 0.6) 60%);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    z-index: 50;
+}
