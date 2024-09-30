@@ -68,7 +68,7 @@ async function deleteUser(user) {
           </div>
           <div v-if="familyStore.family.userReading.length > 0" class="container-data-reading">
           <div class="box-reading-img">
-            <ContainerBookOut v-for="item, index in booksRead" :key="index" :data="item.livro" />
+            <ContainerBookOut v-for="item, index in booksRead" :key="index" :data="item" />
           </div>
           <div class="box-reading-data">
             <p>Datas:</p>
