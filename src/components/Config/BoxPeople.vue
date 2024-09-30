@@ -21,7 +21,7 @@ onMounted(()=>{
 <template>
                 <div class="card-people">
                     <div class="card-people-img">
-                        <img src="../../assets/media/renas.png" alt="">
+                        <img src="https://www.refugee-action.org.uk/wp-content/uploads/2016/10/anonymous-user.png" alt="">
                     </div>
                     <div class="id-people">
                         <span :class="props.icon" />

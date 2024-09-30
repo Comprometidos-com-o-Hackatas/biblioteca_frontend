@@ -91,10 +91,9 @@ export const useUserBooks = defineStore('userbooks', () => {
                 Authorization: `Bearer ${token}`,
             },
         })
-        setTimeout(() =>{
             const finduser = data.find(user => user.livro.id === Number(book))
             books = finduser.id
-        }, 2000)
+            console.log(books)
     }
     return { GetUserBooks, usuariohadbook, UpdateUserBooks, CreateUserBooks, GetUserBooksToConfig, userbooks, userbooksToConfig }
 

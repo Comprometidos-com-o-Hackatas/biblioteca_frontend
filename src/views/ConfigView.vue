@@ -18,8 +18,8 @@ const familyInfo = reactive({
 })
 
 onMounted(()=>{
-   familyStore.getFamilies() 
-   authStore.getUserInfo()
+      familyStore.getFamilies() 
+      authStore.getUserInfo()
 })
 
 function addFamily(usr) {

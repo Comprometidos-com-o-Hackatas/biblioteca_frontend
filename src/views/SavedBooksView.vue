@@ -5,8 +5,8 @@ import { useSavedStore } from '@/stores/saved/saved';
 const store = useSavedStore()
 
 onMounted(() =>{
-    store.GetSavedBooks()
-    console.log(store.savedbooks)
+        store.GetSavedBooks()
+        console.log(store.savedbooks)
 })
 </script>
 <template>

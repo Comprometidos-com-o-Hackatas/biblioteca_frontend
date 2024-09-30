@@ -47,18 +47,10 @@ function calculardias(final){
 }
 
 onMounted(async()=>{
-  await bookStore.getBooks()
-  await familyStore.getFamilies()
- 
+    await bookStore.getBooks()
+    await familyStore.getFamilies() 
+    console.log(books.value)
 })
-const newFamily = ref(familyStore.family.family[0])
-async function deleteUser(user) {
-  // console.log(familyStore.family.family[0].Usuario.splice(0, 1))
-  const findIndex = newFamily.value.Usuario.findIndex(s => s.id ==  0)
-  // newFamily.value.Usuario.splice(findIndex, 1)
-  console.log(findIndex)
-}
-
 </script>
 <template>
         <div class="container-manage">

@@ -21,19 +21,18 @@ const organizeBooks = () => {
 }
 
 onMounted(async () => {
-  bookStore.count++
-  await bookStore.getBooks()
-  bookStore.cards = bookStore.state.books.length
-  if (bookStore.count < 2) {
-    setTimeout(() =>{
-      bookStore.setbooksByage()
-      organizeBooks()
-      updateBookList()
-      console.log(bookStore.state.booksByAge)
-    }, 2000)
-  }
-  console.log(bookStore.state.booksByAge)
+    bookStore.count++
+    await bookStore.getBooks()
+    bookStore.cards = bookStore.state.books.length
+      if (bookStore.count < 2) {
+          bookStore.setbooksByage()
+          organizeBooks()
+          updateBookList()
+          console.log(bookStore.state.booksByAge)
+      }
+  console.log(bookStore.state.books)
 })
+
 
 </script>
 <template>

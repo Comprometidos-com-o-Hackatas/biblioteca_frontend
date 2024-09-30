@@ -8,9 +8,9 @@ const authStore = useAuthStore()
 const userbookstore = useUserBooks()
 const getRatingsstore = useRatingStore()
 onMounted(() => {
-    authStore.getUserInfo()
-    userbookstore.GetUserBooks()
-    getRatingsstore.getRatings()
+        authStore.getUserInfo()
+        userbookstore.GetUserBooks()
+        getRatingsstore.getRatings()
 })
 
 const userBooksByUser = computed(()=> userbookstore.userbooks.filter(s => s.usuario.id == authStore.user.id))
@@ -21,7 +21,7 @@ const userBooksByUser = computed(()=> userbookstore.userbooks.filter(s => s.usua
         <div class="flex flex-col w-60/1 p-5 gap-4">
             <div class="flex flex-row w-full h-30/1 gap-4">
                 <div class="w-25/1 h-full">
-                    <img class="w-full h-full rounded-2xl" src="../assets/media/crash.webp" alt="">
+                    <img class="w-full h-full rounded-2xl" src="https://www.refugee-action.org.uk/wp-content/uploads/2016/10/anonymous-user.png" alt="">
                 </div>
                 <div class="w-75/1 h-full flex flex-col gap-4">
                     <div class="flex flex-col">
@@ -46,7 +46,7 @@ const userBooksByUser = computed(()=> userbookstore.userbooks.filter(s => s.usua
                     <div v-for="userrating in getRatingsstore.userrating" :key="userrating.id"
                         class="flex flex-row w-full h-28 border-primmary-1 border-y gap-4">
                         <div class="w-20/1 h-full">
-                            <img class=" w-full h-full" src="../assets/media/crash.webp" alt="">
+                            <img class=" w-full h-full" src="https://www.refugee-action.org.uk/wp-content/uploads/2016/10/anonymous-user.png" alt="">
                         </div>
                         <div class="flex flex-col w-80/1 h-full">
                             <div class="flex flex-col h-50/1">

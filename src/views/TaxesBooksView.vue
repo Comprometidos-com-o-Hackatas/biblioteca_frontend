@@ -37,12 +37,12 @@ function calculardias(final){
 const userBooksByUser = computed(()=> store.userbooks.filter(s => s.usuario.id == authStore.user.id) )
 
 onMounted(async() =>{
-  store.GetUserBooks()
-  const email = localStorage.getItem('email')
-  const { data } = await api.get("/usuarios/")
-  const finduser = data.find(user => user.email === email)
-  userid.value = finduser.id
-  console.log(userBooksByUser.value)
+    store.GetUserBooks()
+    const email = localStorage.getItem('email')
+    const { data } = await api.get("/usuarios/")
+    const finduser = data.find(user => user.email === email)
+    userid.value = finduser.id
+    console.log(userBooksByUser.value)
 })
 
 

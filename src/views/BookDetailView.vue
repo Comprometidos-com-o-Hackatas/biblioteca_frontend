@@ -34,18 +34,15 @@
     }
 
     onMounted( async ()=>{
-        bookStore.getBooks()
-        ratingstore.getRatings(id)
         const email = localStorage.getItem('email')
+        console.log(userhasbook.value)
+        console.log(bookStore.state.selectedBook)
         const {data} = await api.get('/usuarios/')
         const finduser = data.find(user => user.email === email)
         userhasbook.value = finduser.has_book
-       setTimeout(() =>{
-        console.log(userhasbook.value)
-        console.log(bookStore.state.selectedBook)
         userbookstore.usuariohadbook(id)
-       }, 2000)
-       
+        bookStore.getBooks()
+        ratingstore.getRatings(id)       
     })
 </script>
 <template>

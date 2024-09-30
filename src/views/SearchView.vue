@@ -10,14 +10,14 @@ const booksfiltered = ref([])
 const bookStore = useBookStore()
 
 onMounted(async ()=>{
-    await bookStore.getBooks()
+  await bookStore.getBooks()
 })
 
 const books = computed(() => {
   if (booksfiltered.value.length > 0) {
     return booksfiltered.value
   }
-  return bookStore.state.books
+  return bookStore.state.booksByAge
 })
 
 function filterbooks(search) {

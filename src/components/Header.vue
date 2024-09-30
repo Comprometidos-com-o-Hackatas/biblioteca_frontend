@@ -12,7 +12,7 @@ const authStore = useAuthStore()
             <div class="main-content">
                 <div class="box-photo">
                     <router-link to="/User" v-if="authStore.logged">
-                    <img src="../assets/media/crash.webp" >
+                    <img src="https://www.refugee-action.org.uk/wp-content/uploads/2016/10/anonymous-user.png" >
                     </router-link>
                     <router-link to="/" v-else> 
                     <div style="width: 100%; display: flex; justify-content: center; align-items: center;" >

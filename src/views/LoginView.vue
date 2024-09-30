@@ -17,7 +17,7 @@ const seeMsgCreate = computed(()=> msgCreate.value)
 
 async function executelogin(user){
     await store.Login(user)
-
+    console.log('funcao chamada')
     if (store.getError != '') {
     msg.value = 'Há algo de errado com suas Credenciais'
     setTimeout(()=>{

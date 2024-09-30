@@ -15,9 +15,9 @@ import { ref, computed, onMounted } from 'vue';
 const bookStore = useBookStore()
 const getRate = ref(1)
 
-onMounted(async () => {
-  bookStore.getBooks()
-  getRate.value = bookStore.state.selectedBook.nota
+onMounted(() => {
+    bookStore.getBooks()
+    getRate.value = bookStore.state.selectedBook.nota
 })
 
 
